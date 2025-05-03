@@ -1,0 +1,398 @@
+<!DOCTYPE html><html><head>
+      <title>plano</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  " id="plano">
+      
+<p><style>#roteiro h1 {
+  color: white;
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: darkblue;
+  text-align: center;
+  padding: 5px 5px;
+}
+#roteiro h2 {
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: lightblue;
+  text-align: center;
+  padding: 5px 5px;
+}
+#roteiro h3 {
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #d7eff8;
+  text-align: center;
+  padding: 5px 5px;
+  font-size: larger;
+}
+#roteiro div {
+  border: 1px solid black;
+  background-color: #e8f1f1;
+  border-radius: 12px;
+  padding: 5px 5px;
+}
+#sala h1 {
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: lightgrey;
+  text-align: center;
+}
+#sala div {
+  border: 1px solid black;
+  background-color: #edf7fe;
+  border-radius: 12px;
+  padding: 5px 5px;
+}
+#plano h1 {
+  color: white;
+  border: 2px solid white;
+  border-radius: 12px;
+  background-color: #0e0e96;
+  text-align: center;
+  padding: 5px 5px;
+}
+#plano h2 {
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: lightblue;
+  text-align: center;
+  padding: 5px 5px;
+}
+#plano h3 {
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #d7eff8;
+  text-align: center;
+  padding: 5px 5px;
+  font-size: larger;
+}
+#plano div {
+  border: 1px solid black;
+  background-color: #eefdec;
+  border-radius: 12px;
+  padding: 5px 5px;
+}
+</style></p>
+<h1 id="plano-de-ensinobrcomp0334comp0197---programação-imperativa">Plano de ensino<br>COMP0334/COMP0197 - Programação Imperativa </h1>
+<hr>
+<h2 id="método-de-ensino--dinâmica-de-aulas">Método de ensino / Dinâmica de Aulas </h2>
+<p>Para obter sucesso na disciplina, é de extrema importância seguir o <strong><a href="roteiro-estudo.html">📒 roteiro de estudo</a></strong>, o qual contém vários objetos de aprendizagem, organizados <strong>por semana</strong>, dentre os quais podemos destacar:</p>
+<ul>
+<li>
+<p><strong>Videoaulas:</strong> disponíveis no Youtube contendo explicações sobre o assunto, demonstração de ferramentas e tarefas, resolução de exercícios de programação.</p>
+</li>
+<li>
+<p><strong>Leitura recomendada:</strong> complementar o estudo através da leitura de capítulos de livros sugeridos do acervo bibliográfico de referência da disciplina;</p>
+</li>
+<li>
+<p><strong>Atividades no The Huxley:</strong> questionários com problemas de programação a serem resolvidos e submetidos ao juiz on-line <a href="http://thehuxley.com">The Huxley</a>, o qual analisará a solução e apontará erros e acertos.</p>
+</li>
+</ul>
+<p>🔨 <strong><a href="recursos.html">Sites e Ferramentas Recomendadas</a></strong></p>
+<h3 id="aulas-presenciais">Aulas presenciais </h3>
+<p>As aulas presenciais terão como foco o <strong>esclarecimento de dúvidas</strong> sobre o assunto da semana, tanto sobre conceitos abordados em vídeos como de exercícios da semana. Também será o momento de <strong>resolver exercícios de forma colaborativa</strong>.</p>
+<p>Durante seu tempo dedicado ao estudo, o aluno deverá seguir o <strong><a href="roteiro-estudo.html">roteiro de estudo</a></strong> elaborado pelo professor, realizando <strong><em>no mínimo</em></strong> as atividades previstas para aquela semana.</p>
+<p>Este roteiro será fundamental para permitir a cada aluno seguir um ritmo próprio de estudo, utilizando os horários mais convenientes.</p>
+<h3 id="img-srciconesyoutubepng-width24-height24-aligntop-bvideoaulas-playlistsbimg"><img src="data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAEblJREFUeJzt3WuMXIdVB/D/OffOzD68sZ04zsOJ7XUax6TZHSd20gjROBKICigVIbhAeah8gSAoopWohNQvKBRIhECJBBFClYWokCJqqVBapKaoNBXINNl4H4lTN3F214mbJs3aXq93d3bu3HP4sA+P9/2Ye+88/j8p2bl37tz7XyX3zDl35wEQERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERHRWiTrAPXu1Xvvzbe3t7fr9HS7hGG7B0Eb4rgN7gWotrl7IXAvIAgK7l6Ae8FVC3DPC1CAe96BPIC8ADmb+ylAzt1zopoDkPPZdaG75wTImXuoqqEBOQVCMwtUNXCzwFVDdQ/MPVDVAGaBiai6BwDUVdUBUSAAoGamAASqqqv8NzfAAThmH+BQNTOLoeoKGMwcgJlIrCKxmcWiGotZbHM/RaTiIrGYVVykIiIVBypzy5EAkc+uixSIHIgEiACUF90uAygLUBazsonMACiLSBlmJRGZiUVmYFZy1ZKIzCCOSwjDkkdRqRxFU4duvXVavvOdSuL/kzSwpikA7/b2ds6E4Q0WRTeEQXCDmXWZape6b3P3LgG2ucg2AbYB6HSgU4DOudsdDnSoeweATri3m2oHgHYFNNvfjLbCzCoKTEF1GmbTBkyJyJQAkwAmXWRK3GdvA5My+3NCRCbc7KqITJjqRBDHVzUIrpQrlStxqXT54JtvzmT9u9VC3RWA8w8/3I6ZmT2VSuV2EdmlIrvM/SaI3OjATgV2GrBj/ieA7TDbrqpB1tmppcwAGHezcYiMu8i4AJfEbAyqF+F+0YGLrjoWmI05cKE8NfXDeiscmRWAtw8fvrsSx0dFtQfAPTA7YKr7FNiZVSaipLnZB646KmbnoHpWzAYtDF86cPr0aBZ5UisAr99zT1dbPv9xEfk4RH4awC1pHZuo3jnwjrh/y4GvBR0d/7n31KnpNI6beAEYLhYfFeAJM/uEqrYnfTyiJjAB96+o6nN7+/tfSvJAiRQAB2Skt/cxEfkCgPuTOAZRK3Dguyry5L7+/heS2H/NC8D5w4cf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" width="24" height="24" align="top"> <b>Videoaulas (Playlists)</b> </h3>
+<table>
+<thead>
+<tr>
+<th><em>Playlist</em></th>
+<th><em>Descrição</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.youtube.com/playlist?list=PLXV7PS9htUvxa7mhkOOeWuuuFXBv1eeh2">Aulas</a></td>
+<td>Série de videoaulas explicando os conceitos de programação e de Python.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/playlist?list=PLXV7PS9htUvyZtr_Hhz6qmjJQKxWfs9Bi">Problemas Resolvidos</a></td>
+<td>Problemas do The Huxley resolvidos em Python.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/playlist?list=PLXV7PS9htUvzsr5TAS4ZWnP3xH4a6FLkE">Ferramentas</a></td>
+<td>Série de vídeos explicando o uso básico de ferramentas recomendadas para o curso.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/playlist?list=PLXV7PS9htUvxBqJxbVLazQ55b5YXBAeOB">Vídeos extras</a></td>
+<td>Alguns vídeos sobre assuntos variados.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="ementa">Ementa </h2>
+<div>
+<ul>
+<li>Noções fundamentais sobre algoritmos e sobre a execução de programas.</li>
+<li>Análise e síntese de problemas.</li>
+<li>Identificadores, tipos, constantes, variáveis, tipos.</li>
+<li>Operadores e expressões.</li>
+<li>Comandos condicionais e de repetição.</li>
+<li>Variáveis compostas homogêneas e heterogêneas.</li>
+<li>Procedimentos, funções e passagem de parâmetros.</li>
+<li>Noções sobre o uso de arquivos em programação.</li>
+<li>Algoritmos básicos de ordenação.</li>
+<li>Recursividade.</li>
+<li>Uma linguagem imperativa.</li>
+<li>Convenções de código.</li>
+<li>Boas práticas de programação.</li>
+</ul>
+</div>
+<hr>
+<h2 id="conteúdo-programado">Conteúdo Programado </h2>
+<div>
+<p><strong>Semana 01 -</strong> (13/11/2023 a 18/11/2023)</p>
+<ul>
+<li>Introdução à disciplina</li>
+<li>O que é programar</li>
+<li>Motivação para programar</li>
+<li>Hardware, software e princípios</li>
+<li>Visão geral da linguagem Python</li>
+<li>Preparação do ambiente de desenvolvimento</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 02 -</strong> (20/11/2023 a 25/11/2023)</p>
+<ul>
+<li>Constantes, variáveis, operador de atribuição e palavras reservadas</li>
+<li>Operador de atribuição</li>
+<li>Atribuição múltipla</li>
+<li>Comandos de entrada e saída</li>
+<li>Comentários</li>
+<li>Tipos de dados, Conversão de tipos e operações com String</li>
+<li>Expressões numéricas</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana Acadêmica -</strong> (27/11/2023 a 02/12/2023)</p>
+<ul>
+<li>Participar das atividades da Semana Acadêmica (não haverá aula).</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 03 -</strong> (04/12/2023 a 09/12/2023)</p>
+<ul>
+<li>Expressões relacionais e booleanas</li>
+<li>Ordem de avaliação e precedência de operadores</li>
+<li>Comandos condicionais (if)</li>
+<li>Blocos de código (indentação)</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 04 -</strong> (11/12/2023 a 16/11/2023)</p>
+<ul>
+<li>Comandos condicionais aninhados e múltiplos (if / else / elif)</li>
+<li>Tratamento de exceções (try / except)</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 05 -</strong> (18/12/2023 a 23/12/2023)</p>
+<ul>
+<li>Funções predefinidas e Bibliotecas</li>
+<li>Definição de funções, retorno de valores, argumentos e parâmetros</li>
+<li>Programação com abordagem Top-Down</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Recesso Natalino e Férias Coletivas -</strong> (25/12/2023 a 13/01/2024)</p>
+<ul>
+<li>Férias</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 06 -</strong> (15/01/2024 a 20/01/2024)</p>
+<ul>
+<li>Comando de repetição while</li>
+<li>Comandos break e continue</li>
+<li>Uso do laço While</li>
+<li>Resolvendo problemas com Invariantes</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 07 -</strong> (22/01/2024 a 27/01/2024)</p>
+<ul>
+<li>Strings</li>
+<li>Comando de repetição for</li>
+<li>Uso do Laço For</li>
+<li>Operadores e funções para Strings</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 08 -</strong> (29/01/2024 a 03/02/2024)</p>
+<ul>
+<li><strong>1a Prova</strong><br>
+<br></li>
+<li>Listas</li>
+<li>Funções e Métodos de Listas</li>
+<li>Aplicações de Listas</li>
+<li>Compreensão de Listas</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 09 -</strong> (05/11/2024 a 10/02/2024)</p>
+<ul>
+<li>Esclarecimento de dúvidas e resolução de exercícios</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semanas 10 e 11 -</strong> (12/02/2024 a 24/02/2024)</p>
+<ul>
+<li>Ordenação</li>
+<li>Busca Binária<br>
+<br></li>
+<li><strong>Entrega de notas da 1a Prova</strong></li>
+<li><strong>Resolução da prova</strong><br>
+<br></li>
+<li>Matrizes</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 12 -</strong> (26/02/2024 a 02/03/2024)</p>
+<ul>
+<li>Funções recursivas</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 13 -</strong> (04/03/2024 a 09/03/2024)</p>
+<ul>
+<li>Dicionários</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 14 -</strong> (11/03/2024 a 16/03/2024)</p>
+<ul>
+<li>Tuplas</li>
+<li>Conjuntos</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 15 -</strong> (18/03/2024 a 23/03/2024)</p>
+<ul>
+<li>Leitura e gravação de arquivos texto</li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 16 -</strong> (25/03/2024 a 30/03/2024)</p>
+<ul>
+<li><strong>2a Prova</strong></li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 17 -</strong> (01/04/2024 a 06/04/2024)</p>
+<ul>
+<li><strong>Prova de Reposição</strong></li>
+</ul>
+</div>
+<br>
+<div>
+<p><strong>Semana 18 -</strong> (08/04/2024 a 13/04/2024)</p>
+<ul>
+<li><strong>Entrega de notas da 2a Prova</strong></li>
+<li><strong>Resolução da 2a prova</strong></li>
+<li><strong>Resolução da prova de reposição</strong></li>
+<li><strong>Entrega das notas finais</strong></li>
+<li><strong>Encerramento</strong></li>
+</ul>
+</div>
+<hr>
+<h2 id="forma-de-avaliação">Forma de Avaliação </h2>
+<p>A avaliação será feita através de testes presenciais, obedecendo à fórmula:</p>
+<p><strong>Nota Final</strong> = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>N</mi><mn>1</mn><mo>+</mo><mi>N</mi><mn>2</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{N1 + N2}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p><strong><em>Onde:</em></strong></p>
+<ul>
+<li><strong>N1</strong> = Nota 1º Teste</li>
+<li><strong>N2</strong> = Nota 2º Teste</li>
+</ul>
+<p><strong>Observação:</strong> Haverá um teste de reposição no final do semestre apenas para os alunos com falta justificada em algum teste, desde que a justificativa esteja prevista nas normas acadêmicas.</p>
+<hr>
+<h3 id="referências-bibliográficas-básicas-blue_book">Referências Bibliográficas Básicas 📘 </h3>
+<ul>
+<li>
+<p>📚 <strong>Fundamentos da Programação de Computadores.</strong> Ana Fernanda Gomes Ascencio / Edilene Aparecida Veneruchi De Campos. 3˚ edição; 2012, Pearson; ISBN 978-8564574168</p>
+</li>
+<li>
+<p>📚 <strong>Algoritmos e Lógica de Programação.</strong> Marco A. Furlan de Souza, Marcelo M. Gomes, Marcio V. Soares, Ricardo Concilio. Editora Cengage Learning, 2ª edição, 2011.</p>
+</li>
+<li>
+<p>📚 <strong>Algoritmos: Lógica para Desenvolvimento de Programação de Computadores.</strong> José Augusto N. G. Manzano, Jayr Figueiredo de Oliveira. Editora Érica, 17ª edição, 2005.</p>
+</li>
+<li>
+<p>📗 <a href="livros/python_for_everybody.pdf">Python for Everybody: Exploring Data Using Python 3.</a> Charles R. Severance.  CreateSpace Independent Publishing Platform; 1st. ed., 2016;  ISBN:  978-1530051120</p>
+</li>
+</ul>
+<hr>
+<h3 id="referências-bibliográficas-complementares-orange_book">Referências Bibliográficas Complementares 📙 </h3>
+<ul>
+<li>
+<p>📗 <a href="livros/python_for_informatics.pdf">Python for Informatics: Exploring Information.</a> Charles R. Severance.  CreateSpace Independent Publishing Platform; 1st. ed., 2013; ISBN: 978-1492339243. <a href="livros/python_para_informatica.pdf">Versão traduzida para português.</a></p>
+</li>
+<li>
+<p>📗 <a href="livros/como_pensar_como_um_cc_usando_python.pdf">Como pensar como um Cientista da Computação usando Python (traduzido).</a> Allen Downey, Jeffrey Elkner, and Chris Meyers. 2002.</p>
+</li>
+<li>
+<p>📗 <a href="livros/python_para_desenvolvedores_2ed.pdf">Python para Desenvolvedores.</a> Luiz Eduardo Borges. Rio de Janeiro; 2010; 978-85-909451-1-6.</p>
+</li>
+<li>
+<p>📚 <strong>Introdução à Programação com Python.</strong> Nilo Ney Coutinho, 2˚ edição, 2014, ISBN: 978-85-7522-408-3.</p>
+</li>
+<li>
+<p>📗 <a href="livros/learning_to_program_using_python_2ed.pdf">Learning to Program Using Python.</a> Cody Jackson.<br>
+CreateSpace Independent Publishing Platform; ISBN: 9781461182054</p>
+</li>
+</ul>
+<p><em><strong>Legenda:</strong><br>
+📗 conteúdo disponível online e sem custos.<br>
+📚 conteúdo disponível na biblioteca da UFS.</em></p>
+<hr>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
