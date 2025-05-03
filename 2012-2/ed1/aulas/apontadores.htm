@@ -1,0 +1,446 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Apontadores (Ponteiros)</title>
+</head>
+
+<body>
+
+<p><b><span lang="pt-br"><font size="6">Apontadores (Ponteiros)</font></span></b></p>
+<hr>
+<p><span lang="pt-br">Um apontador é uma variável que contém o endereço de um 
+dado ou de um código de programa. Podemos obter o endereço de uma variável 
+usando a <b>função Addr</b> ou o <b>operador @</b>.</span></p>
+<ul>
+  <li><span lang="pt-br">A função Addr(&lt;variável&gt;)</span></li>
+  <li><span lang="pt-br">O operador @&lt;variável&gt;</span></li>
+</ul>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 1:</b> Obtendo o endereço de uma variável 
+  integer:</span><p><font face="Courier New" size="2"><span lang="pt-br">var N : 
+  integer;<br>
+  begin<br>
+&nbsp;&nbsp; writeln('Addr(N)=', longint(Addr(N)));<br>
+&nbsp;&nbsp; writeln('@N=', longint(@N))<br>
+  end.</span></font></p>
+</div>
+<p>&nbsp;</p>
+<p><b><span lang="pt-br"><font size="5">Variável tipo Pointer</font></span></b></p>
+<hr>
+<p><span lang="pt-br">Usa-se uma variável tipo Pointer para armazenar um 
+endereço de memória.</span></p>
+<p><span lang="pt-br"><font face="Courier New" size="2">var &lt;nome-da-variável&gt; : 
+Pointer;</font></span></p>
+<p><span lang="pt-br">Este tipo de apontador pode ser usado para guardar o 
+endereço de qualquer variável, independente do tipo da mesma.</span></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 2:</b> Atribuindo endereços de variáveis a um 
+  apontador:</span><p><font face="Courier New" size="2"><span lang="pt-br">var<br>
+&nbsp;&nbsp; N : integer;<br>
+&nbsp;&nbsp; R : real;<br>
+&nbsp;&nbsp; S : String[50];<br>
+&nbsp;&nbsp; P : Pointer;<br>
+  begin<br>
+&nbsp;&nbsp; P := Addr(N);&nbsp;&nbsp; {1}<br>
+&nbsp;&nbsp; writeln('Addr(N)=', longint(P));<br>
+  <br>
+&nbsp;&nbsp; P := Addr(R);&nbsp;&nbsp; {2}<br>
+&nbsp;&nbsp; writeln('Addr(R)=', longint(P));<br>
+  <br>
+&nbsp;&nbsp; P := @S;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {3}<br>
+&nbsp;&nbsp; writeln('Addr(S)=', longint(P));</span></font></p>
+  <p><font face="Courier New" size="2"><span lang="pt-br">&nbsp;&nbsp; P := @P;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {4}<br>
+&nbsp;&nbsp; writeln('Addr(P)=', longint(P));<br>
+  end.</span></font></p>
+</div>
+<p>&nbsp;</p>
+<p><img border="0" src="figuras/apo_p_n_r_s.png" width="499" height="239"></p>
+<p>Supondo que N, R, S e P estão juntos na memória, teríamos uma organização 
+semelhante à abaixo:</p>
+<p>
+<img border="0" src="figuras/apo_p_n_r_s_organizacao.png" width="280" height="274"></p>
+<p>
+&nbsp;</p>
+<p>Porém, as variáveis dinâmicas no Free Pascal são normalizadas para ocupar pedaços de memória de 16, 32 
+ou 64 bytes (o menor possível). Sendo assim, teríamos o resultado abaixo:</p>
+<p>
+<img border="0" src="figuras/apo_p_n_r_s_organizacao2.png" width="281" height="274"></p>
+<p>&nbsp;</p>
+<p><b><span lang="pt-br"><font size="5">Apontadores Tipados</font></span></b></p>
+<hr>
+<p>São apontadores que podem ser usados para referenciar um tipo específico. São 
+declarados da seguinte forma:</p>
+<p><span lang="pt-br"><font face="Courier New" size="2">var &lt;nome-da-variável&gt; : 
+^&lt;tipo&gt;;</font></span></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 3:</b> Crie um apontador para um Item que possui 
+  um nome e um preço:</span><p><font face="Courier New" size="2"><span lang="pt-br">
+  type<br>
+&nbsp;&nbsp; TItem = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nome : String;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preco : real;<br>
+&nbsp;&nbsp; end;<br>
+  var<br>
+&nbsp;&nbsp; PItem : ^TItem;<br>
+&nbsp;&nbsp; Item : TItem;<br>
+  begin<br>
+&nbsp;&nbsp; Item.Nome := 'Livro de Ed1';<br>
+&nbsp;&nbsp; Item.Preco := 25.0;<br>
+&nbsp;&nbsp; PItem := Addr(Item);<br>
+  end.</span></font></p>
+</div>
+<p>&nbsp;</p>
+<p><b><span lang="pt-br"><font size="5">Desreferenciando um Apontador</font></span></b></p>
+<hr>
+<p>Desreferenciar um apontador faz com que obtenhamos o valor contido no 
+endereço apontado.</p>
+<p><span lang="pt-br"><font face="Courier New" size="2">&lt;identificador&gt;^</font></span></p>
+<p>A atribuição de apontadores é igual a uma variável normal.</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 4:</b> A atribuição de apontadores é igual a uma 
+  variável normal.</span><p><font face="Courier New" size="2"><span lang="pt-br">
+  var<br>
+&nbsp;&nbsp; X : integer;<br>
+&nbsp;&nbsp; P1, P2 : ^integer;<br>
+  begin<br>
+&nbsp;&nbsp; X := 10;<br>
+&nbsp;&nbsp; P1 := @X;<br>
+&nbsp;&nbsp; writeln(X);<br>
+&nbsp;&nbsp; writeln(P1^);<br>
+&nbsp;&nbsp; P2 := P1;<br>
+&nbsp;&nbsp; P2^ := 100;<br>
+&nbsp;&nbsp; writeln(X)<br>
+  end.</span></font></p>
+</div>
+<p>&nbsp;</p>
+<p><span style="background-color: #FFFF00">
+<img border="0" src="figuras/apo_p1_p2_x.png" width="499" height="239"></span></p>
+<p>&nbsp;</p>
+<p><b><font size="5">A Constante Nil</font></b></p>
+<hr>
+<p>É uma constante que representa um endereço de memória inválido, ou seja, um 
+apontador com esse valor não aponta para nada.</p>
+<p>&nbsp;</p>
+<p><b><font size="5">Variáveis Dinâmicas</font></b></p>
+<hr>
+<p>São variáveis que são criadas e destruídas durante a execução do programa (dinamicamente 
+e sob demanda). Não são associados a um identificador. Não são declaradas na 
+seção de declaração de variáveis. São sempre referenciadas através de 
+apontadores.</p>
+<p>Permitem melhor gerenciamento da memória, já que podem ser alocadas sob 
+demanda e liberadas assim que não forem mais necessárias.</p>
+<p>Suportam a criação de estruturas de dados complexas de forma eficiente, como 
+listas encadeadas e árvores.</p>
+<p>Em certas situações, são mais eficientes do que estruturas estáticas, 
+permitindo que o programador decida qual é melhor em cada situação.</p>
+<p>Porém, o uso de variáveis dinâmicas está associada a mais erros de 
+programação, já que a alocação e desalocação de memória fica a cargo do 
+programador.</p>
+<p>&nbsp;</p>
+<p><b><font size="5">Alocação e Desalocação de Variáveis Dinâmicas</font></b></p>
+<hr>
+<p>Há uma função chamada <b>new</b> que dado um apontador cria uma variável 
+dinâmica do tipo do apontador e faz com que o apontador tipado passado aponte 
+para a variável criada.</p>
+<p><span lang="pt-br"><font face="Courier New" size="2">new (&lt;apontador-tipado&gt;)</font></span></p>
+<p>Para liberar a memória alocada pela função new, usa-se o procedimento <b>
+dispose</b>.</p>
+<p><span lang="pt-br"><font face="Courier New" size="2">dispose (&lt;apontador-tipado&gt;)</font></span></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 5:</b> Usando new e dispose para trabalhar com 
+  variáveis dinâmicas.</span><p><font face="Courier New" size="2"><span lang="pt-br">
+  type<br>
+&nbsp;&nbsp; TItem = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nome : String[20];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preco : real<br>
+&nbsp;&nbsp; end;<br>
+  var<br>
+&nbsp;&nbsp; PItem, PAnterior : ^TItem;<br>
+  begin<br>
+&nbsp;&nbsp; New(PItem);<br>
+&nbsp;&nbsp; PItem^.Nome := 'Livro de ED1';<br>
+&nbsp;&nbsp; PItem^.Preco := 30.0;<br>
+&nbsp;&nbsp; PAnterior := PItem;<br>
+  <br>
+&nbsp;&nbsp; New(PItem);<br>
+&nbsp;&nbsp; PItem^.Nome := 'Outro livro';<br>
+&nbsp;&nbsp; PItem^.Preco := 10.0;<br>
+  <br>
+&nbsp;&nbsp; writeln(PAnterior^.Nome);<br>
+&nbsp;&nbsp; writeln(PAnterior^.Preco);<br>
+  <br>
+&nbsp;&nbsp; writeln(PItem^.Nome);<br>
+&nbsp;&nbsp; writeln(PItem^.Preco);<br>
+  <br>
+&nbsp;&nbsp; Dispose(PAnterior);<br>
+&nbsp;&nbsp; Dispose(PItem);<br>
+  <br>
+&nbsp;&nbsp; PItem := nil;<br>
+&nbsp;&nbsp; PAnterior := nil<br>
+  end.</span></font></p>
+</div>
+<p>&nbsp;</p>
+<p>
+<img border="0" src="figuras/apo_item_new_dispose.png" width="408" height="319"></p>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 6:</b> Usando variáveis dinâmicas para ler e 
+  guardar na memória uma lista de itens.</span><p><span lang="pt-br">
+  <font face="Courier New" size="2">type<br>
+&nbsp;&nbsp; PItem = ^TItem;<br>
+&nbsp;&nbsp; TItem = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nome : string[20];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preco : real;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Proximo : PItem<br>
+&nbsp;&nbsp; end;<br>
+  var<br>
+&nbsp;&nbsp; Head, PNew, PAtual : PItem;<br>
+&nbsp;&nbsp; Resp : char;<br>
+  begin<br>
+&nbsp;&nbsp; Head := nil;<br>
+  <br>
+&nbsp;&nbsp; repeat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New(PNew);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln('Digite o nome e o preco do Item:');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readln(PNew^.Nome, PNew^.Preco);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PNew^.Proximo := Head;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Head := PNew;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write('Outro Item (S/N)?');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; readln(Resp);<br>
+&nbsp;&nbsp; until UpCase(Resp) = 'N';</font></span></p>
+  <p><span lang="pt-br"><font face="Courier New" size="2">&nbsp;&nbsp; writeln('Produtos 
+  Lidos:');<br>
+&nbsp;&nbsp; PAtual := Head;<br>
+&nbsp;&nbsp; while PAtual &lt;&gt; nil do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln(PAtual^.Nome, ' - ', 
+  PAtual^.Preco);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PAtual := PAtual^.Proximo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+  end.</font></span></p>
+</div>
+<p>&nbsp;</p>
+<p><b><font size="5">Alocando e Desalocando Memória usando GetMem e FreeMem</font></b></p>
+<hr>
+<p><b><font face="Courier New" size="2">GetMem(&lt;apontador&gt;, &lt;número-de-bytes&gt;)</font></b></p>
+<ul>
+  <li>Aloca o número de bytes passado e faz com que o apontador contenha o 
+  endereço do primeiro deles.</li>
+  <li>É semelhante à função <b>new</b>, mas funciona também para apontadores to 
+  tipo pointer.</li>
+</ul>
+<p><b><font face="Courier New" size="2">FreeMem(&lt;apontador&gt;, &lt;número-de-bytes&gt;)</font></b></p>
+<ul>
+  <li>Desaloca o número de bytes passado como parâmetro iniciando no endereço 
+  contido no apontador.</li>
+  <li>É semelhante à função <b>dispose</b>, mas funciona também para apontadores 
+  to tipo pointer.</li>
+</ul>
+<p>&nbsp;</p>
+<p><b><font size="5">A Lista de Blocos Livres</font></b></p>
+<hr>
+<p>Ao desalocar uma variável dinâmica, normalmente cria-se um espaço vazio na 
+memória. O endereço e o tamanho desta variável são incluídos na lista de blocos 
+livres. As funções New e GetMem verificam se há um bloco livre na lista com o 
+tamanho desejado.</p>
+<ul>
+  <li>Caso o tamanho da variável seja menor, o bloco anterior será substituído 
+  por um menor.</li>
+  <li>Se a lista não contiver um bloco do tamanho desejado, a variável dinâmica 
+  será criada no topo do heap.</li>
+  <li>Todos os blocos têm tamanho múltiplos de 16. Isso significa que mesmo 
+  variáveis com 1 byte irão usar 16 bytes.</li>
+  <li>Quando há 2 blocos adjacentes, eles são transformados em um único com o 
+  tamanho dos dois juntos.</li>
+</ul>
+<p>O uso desta lista de blocos livres permite que áreas de memória fornecidas 
+pelo sistema operacional sejam reaproveitadas para outras variáveis dinâmicas 
+sem que seja necessário alocar mais memória.</p>
+<p>&nbsp;</p>
+<p><b><font size="5">As funções MaxAvail e MemAvail</font></b></p>
+<hr>
+<p><b>MaxAvail</b> retorna o tamanho do maior bloco de memória livre, incluindo 
+o bloco que começa no topo do heap.</p>
+<p><b>MemAvail</b> retorna a soma dos tamanhos de todos os blocos livres.</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 7:</b> Usando GetMem, FreeMem, MaxAvail e 
+  MemAvail.</span><p><span lang="pt-br"><font face="Courier New" size="2">var<br>
+&nbsp;&nbsp; P1, P2 : Pointer;<br>
+  begin<br>
+&nbsp;&nbsp; writeln('MaxAvail:', MaxAvail, ', MemAvail:', MemAvail);<br>
+&nbsp;&nbsp; GetMem(P1, 5000);<br>
+&nbsp;&nbsp; GetMem(P2, 1000);<br>
+&nbsp;&nbsp; writeln('MaxAvail:', MaxAvail, ', MemAvail:', MemAvail);<br>
+&nbsp;&nbsp; FreeMem(P1, 5000);<br>
+&nbsp;&nbsp; writeln('MaxAvail:', MaxAvail, ', MemAvail:', MemAvail);<br>
+&nbsp;&nbsp; FreeMem(P2, 1000);<br>
+&nbsp;&nbsp; writeln('MaxAvail:', MaxAvail, ', MemAvail:', MemAvail);<br>
+  end.</font></span></p>
+</div>
+<p>As funções <b>MaxAvail</b> e <b>MemAvail</b> só funcionam no Turbo Pascal. 
+Isto ocorre porque o Free Pascal é um compilador para sistemas operacionais 
+modernos e que permitem vários processos em paralelo e não limita a quantidade 
+de memória disponível para um programa, como ocorre com o DOS. Sendo assim, 
+mesmo que as funções retornariam uma quantidade de memória que muito 
+provavelmente já não seria válida porque outros processos estão alocando e 
+desalocando memória em paralelo. </p>
+<p>Desta forma, com o Free Pascal devemos tentar alocar a quantidade de memória 
+e testar se tivemos sucesso, ou simplesmente não testar e deixar o programa 
+encerrar por falta de memória.</p>
+<p>&nbsp;</p>
+<p><b><font size="5">Cuidados com o Dispose</font></b></p>
+<hr>
+<p>Após executar Dispose o apontador continua apontado para o mesmo endereço</p>
+<ul>
+  <li>É uma boa prática atribuir Nil aos apontadores após chamar Dispose</li>
+  <li>Nil é uma constante que representa um endereço de memória que não é válido 
+  (nulo)</li>
+  <li>Dizemos que um apontador está aterrado quando aponta para Nil</li>
+</ul>
+<p>&nbsp;</p>
+<p><b><font size="5">Erros Comuns com Apontadores</font></b></p>
+<hr>
+<ul>
+  <li><b>Não desalocar uma variável dinâmica que não será mais usada</b>, fazendo com que memória seja 
+  desperdiçada, situação que é conhecida como <i>memory leak</i> (vazamento de 
+  memória). É chamada desta forma porque a variável perdida na memória não 
+  poderá mais ser desalocada, já que não se tem mais o endereço da mesma. É 
+  normalmente causada pela perda da referência para a variável dinâmica.</li>
+</ul>
+
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo  </span>8<span lang="pt-br">:</span></b><span lang="pt-br"><span lang="pt-br"> </span></span>
+  O endereço da para a variável é perdido, impedindo sua liberação da memória<span lang="pt-br">.</span><p><font face="Courier New" size="2"><span lang="pt-br">
+  var<br>
+  </span>&nbsp;<span lang="pt-br">&nbsp; P1, P2</span>, P3<span lang="pt-br">
+  : ^integer;<br>
+  begin<br>
+  </span>&nbsp;&nbsp; {Situação 1}<span lang="pt-br"><br>
+&nbsp;&nbsp;  </span>new(P1); {Cria uma variável dinâmica e faz P1 apontar para 
+  ela}<span lang="pt-br"><br>
+&nbsp;&nbsp;  </span>new(P2); {Cria outra variável dinâmica}<span lang="pt-br"><br>
+  </span>&nbsp;&nbsp; P1 := P2; {P1 e P2 passam a apontar para a segunda 
+  variável criada. A primeira fica perdida na memória}</font></p>
+  <p dir="ltr"><font face="Courier New" size="2">&nbsp;&nbsp; {Situação 2}<span lang="pt-br"><br>
+  </span>&nbsp;&nbsp; new(P3); {Cria a terceira variável dinâmica e P3 aponta 
+  para ela}<span lang="pt-br"><br>
+  </span>&nbsp;&nbsp; new(P3); {Cria a quarta variável dinâmica e P3 aponta para 
+  ela. Perde-se o endereço da terceira variável}<span lang="pt-br"><br>
+  end.</span></font></p>
+</div>
+&nbsp;<p>A figura abaixo mostra o que acontece com a pilha e o heap durante a 
+execução do exemplo acima. Observe que as variáveis &quot;Var 1&quot; e &quot;Var 3&quot; estão 
+perdidas na memória, já que não se tem mais referências para ela a partir da 
+pilha, seja diretamente ou indiretamente:</p>
+<p><img border="0" src="figuras/memory_leak_p1.png" width="723" height="390"></p>
+&nbsp;<ul>
+  <li><b>Desalocar uma variável dinâmica que ainda será usada</b>, o que pode gerar erros 
+  imprevisíveis pois a área de memória já pode estar sendo usada por outra 
+  variável dinâmica.</li>
+</ul>
+
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b>
+  <span lang="pt-br">Exemplo  </span>9<span lang="pt-br">:</span></b><span lang="pt-br"> </span>
+  Uma variável dinâmica desalocada continua sendo usada.<p><font face="Courier New" size="2"><span lang="pt-br">
+  var<br>
+  </span>&nbsp;<span lang="pt-br">&nbsp; P1, P2
+  : ^integer;<br>
+  begin<br>
+  </span>&nbsp;&nbsp; new(P1); {Cria uma variável dinâmica e faz P1 apontar para 
+  ela}<span lang="pt-br"><br>
+  </span>&nbsp;&nbsp; readln(P1^);<br>
+&nbsp;&nbsp; writeln(P1^);<span lang="pt-br"><br>
+  </span>&nbsp;&nbsp; dispose(P1); {P1 já foi liberada da memória e entrou na 
+  lista de blocos livres}<span lang="pt-br"><br>
+&nbsp;&nbsp; <br>
+  </span>&nbsp;&nbsp; new(P2); {Cria outra variável dinâmica, podendo até reusar 
+  o espaço desalocado de P1}<br>
+  <br>
+&nbsp;&nbsp; readln(P1^); {Continua usando P1 como se não tivesse desalocado, 
+  podendo gerar erros de execução}<br>
+&nbsp;&nbsp; writeln(P1^); <span lang="pt-br">
+  <br>
+  end.</span></font></p>
+</div>
+
+<p>A figura abaixo mostra o que acontece com a pilha e o heap durante a 
+execução do exemplo acima. Observe que após o dispose(P1), a variável dinâmica 
+&quot;Var 1&quot; é liberada e passa a fazer parte do espaço livre. Porém, P1 continua 
+apontando para esta área da memória, o que permite inclusive continuar acessando 
+os dados lá armazenados. Logo sem seguinda, é o comando new(P2) aloca uma 
+variável dinâmica &quot;Var 2&quot; que pode ser alocada no espaço antes destinado a &quot;Var 
+1&quot;. Caso isso aconteça, P1 e P2 estarão apontando para a mesma variável, sendo 
+possível alterar o valor da mesma a partir de 2 apontadores distintos. O pior é 
+que estes apontadores podem ser de tipos diferentes, o que quebra o faz com que 
+o Pascal não seja uma linguagem fortemente tipada.</p>
+<p><img border="0" src="figuras/memory_leak_p2.png" width="639" height="429"></p>
+
+<p>&nbsp;</p>
+
+<p><font size="6"><b>Coleta Automática de Lixo</b></font></p>
+<hr>
+<p>Deixar o gerenciamento de memória a cargo do programador, apesar de ser mais 
+flexível e potencialmente mais eficiente (caso seja um ótimo programador), normalmente é associado a erros, que 
+só ocorrem em determinadas situações e em tempo de execução.</p>
+<p>Além disso, o vazamento de memória não provoca erros visívies ao usuário. 
+Porém, faz com que o programa use mais memória do que o necessário, requerendo 
+frequentes reinicializações do mesmo para liberá-la. Na maioria dos programas 
+isto não é grave, mas em Sistemas Operacionais e Servidores (Web, Aplicação, 
+Arquivos, por exemplo) é crítico porque demandaria muita memória ou 
+reinicializações freqüentes.</p>
+<p>Diante deste problema, as linguagens de programação mais modernas têm adotado 
+a liberação automática de memória, conhecida como <b>Coleta Automática de Lixo</b> 
+(<b>Automatic Garbage Collection</b>). Recebe este nome porque o programador não se 
+preocupa em desalocar as variáveis dinâmicas usada, o que faz com que lixo (<i>garbage</i>) 
+seja acumulado na memória. Mas nestas linguagens o ambiente (Máquina Virtual 
+Java, por exemplo) varre a memória em busca deste lixo e o libera 
+automaticamente.</p>
+<p>É importante lembrar que mesmo linguagens que usam Coleta Automática de Lixo 
+precisamos fazer com que os objetos deixem de ser referenciados (atribuindo null 
+a uma referência Java). Caso contrário, não serão liberados. Por exemplo, ao 
+utilizar um array para armazenar os objetos de uma lista seqüencial, podemos 
+controlar através do tamanho quantos objetos estão armazenados no array. O 
+restante é considerado lixo. Porém, para o coletor de lixo, como temos a 
+referência para o array e este para os objetos, ele não é capaz de desalocá-los.</p>
+<p>Existem vários algoritmos para detecar lixo (<i>garbage</i>), ou seja, 
+objetos para os quais não temos mais referência. De forma bastante simplificada, 
+a idéia é partir das referências estáticas e das contidas na pilha, seguindo as 
+referências contidas em cada objeto atingido e incluindo na lista dos objetos 
+atingíveis. Os que não foram atingidos, podem ser desalocados porque não temos 
+como acessá-los.</p>
+
+<p><b><span lang="pt-br"><font size="5">Vantagens</font></span></b></p>
+<hr>
+<ul>
+  <li>Evita os erros que acontecem quando usamos apontadores, mencionados acima.</li>
+  <li>Garante mais confiabilidade, já que não temos o poder de lidar diretamente 
+  com a memória.</li>
+  <li>O coletor pode ser usado para criar um cache de objetos que precisam ser 
+  criados com freqüência com o mesmo estado (Exemplo: Strings)</li>
+</ul>
+<p><b><span lang="pt-br"><font size="5">Desvantagens</font></span></b></p>
+<hr>
+<ul>
+  <li>Exige recursos computacionais para decidir quais partes da memória podem 
+  ser desalocadas, enquanto no gerenciamento manual (controlado pelo 
+  programador) esse consumo é mínimo.</li>
+  <li>O momento em que é iniciada e o tempo de execução da coleta de lixo não é 
+  determinístico. Isso faz com que aplicações em que o tempo de resposta é 
+  crítico, como sistemas como em tempo real, drivers de dispositivo e 
+  processamento de transações, apresentem congelamentos aleatórios.</li>
+  <li>É importante lembrar que há uma distinção entre vazamento físico e lógico 
+  de memória. No vazamento físico, o último ponteiro para uma região de memória 
+  alocada é removido, mas a memória não é desalocada. No vazamento lógico, uma 
+  região de memória ainda é referenciada por um ponteiro, mas nunca será usada. 
+  Coletores de lixo não conseguem reduzir o risco de vazamentos lógicos, somente 
+  físicos.</li>
+</ul>
+
+</body>
+
+</html>

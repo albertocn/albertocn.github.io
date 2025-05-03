@@ -1,0 +1,503 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Complexidade de Algoritmos</title>
+<style>
+<!--
+.font5
+	{color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial, sans-serif;
+	}
+.font0
+	{color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	}
+-->
+</style>
+</head>
+
+<body>
+
+<p><span lang="pt-br"><font size="6"><b>Complexidade de Algoritmos</b></font></span></p>
+<hr>
+<p><span lang="pt-br">Um algoritmo é um conjunto definido de instruções a serem 
+executadas para resolver um problema.</span></p>
+<p><span lang="pt-br">Considerando as diversas soluções algorítmicas para um 
+dado problema, como identificar a melhor? E melhor sob qual perspectiva? 
+Podemos, a depender do objetivo, considerar critérios de análise de um algoritmo 
+como: tempo, espaço, tamanho do código, eficácia, legibilidade, precisão e 
+outros.</span></p>
+<p><span lang="pt-br">Avaliar a complexidade de uma algoritmo constitui-se em 
+determinar os recursos exigidos (tempo, espaço, etc.):</span></p>
+<ul>
+  <li><span lang="pt-br">Prever o crescimento dos recursos exigidos por um 
+  algoritmo à medida que o tamanho dos dados de entrada cresce.</span></li>
+  <li><span lang="pt-br">Comparando os recursos exigidos por diferentes 
+  algoritmos que resolvem o mesmo problema (um algoritmo mais eficiente exige 
+  menos recursos para resolver o mesmo problema).</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><b><span lang="pt-br"><font size="5">Métodos de Análise de Algoritmos</font></span></b></p>
+<hr>
+<p><span lang="pt-br">Podemos calcular/estimar o tempo de processamento de um 
+algoritmo através de 2 métodos:</span></p>
+<ul>
+  <li><span lang="pt-br"><b>Empírico (experimental)</b>: efetuado a partir de 
+  testes de implementação do algoritmo.</span></li>
+  <li><span lang="pt-br"><b>Analítico (teórico)</b>: parte-se do pressuposto de 
+  que toda e qualquer instrução componente do algoritmo é executada em tempo 
+  constante e busca-se definir uma <b>função t = f(n)</b> onde<b> t é o total de 
+  tempo de processamento</b> e <b>n é o tamanho da entrada</b>. Vale ainda 
+  considerar que é usual ignorar o custo de algumas instruções e considerar 
+  apenas as mais significativas.</span></li>
+</ul>
+<p><b>Qual método usar? </b>O empírico tem como vantagem o fato de considerar 
+condições reais. Já o analítico conta com a garantia da neutralidade em relação 
+aos efeitos do tradutor e do hardware que podem mascarar a eficiência do 
+algoritmo em análise. Assim, normalmente usamos o teórico.</p>
+<p>Pelo método analítico, partimos do pressuposto de que toda e qualquer 
+instrução contida no algoritmo é executada em <b>tempo constante</b> e buscamos 
+definir uma função <b>t = f(n)</b>, onde t é o total de tempo de processamento e 
+n é o tamanho da entrada. Vale salientar que é usual ignorarmos o custo de 
+algumas instruções e considerar apenas as mais significativas.</p>
+<p><b>Exemplo 1: Cálculo da complexidade de um algoritmo que soma N números 
+dados</b></p>
+<table border="1" cellspacing="1" style="border-collapse: collapse; border-top-width: 0" bordercolor="#111111" id="AutoNumber1">
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top: 1px solid #111111; border-bottom-style: solid; border-bottom-width: 1">
+    <p align="center"><b>Instruções</b></td>
+    <td style="border-right-color: #111111; border-top-color: #111111"><b>Custo</b></td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">readln(N);</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">Cont:=1;</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">Soma:=0;</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium">
+    <font face="Courier New">while Cont&lt;=N do begin<br>
+&nbsp;&nbsp; readln(Num);<br>
+&nbsp;&nbsp; Soma:=Soma+Num;<br>
+&nbsp;&nbsp; inc(Cont);<br>
+    end;</font></td>
+    <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1">
+    3n</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1; border-bottom: 1px solid #111111">
+    <p align="center"><b>Total</b></td>
+    <td align="center" style="border-style: solid; border-width: 1"><b>3 + 3n</b></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b>Exemplo 2: Cálculo da complexidade de um algoritmo que calcula o somatório 
+da série geométrica: 1 + x<sup>1 </sup>+ x<sup>2 </sup>+ x<sup>3 </sup>+ ... + x<sup>n</sup></b></p>
+<table border="1" cellspacing="1" style="border-collapse: collapse; border-top-width: 0" bordercolor="#111111" id="AutoNumber2">
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top: 1px solid #111111; border-bottom-style: solid; border-bottom-width: 1">
+    <p align="center"><b>Instruções</b></td>
+    <td style="border-right-color: #111111; border-top-color: #111111"><b>Custo</b></td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">readln(X);</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">readln(N);</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">Soma:=0;</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">I:=0;</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium">
+    <font face="Courier New">while I&lt;=N do begin<br>
+&nbsp;&nbsp; Produto:=1;<br>
+&nbsp;&nbsp; J:=0;<br>
+&nbsp;&nbsp; <b>while J&lt;I do begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Produto:=Produto*X;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc(J); <br>
+&nbsp;&nbsp; end;</b><br>
+&nbsp;&nbsp; Soma:=Soma + Produto <br>
+&nbsp;&nbsp; inc(I); <br>
+    end;</font></td>
+    <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1">
+    <b>(N<sup>2</sup> + N) / 2</b></td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1; border-bottom: 1px solid #111111">
+    <p align="center"><b>Total</b></td>
+    <td align="center" style="border-style: solid; border-width: 1"><b>(N<sup>2</sup> 
+    + N) / 2 + 4</b></td>
+  </tr>
+</table>
+<p>Para chegar à quantidade de vezes que o laço <b>while mais interno</b> é 
+executado, podemos que perceber que para qualquer valor de N, ele é executado um 
+número de vezes igual ao somatório de uma progressão aritmétrica cujo termo 
+inicial é 0, a razão é 1 e último termo é N.</p>
+<p>Considerando que o valor de N informado é igual a 5, teríamos:</p>
+<table border="1" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3" width="379">
+  <tr>
+    <td width="135" align="center"><b>Quando I é igual a</b></td>
+    <td width="234" align="center"><b>While mais interno é executado</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="135">0</td>
+    <td align="center" width="234">0</td>
+  </tr>
+  <tr>
+    <td align="center" width="135">1</td>
+    <td align="center" width="234">1</td>
+  </tr>
+  <tr>
+    <td align="center" width="135">2</td>
+    <td align="center" width="234">2</td>
+  </tr>
+  <tr>
+    <td align="center" width="135">3</td>
+    <td align="center" width="234">3</td>
+  </tr>
+  <tr>
+    <td align="center" width="135">4</td>
+    <td align="center" width="234">4</td>
+  </tr>
+  <tr>
+    <td align="center" width="135">5</td>
+    <td align="center" width="234">5</td>
+  </tr>
+</table>
+<p>Considerando que o somatório de uma PA é calculado através da fórmula S = n * 
+(u<sub>1</sub> + u<sub>n</sub>) / 2, para N = 5, teríamos o somatório igual a 
+15.</p>
+<p>Já que u<sub>1</sub> = 0 e&nbsp; u<sub>n </sub>= N, podemos chegar à fórmula 
+abaixo:</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  S = n * (u<sub>1</sub> + u<sub>n</sub>) / 2<br>
+  S = (N + 1) * (0 + N) / 2<br>
+  S = (N + 1) * N / 2<b><br>
+  S = (N<sup>2</sup> + N) / 2</b></div>
+<p>&nbsp;</p>
+<p>Uma outra implementação possível para o cálculo é mostrada abaixo:</p>
+<table border="1" cellspacing="1" style="border-collapse: collapse; border-top-width: 0" bordercolor="#111111" id="AutoNumber2">
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top: 1px solid #111111; border-bottom-style: solid; border-bottom-width: 1">
+    <p align="center"><b>Instruções</b></td>
+    <td style="border-right-color: #111111; border-top-color: #111111"><b>Custo</b></td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">readln(X);</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">readln(N);</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">Soma:=0;</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <font face="Courier New">I:=0;</font></td>
+    <td align="center" style="border-style: solid; border-width: 1">1</td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-top-style: none; border-top-width: medium">
+    <font face="Courier New">while I&lt;=N do begin<br>
+&nbsp;&nbsp; Soma:=Soma*X+1;<br>
+&nbsp;&nbsp; inc(I);<br>
+    end;</font></td>
+    <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1">
+    <b>2 * N</b></td>
+  </tr>
+  <tr>
+    <td style="border-left: 1px solid #111111; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1; border-bottom: 1px solid #111111">
+    <p align="center"><b>Total</b></td>
+    <td align="center" style="border-style: solid; border-width: 1"><b>2 * N + 4</b></td>
+  </tr>
+</table>
+<p>Comparando esta implementação com anteriormente mostrada, pode-se perceber 
+que é bem mais eficiente.</p>
+<p>&nbsp;</p>
+<p><b><font size="5">Cálculo de Complexidade</font></b></p>
+<hr>
+<p>Para simplificar o cálculo de complexidade algorítmica, fazemos algumas 
+simplificações:</p>
+<ol>
+  <li>Consideramos que as entradas tendem ao infinito, pois para valores 
+  suficientemente pequenos de n, qualquer algoritmo custa pouco para ser 
+  executado, mesmo os ineficientes.</li>
+  <li>Destacamos o termo de mais alta ordem matemática já que como a entrada 
+  tende ao infinito, este termo é o que define o custo de execução de um 
+  algoritmo.</li>
+  <li>Ignoramos as constantes do termo destacado, já que apresentam peso 
+  insignificante ao considerar que n tende ao infinito.</li>
+</ol>
+<p>Desta forma surge a notação O:</p>
+<table border="1" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber4" width="265">
+  <tr>
+    <td width="135"><b>Complexidade</b></td>
+    <td width="120"><b>Notação O</b></td>
+  </tr>
+  <tr>
+    <td width="135">2n + 2</td>
+    <td width="120">O(n)</td>
+  </tr>
+  <tr>
+    <td width="135">(n<sup>2</sup> + n)/2</td>
+    <td width="120">O(n<sup>2</sup>)</td>
+  </tr>
+  <tr>
+    <td width="135">log n + 4</td>
+    <td width="120">O(log n)</td>
+  </tr>
+</table>
+<p>Com base nestas regras, usamos algumas denominações de acordo com a 
+complexidade ordem (O):</p>
+<table border="1" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber4" width="325">
+  <tr>
+    <td width="282" colspan="2">
+    <p align="center"><b>Ordens</b></td>
+  </tr>
+  <tr>
+    <td width="216">O(k), sendo k constante</td>
+    <td width="99">constante</td>
+  </tr>
+  <tr>
+    <td width="216">O(log n)</td>
+    <td width="99">logarítmica</td>
+  </tr>
+  <tr>
+    <td width="216">O(n)</td>
+    <td width="99">linear</td>
+  </tr>
+  <tr>
+    <td width="216">O(n<sup>2</sup>)</td>
+    <td width="99">quadrática</td>
+  </tr>
+  <tr>
+    <td width="216">O(n<sup>3</sup>)</td>
+    <td width="99">cúbica</td>
+  </tr>
+  <tr>
+    <td width="216">K<sup>n</sup></td>
+    <td width="99">exponencial</td>
+  </tr>
+</table>
+<p>As ordens estão dispostas na tabela acima em ordem crescente de complexidade, 
+isto é, a de menor complexidade é a constante e a de maior complexidade é a 
+exponencial.</p>
+<p>Na tabela abaixo simulamos possíveis valores para n e verificamos como se 
+comportam as Ordens de complexidade apresentadas:</p>
+<table border="2" cellspacing="1" style="border-collapse: collapse; width: 372" bordercolor="#000000">
+  <colgroup>
+    <col width="64" span="5" style="width:48pt">
+  </colgroup>
+  <tr height="19" style="height:14.25pt">
+    <td height="19" width="64" style="height: 14.25pt; width: 48pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" align="center">
+    <b>n</b></td>
+    <td style="width: 115; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" align="center">
+    <b>O(log n)</b></td>
+    <td style="width: 65; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" align="center">
+    <b>O(n)</b></td>
+    <td width="64" style="width: 48pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" align="center">
+    <b>O(n</b><font class="font5"><sup><b>2</b></sup></font><font class="font0"><b>)</b></font></td>
+    <td width="64" style="width: 48pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" align="center">
+    <b>O(n</b><font class="font5"><sup><b>3</b></sup></font><font class="font0"><b>)</b></font></td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    1</td>
+    <td align="right" x:num x:fmla="=LN(A2)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    0,00</td>
+    <td align="right" x:num x:fmla="=A2" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    1</td>
+    <td align="right" x:num x:fmla="=A2*A2" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1</td>
+    <td align="right" x:num x:fmla="=A2*A2*A2" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    2</td>
+    <td align="right" x:num="0.69314718055994529" x:fmla="=LN(A3)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    1,00</td>
+    <td align="right" x:num x:fmla="=A3" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    2</td>
+    <td align="right" x:num x:fmla="=A3*A3" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    4</td>
+    <td align="right" x:num x:fmla="=A3*A3*A3" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    8</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    3</td>
+    <td align="right" x:num="1.0986122886681098" x:fmla="=LN(A4)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    1,58</td>
+    <td align="right" x:num x:fmla="=A4" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    3</td>
+    <td align="right" x:num x:fmla="=A4*A4" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    9</td>
+    <td align="right" x:num x:fmla="=A4*A4*A4" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    27</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    4</td>
+    <td align="right" x:num="1.3862943611198906" x:fmla="=LN(A5)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    2,00</td>
+    <td align="right" x:num x:fmla="=A5" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    4</td>
+    <td align="right" x:num x:fmla="=A5*A5" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    16</td>
+    <td align="right" x:num x:fmla="=A5*A5*A5" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    64</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    5</td>
+    <td align="right" x:num="1.6094379124341003" x:fmla="=LN(A6)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    2,32</td>
+    <td align="right" x:num x:fmla="=A6" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    5</td>
+    <td align="right" x:num x:fmla="=A6*A6" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    25</td>
+    <td align="right" x:num x:fmla="=A6*A6*A6" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    125</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    6</td>
+    <td align="right" x:num="1.791759469228055" x:fmla="=LN(A7)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    2,58</td>
+    <td align="right" x:num x:fmla="=A7" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    6</td>
+    <td align="right" x:num x:fmla="=A7*A7" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    36</td>
+    <td align="right" x:num x:fmla="=A7*A7*A7" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    216</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    7</td>
+    <td align="right" x:num="1.9459101490553132" x:fmla="=LN(A8)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    2,81</td>
+    <td align="right" x:num x:fmla="=A8" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    7</td>
+    <td align="right" x:num x:fmla="=A8*A8" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    49</td>
+    <td align="right" x:num x:fmla="=A8*A8*A8" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    343</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    8</td>
+    <td align="right" x:num="2.0794415416798357" x:fmla="=LN(A9)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    3,00</td>
+    <td align="right" x:num x:fmla="=A9" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    8</td>
+    <td align="right" x:num x:fmla="=A9*A9" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    64</td>
+    <td align="right" x:num x:fmla="=A9*A9*A9" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    512</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    9</td>
+    <td align="right" x:num="2.1972245773362196" x:fmla="=LN(A10)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    3,17</td>
+    <td align="right" x:num x:fmla="=A10" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    9</td>
+    <td align="right" x:num x:fmla="=A10*A10" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    81</td>
+    <td align="right" x:num x:fmla="=A10*A10*A10" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    729</td>
+  </tr>
+  <tr height="17" style="height:12.75pt">
+    <td height="17" align="right" style="height: 12.75pt; color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" x:num>
+    10</td>
+    <td align="right" x:num="2.3025850929940459" x:fmla="=LN(A11)" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="115">
+    3,32</td>
+    <td align="right" x:num x:fmla="=A11" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px" width="65">
+    10</td>
+    <td align="right" x:num x:fmla="=A11*A11" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    100</td>
+    <td align="right" x:num x:fmla="=A11*A11*A11" style="color: windowtext; font-size: 10.0pt; font-weight: 400; font-style: normal; text-decoration: none; font-family: Arial; text-align: general; vertical-align: bottom; white-space: nowrap; border: 1px solid; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1000</td>
+  </tr>
+</table>
+<p>Graficamente, podemos visualizar melhor como a complexidade de uma função 
+cúbica aumenta muito mais do que uma linear ou quadrática:</p>
+<p><img border="0" src="figuras/grafico_o.png" width="754" height="524"></p>
+<p>&nbsp;</p>
+<p><font size="5"><b>Mel</b></font><b><font size="5">hor caso, Pior caso e caso 
+Médio</font></b></p>
+<hr>
+<p><span lang="pt-br">Há algoritmos em que o custo (tempo de execução), não é 
+uniforme para as entradas de tamanho n. </span></p>
+<p><span lang="pt-br">Por exemplo, no caso do algoritmo que determina o maior 
+elemento de um vetor de inteiros:</span></p>
+<ul>
+  <li><span lang="pt-br">A complexidade é O(n), caso seja usado um vetor 
+  desordenado, já que todos os elementos devem ser analisados e só é necessário 
+  fazer uma passagem pelo vetor.</span></li>
+  <li><span lang="pt-br">Já em um vetor ordenado, a complexidade seria O(k), já 
+  que bastaria acessar o último valor do vetor.</span></li>
+</ul>
+<p>Em outras palavras, a forma como os dados de entrada encontram-se dispostos, 
+exerce influência no comportamento de alguns algoritmos tornando o cálculo de 
+complexidade não exato.</p>
+<p>Assim, ao apresentarmos o cálculo de complexidade de algoritmos, devemos 
+esclarecer se este refere-se ao <b>melhor caso</b>, ao <b>caso médio</b> ou ao
+<b>pior caso</b> de arranjo de entrada, onde:</p>
+<ul>
+  <li>O de <b>melhor caso</b> corresponde ao de menor tempo de execução sobre 
+  todos os possíveis arranjos de entradas de tamanho n.</li>
+  <li>O de <b>pior caso</b> corresponde ao de maior tempo de execução sobre 
+  todos os possíveis arranjos de entrada de tamanho n.</li>
+  <li>O <b>caso médio</b>, ou <b>caso esperado</b>, corresponde à média dos 
+  tempos de execução de todas as entradas de tamanho n. É o mais difícil de ser 
+  obtido por depender de distribuições de probabilidade.</li>
+</ul>
+<p>O cálculo de complexidade de soluções algorítmicas não é só aplicado para 
+identificação da melhor solução dentre diversas, mas também para predizer o 
+comportamento não exato, relativo ao tempo de execução de um algoritmo, 
+independente de sua implementação efetiva.</p>
+
+</body>
+
+</html>

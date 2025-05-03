@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Structs em C</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Structs em C</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Registros (Estruturas) em C</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">As estruturas (<i>struct</i>) 
+  em C permitem agrupar dados heterogêneos que estão naturalmente relacionados 
+  da mesma forma que os registros (<i>record</i>) em Pascal.</span></li>
+  <li><span style="font-family: Times New Roman">Registro / Estrutura em algoritmo:</span></li>
+</ul>
+<pre>tipo
+   &lt;registro&gt; = registro
+                  &lt;campo1&gt;: &lt;tipo1&gt;;
+                  &lt;campo2&gt;: &lt;tipo2&gt;;
+                  ...
+                  &lt;campoN&gt;: &lt;tipoN&gt;;
+                fim;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Struct em C:</span></li>
+</ul>
+<pre>struct &lt;nomeStruct&gt;
+{
+   &lt;tipo1&gt;: &lt;campo1&gt;;
+   &lt;tipo2&gt;: &lt;campo2&gt;
+   ...
+   &lt;campoN&gt;: &lt;tipoN&gt;;
+}</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo 1 (definição de um 
+  registro/estrutura 
+  que representa um aluno e de uma variável global):</span></li>
+</ul>
+<pre>struct regAluno {
+   char nome[30];
+   char matricula[8];
+   float media;
+   int frequencia;
+};</pre>
+<pre>// variavel global do tipo struct
+struct regAluno aluno;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo 2 (definição de um 
+  registro/estrutura 
+  que representa um aluno juntamente com a declarações de variáveis):</span></li>
+</ul>
+<pre>struct
+{
+   char nome[30];
+   char matricula[8];
+   float media;
+   int frequencia;
+} aluno1, aluno2; // duas variáveis declaradas</pre>
+<ul>
+  <li>Observe que a <i>struct</i> acima não tem um nome e portanto não é 
+  possível declarar outras variáveis além de aluno1 e aluno2 reusando a <i>
+  struct</i> definida.</li>
+  <li>O acesso aos campos da estrutura é realizado através da mesma notação 
+  usada em algoritmos e Pascal, ou seja, colocando um &quot;.&quot; entre o nome da 
+  variável do tipo <i>struct</i> e o nome do campo que se deseja acessar. Por 
+  exemplo, para acessar o campo <i>nome</i> da variável <i>aluno1</i> , 
+  utiliza-se a expressão <i>aluno1.nome</i>.</li>
+  <li><a href="fontes/RELTURMA.PAS">Exemplo</a>:</li>
+</ul>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;strings.h&gt;
+
+struct regAluno {
+   char nome[30];
+   char matricula[8];
+   float media;
+   int frequencia;
+};
+
+// variavel global do tipo struct
+struct regAluno aluno;
+
+int main()
+{
+// struct regAluno aluno;
+
+// struct {
+//    char nome[30];
+//    char matricula[8];
+//    float media;
+//    int frequencia;
+// } aluno;
+
+   int aprovados, reprovados;
+
+   aprovados = reprovados = 0;
+
+   printf(&quot;Nome:&quot;); scanf(&quot;%s&quot;, aluno.nome);
+
+   while (strcmp(aluno.nome, &quot;fim&quot;) != 0)
+   {
+      printf(&quot;Matricula:&quot;); scanf(&quot;%s&quot;, aluno.matricula);
+      printf(&quot;Media:&quot;); scanf(&quot;%f&quot;, &amp;aluno.media);
+      printf(&quot;Frequencia:&quot;); scanf(&quot;%d&quot;, &amp;aluno.frequencia);
+
+      if ((aluno.media &gt;= 7.0) &amp;&amp; (aluno.frequencia &gt;= 60))
+         aprovados++;
+      else
+         reprovados++;
+
+      printf(&quot;Nome:&quot;); scanf(&quot;%s&quot;, aluno.nome);
+   }
+
+   printf(&quot;Total de aprovados: %d\n&quot;, aprovados);
+   printf(&quot;Total de reprovados: %d&quot;, reprovados);
+}</pre>
+
+</body>
+
+</html>

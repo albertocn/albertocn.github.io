@@ -1,0 +1,425 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Controle de Fluxo</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Controle de Fluxo de Execução</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Introdução</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Usados na execução de ações 
+  diferentes em conformidade com os dados manipulados pelos algoritmos.</span></li>
+  <li><span style="font-family: Times New Roman">São estruturas básicas de 
+  controle:</span><ul>
+    <li><span style="font-family: Times New Roman">Seqüenciais;</span></li>
+    <li><span style="font-family: Times New Roman">De Decisão;</span></li>
+    <li><span style="font-family: Times New Roman">De Repetição.</span></li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estrutura Seqüencial</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Cada comando é executado na 
+  seqüência exata em que compõem os algoritmos.</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo:</span></li>
+</ul>
+<pre>algoritmo CalculaMedia;</pre>
+<pre>variáveis
+   N1,
+   N2,
+   Media : real;</pre>
+<pre>início
+   leia (N1, N2);
+   Media &lt;- (N1 + N2) / 2;
+   escreva (Media);
+fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estrutura de Decisão (SE)</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">O fluxo de execução dos 
+  comandos de um algoritmo é determinado pelos dados, conforme o atendimento de 
+  condições.</span></li>
+  <li><span style="font-family: Times New Roman">Estrutura SE:</span></li>
+</ul>
+<pre>se &lt;condição&gt; então
+   &lt;comando1&gt;
+senão
+   &lt;comando2&gt;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Onde o comando identificado por
+  </span>&lt;comando1&gt;<span style="font-family: Times New Roman"> será executado se 
+  &lt;condição&gt; for V e </span>&lt;comando2&gt;<span style="font-family: Times New Roman">, 
+  se falsa.</span></li>
+  <li><span style="font-family: Times New Roman">O <b>senão</b> é opcional, ou 
+  seja, pode ser omitida, isso quando somente o &lt;comando1&gt; interessa para a 
+  resolução implementada pelo algoritmo.</span></li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p><span style="font-family: Times New Roman">14) Escrever algoritmo para ler os 
+valores A, B e C e informar se A + B é menor que C.</span></p>
+<p><span style="font-family: Times New Roman">15) Escrever algoritmo para ler 3 
+números inteiros e escrever o menor deles.</span></p>
+<p><span style="font-family: Times New Roman">16) Escrever algoritmo para ler 3 
+valores distintos e exibi-los em ordem crescente.</span></p>
+<p><span style="font-family: Times New Roman">17) Escrever algoritmo para ler as 
+medidas dos lados de um triângulo e determinar se este é eqüilátero (3 lados 
+iguais), isósceles (2 lados iguais) ou escaleno (3 lados diferentes).</span></p>
+
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios de Revisão</span></b></h2>
+<p><span style="font-family: Times New Roman">18) Analise os algoritmos dados 
+abaixo e escreva os objetivos destes.</span></p>
+<pre>a) algoritmo Questao18A;</pre>
+<pre>   variáveis
+     N1, N2, N3, Saida : inteiro;</pre>
+<pre>   início
+      leia (N1, N2, N3);</pre>
+<pre>      Saida &lt;- N1;</pre>
+<pre>      se N2 &gt; Saida então
+         Saida &lt;- N2;</pre>
+<pre>      se N3 &gt; Saida então
+         Saida &lt;- N3;</pre>
+<pre>      escreva (Saida);
+   fim.    </pre>
+<pre>b) algoritmo Questao18B;</pre>
+<pre>   variáveis
+      P1, P2, P3 : literal;</pre>
+<pre>   início
+      leia (P1, P2, P3);</pre>
+<pre>      se (P1 &lt; P2) e (P1 &lt; P3) então
+         escreva (P1)
+      senão
+         se (P2 &lt; P3) então
+            escreva (P2)
+         senão
+            escreva (P3);
+   fim.</pre>
+<p><span style="font-family: Times New Roman">19) Considerando o problema: 
+&quot;dados três valores, verificar se estes podem ser os comprimentos dos lados de 
+um triângulo retângulo, escreva algoritmo de resolução deste (a) correto e (b) 
+amigável.</span></p>
+<p><span style="font-family: Times New Roman">20) Considerando que (1) o 
+gabarito correto da prova é: 1-A, 2-C, 3-D, 4-B e 5-A e (2) cada questão vale 2 
+pontos, ajuste o algoritmo X dado para atender ao objetivo de correção de uma 
+prova objetiva.</span></p>
+<pre>algoritmo X;</pre>
+<pre>variáveis
+   R1, R2, R3, R4, R5 : literal[1];
+   Nota : inteiro;</pre>
+<pre>constantes
+   Pontos = 2;</pre>
+<pre>início
+   se R1 = 'A' então
+     Nota &lt;- Nota + Pontos
+   senão
+     se R2 = 'C' então
+       Nota &lt;- Nota + Pontos
+     senão
+       se R3 = 'D' então
+         Nota &lt;- Nota + Pontos
+       senão
+         se R4 = 'B' então
+           Nota &lt;- Nota + Pontos
+         senão
+           se R5 = 'A' então
+             Nota &lt;- Nota + Pontos
+   escreva (Nota);
+fim.</pre>
+<p><span style="font-family: Times New Roman">21) Considerando que: (1) o 
+gabarito correto da prova é 1-A, 2-C, 3-D, 4-B e 5-A, (2) cada resposta correta 
+incrementa 2 pontos e (3) cada resposta incorreta decrementa 1 ponto; ajusar o 
+algoritmo X da questão 20.</span></p>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estrutura de Decisão (CASO)</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Estrutura CASO:</span></li>
+</ul>
+<pre>caso &lt;condição&gt; seja
+  &lt;resultado1&gt; : &lt;comando1&gt;;
+  &lt;resultado2&gt; : &lt;comando2&gt;;
+  ...
+  &lt;resultadoN&gt; : &lt;comandoN&gt;;
+senão
+  &lt;comandos&gt;
+fim;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Na execução deste, o comando, 
+  ou bloco de comandos, </span><font face="Courier New">&lt;comandoN&gt;</font><span style="font-family: Times New Roman"> 
+  será efetuado se </span><font face="Courier New">&lt;resultadoN&gt;</font><span style="font-family: Times New Roman"> 
+  atender à </span><font face="Courier New">&lt;condição&gt;</font><span style="font-family: Times New Roman"> 
+  dada:</span></li>
+  <li><span style="font-family: Times New Roman">Trata-se de um seletor de 
+  opções.</span></li>
+  <li><span style="font-family: Times New Roman">O(s) comando(s) indicados por 
+  &lt;comandos&gt; somente será executado se nenhum dos resultados elencados atender à 
+  condição.</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo: Algoritmo que efetua a 
+  leitura de um número correspondente a um mês do ano e exibe o nome deste por 
+  extenso.</span></li>
+</ul>
+<pre>algoritmo Identificadores;</pre>
+<pre>variáveis
+   Mes : inteiro;</pre>
+<pre>início
+   leia (Mes);</pre>
+<pre>   caso Mes seja
+      1: escreva ('Janeiro');
+      2: escreva ('Fevereiro');
+      3: escreva ('Março');
+      4: escreva ('Abril');
+      5: escreva ('Maio');
+      6: escreva ('Junho');
+      7: escreva ('Julho');
+      8: escreva ('Agosto');
+      9: escreva ('Setembro');
+     10: escreva ('Outubro');
+     11: escreva ('Novembro');
+     12: escreva ('Dezembro');
+   senão
+      escreva ('Mês inexistente');
+   fim;</pre>
+<pre>fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p><span style="font-family: Times New Roman">22) Reescreva o algoritmo 
+Calculadora, dado como ilustração de aula, usando a estrutura <b>caso</b>.</span></p>
+<p><span style="font-family: Times New Roman">23) Proponha uma situação problema 
+cuja solução implica no uso de um algoritmo composto pela estrutura <b>caso</b>.</span></p>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estruturas de Repetição</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Como sugere a denominação, são 
+  úteis à repetição de comando, ou bloco de comandos. Exemplo: calculadora, útil 
+  à realização de inúmeros cálculos.</span></li>
+  <li><span style="font-family: Times New Roman">São denominados laços ou loops</span></li>
+  <li><span style="font-family: Times New Roman">São estruturas de repetição:</span><ul>
+  <li><span style="font-family: Times New Roman">Para</span></li>
+  <li><span style="font-family: Times New Roman">Enquanto</span></li>
+  <li><span style="font-family: Times New Roman">Repita</span></li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estrutura de Repetição (PARA)</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Efetua as repetições com o 
+  auxílio de um contador.</span></li>
+  <li><span style="font-family: Times New Roman">É usada quando se sabe 
+  previamente o número de repetições a serem efetuadas.</span></li>
+  <li><span style="font-family: Times New Roman">Estrutura PARA</span></li>
+</ul>
+<pre>para &lt;Contador&gt; &lt;- &lt;Início&gt; até &lt;Fim&gt; faça
+   &lt;comando&gt;;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Onde:</span><ul>
+  <li><span style="font-family: Times New Roman">Contador - variável tipo 
+  inteiro de controle do número de repetições.</span></li>
+  <li><span style="font-family: Times New Roman">Início - valor de inicialização 
+  do contador.</span></li>
+  <li><span style="font-family: Times New Roman">Fim - valor final do contador.</span></li>
+  <li><span style="font-family: Times New Roman">Comando - comando ou bloco de 
+  comandos a serem executados repetidas vezes.</span></li>
+</ul>
+  </li>
+  <li><span style="font-family: Times New Roman">Exemplo:</span></li>
+</ul>
+<pre>algoritmo MaiorDeTrês;</pre>
+<pre>variáveis
+   I, N, Maior : inteiro;</pre>
+<pre>início
+   Maior &lt;- 0;</pre>
+<pre>   para I &lt;- 1 até 3 faça
+      início
+<b>         leia (N);
+         se N &gt; Maior então
+            Maior &lt;- N
+</b>      fim</pre>
+<pre>   escreva (Maior)
+fim.</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Neste serão lidos 3 números (o 
+  bloco de comandos em negrito serão executados 3 vezes) e será exibido o maior 
+  deles.</span></li>
+  <li><span style="font-family: Times New Roman">Importante destacar que o 
+  incremento do contador é de uma unidade, a cada passo, e automático.</span></li>
+  <li><span style="font-family: Times New Roman">As repetições ocorrem enquanto 
+  o contador não atinge o valor estipulado como <b>Fim</b>.</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo: algoritmo que efetua a 
+  soma dos 20 primeiros números pares maiores que zero.</span></li>
+</ul>
+<pre>algoritmo SomaPares;</pre>
+<pre>variáveis
+   N, Soma : inteiro;</pre>
+<pre>início
+   Soma &lt;- 0;</pre>
+<pre>   para N &lt;- 1 até 20 faça
+      Soma &lt;- Soma + 2 * N;</pre>
+<pre>   escreva (Soma);
+fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p><span style="font-family: Times New Roman">24) Ajustar o algoritmo SomaPares 
+dado de forma que os números sejam exibidos.</span></p>
+<p><span style="font-family: Times New Roman">25) Escrever algoritmo para 
+calcular o somatório de 1/N, com N variando de 1 ao valor informado de N.</span></p>
+<p><span style="font-family: Times New Roman">26) Escrever algoritmo para 
+calcular o somatório de N primeiros múltiplos de 3 maior que 0.</span></p>
+<p><span style="font-family: Times New Roman">27) Numa empresa há 25 vendedores. 
+Do total de vendas de cada empregado, a empresa destina 10% a uma ONG. Escrever 
+um algoritmo para calcular o montante a ser destinado à citada organização.</span></p>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estrutura de Repetição 
+Condicional (ENQUANTO)</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Os comandos subordinados à 
+  estrutura em estudo são executados enquanto uma determinada condição seja 
+  satisfeita.</span></li>
+  <li><span style="font-family: Times New Roman">Estrutura ENQUANTO</span></li>
+</ul>
+<pre>enquanto &lt;Condição&gt; faça
+   &lt;comando&gt;;</pre>
+<ul>
+  <li>Quando a execução do algoritmo alcança a estrutura ENQUANTO a condição é 
+  testada. Se o resultado for falso os comandos subordinados à estrutura são 
+  ignorados, caso contrário, são efetuados e (re)efetuados enquanto a condição 
+  seja verdadeira.</li>
+  <li>Quando os comandos subordinados ao ENQUANTO estiverem em execução, somente 
+  a mudança de estado da condição provoca o término do processo.</li>
+  <li>Caso a lógica dos comandos da estrutura não altere o estado da condição, a 
+  execução será infinita. É o que chamamos de loop (ou laço) infinito.</li>
+  <li>Exemplo: algoritmo que calcula o fatorial de um dado número:</li>
+</ul>
+<pre>algoritmo Fatorial;</pre>
+<pre>variáveis
+   Resultado, Numero : inteiro;</pre>
+<pre>início
+   Resultado &lt;- 1;
+   leia (Numero);</pre>
+<pre>   enquanto (Numero &gt; 1) faça
+      início
+         Resultado &lt;- Resultado * Numero;
+         Numero &lt;- Numero - 1;
+      fim;</pre>
+<pre>   escreva (Resultado);
+fim.</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo: algoritmo que efetua a 
+  soma dos 20 primeiros números pares maiores que zero.</span></li>
+</ul>
+<pre>algoritmo SomaPares;</pre>
+<pre>variáveis
+   N, Soma : inteiro;</pre>
+<pre>início
+   Soma &lt;- 0;
+   N &lt;- 1;</pre>
+<pre>   enquanto N &lt; 21 faça
+      início
+         Soma &lt;- Soma + 2 * N;
+         N &lt;- N + 1;
+      fim;</pre>
+<pre>   escreva (Soma);
+fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p><span style="font-family: Times New Roman">28) Faça um algoritmo que calcule 
+e escreva o valor S = 1/50 + 3/49 + 5/48 + 7/47 + ... + 99/1.</span></p>
+<p><span style="font-family: Times New Roman">29) Refaça o algoritmo da 
+calculadora de forma a possibilitar que o usuário deste efetue operações +, -, 
+*, / até que pressione a letra Q.</span></p>
+<p><span style="font-family: Times New Roman">30) Elabore algoritmo para ler 
+nome, quantidade e preço de produtos e componha uma nota de venda. O total da 
+venda é calculado quando o usuário do programa digita FIM como nome do produto.</span></p>
+<p><span style="font-family: Times New Roman">31) Elabore algoritmo para exibir 
+os termos e o somatório de uma PG qualquer. Devem ser lidos: o primeiro termo, a 
+razão e o número de termos.</span></p>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estrutura de Repetição 
+Condicional (REPITA)</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Os comandos subordinados à 
+  estrutura em estudo são executados até que uma determinada condição seja 
+  satisfeita.</span></li>
+  <li><span style="font-family: Times New Roman">Estrutura REPITA</span></li>
+</ul>
+<pre>repita
+  &lt;comandos&gt;;
+até &lt;condição&gt;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Os comandos subordinados ao 
+  REPITA são executados pelo menos uma vez, pois a condição é testada somente no 
+  final da estrutura.</span></li>
+  <li><span style="font-family: Times New Roman">O funcionamento desta é similar 
+  ao da estrutura ENQUANTO, exceto quanto à posição em que a condição é testada.</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo: algoritmo para exibir 
+  os 25 termos e o somatório da PG: 3, 9, 27, ...</span></li>
+</ul>
+<pre>algoritmo ProgressaoGeometrica;</pre>
+<pre>variáveis
+   Contador,
+   Termo,
+   Soma : integer;</pre>
+<pre>início
+   Contador &lt;- 1;
+   Termo &lt;- 3;
+   Soma &lt;- 0;</pre>
+<pre>   repita
+      escreva (Termo);
+      Soma &lt;- Soma + Termo;
+      Termo &lt;- Termo * 3;
+      Contador &lt;- Contador + 1;
+   até Contador &gt; 25;</pre>
+<pre>   escreva (Soma);
+fim.</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo: algoritmo que efetua a 
+  soma dos 20 primeiros números pares maiores que zero.</span></li>
+</ul>
+<pre>algoritmo SomaPares;</pre>
+<pre>variáveis
+   N, Soma : inteiro;</pre>
+<pre>início
+   Soma &lt;- 0;
+   N &lt;- 1;</pre>
+<pre>   repita
+      Soma &lt;- Soma + 2 * N;
+      N &lt;- N + 1;
+   até N &gt; 20;</pre>
+<pre>   escreva (Soma);
+fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p><span style="font-family: Times New Roman">32) Escreva algoritmo para ler 
+palavras com 5 caracteres e exibi-las inversa (dado: calda, escreve adlac). A 
+execução deve ser encerrada quando o usuário digitar 'FIM'.</span></p>
+<p><span style="font-family: Times New Roman">33) Refaça o algoritmo que calcula 
+o fatorial de um número, usando a estrutura REPITA.</span></p>
+<p><span style="font-family: Times New Roman">34) Escreva algoritmo para ler 
+palavras com 8 caracteres e exibir a quantidade de vogais que estas possuem.</span></p>
+<p><span style="font-family: Times New Roman">35) Dado nome e salário dos 
+funcionários de uma empresa, escreve nome e salário do funcionário com maior 
+salário e daquele com menor salário.</span></p>
+
+</body>
+
+</html>

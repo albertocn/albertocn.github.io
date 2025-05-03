@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Mapeamento e Alocação de Memória</title>
+</head>
+
+<body>
+
+<p><b><span lang="pt-br"><font size="6">Mapeamento e Alocação 
+de Memória</font></span></b></p>
+<hr>
+<p><span lang="pt-br">A memória é composta de bits que são agrupados de 8 em 8, 
+formando bytes. Cada byte possui um endereço com o qual é possível 
+referenciá-lo. A memória é dividida em segmentos de até 64KB, como mostrado 
+abaixo:</span></p>
+<p><img border="0" src="figuras/map_segmentos.png" width="280" height="187"></p>
+<p><span lang="pt-br">Tanto os dados como o código do programa estão na memória. Organização da memória em um programa:</span></p>
+<p><img border="0" src="figuras/map_heap_pilha.png" width="258" height="302"></p>
+<p>As variáveis globais, as units (e suas variáveis e rotinas) e o programa 
+principal são alocados no início da execução. O <b>Heap</b> e a <b>Pilha</b> 
+compartilham o resto da memória disponível para o processo.</p>
+<ul>
+  <li><b>Heap:</b> região de memória aonde são alocadas as variáveis dinâmicas</li>
+  <li><b>Stack:</b> região de memória que armazena os registros de ativação de 
+  funções e procedimentos</li>
+</ul>
+<p><span lang="pt-br">Para referenciar uma variável é necessário saber seu 
+segmento e o deslocamento (<i>offset</i>) dentro desse segmento. O Pascal tem 
+duas funções chamadas <b>Seg</b> e <b>Ofs</b> que retornam, respectivamente, o 
+segmento e o deslocamento (<i>offset</i>).</span></p>
+<ul>
+  <li><span lang="pt-br">Seg (&lt;variável&gt;) =&gt; Retorna o segmento.</span></li>
+  <li><span lang="pt-br">Ofs (&lt;variável&gt;) =&gt; Retorna o offset 
+  (deslocamento).</span></li>
+</ul>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 1:</b> Imprimir o segmento e o offset de um 
+número inteiro:</span><p><font face="Courier New" size="2"><span lang="pt-br">var x: integer;<br>
+begin<br>
+&nbsp;&nbsp; writeln ('Segmento de X = ', Seg(x));<br>
+&nbsp;&nbsp; writeln('Offset de X = ', Ofs(x))<br>
+end.</span></font></p>
+</div>
+<p><span lang="pt-br">É possível acessar diretamente a memória através de arrays 
+especiais:</span></p>
+<p><span lang="pt-br">Mem [&lt;seg&gt;:&lt;ofs&gt;] =&gt; cada elemento é um byte</span></p>
+<p><span lang="pt-br">MemW [&lt;seg&gt;:&lt;ofs&gt;] =&gt; cada elemento é um word</span></p>
+<p><span lang="pt-br">MemL [&lt;seg&gt;:&lt;ofs&gt;] =&gt; cada elemento é um long</span></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 2:</b> Mudando o valor do byte contido no 
+segmento $0008, com deslocamento $0050</span><p><font face="Courier New" size="2"><span lang="pt-br">Mem[$0008:$0050] := 10</span></font></p>
+</div>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 3:</b> Uma atribuição usando acesso direto à 
+memória</span><p><font face="Courier New" size="2"><span lang="pt-br">var x, dado: word;<br>
+begin<br>
+&nbsp;&nbsp; dado := 0;<br>
+&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp; := 1;<br>
+&nbsp;&nbsp; dado := MemW[Seg(x):Ofs(x)];<br>
+&nbsp;&nbsp; writeln ('Valor do dado = ', dado);<br>
+end.</span></font></p>
+</div>
+<p><span lang="pt-br">O endereço de uma variável não muda durante a execução. O 
+que muda é o valor armazenado no endereço.</span></p>
+<p>
+<img border="0" src="figuras/map_endereco_variavel.png" width="424" height="176"></p>
+<p><span lang="pt-br">&nbsp;Podemos especificar o endereço de uma variável durante sua 
+declaração. Essas variáveis são chamadas variáveis absolutas.</span></p>
+<p><b><span lang="pt-br">1º Forma) Especificando o segmento e o offset.</span></b></p>
+<p><font face="Courier New" size="2">var &lt;nome-variável&gt; : &lt;tipo&gt; absolute &lt;seg&gt;:&lt;offset&gt;;</font></p>
+<p><b><span lang="pt-br">2º Forma) Especificando outra variável:</span></b></p>
+<p><font face="Courier New" size="2">var &lt;nome-variável&gt; : &lt;tipo&gt; absolute &lt;nome-da-outra-variável&gt;;</font></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 4:</b> Declarando variáveis absolutas</span><p><font face="Courier New" size="2"><span lang="pt-br">var x : integer absolute 
+$0010:$0005;<br>
+&nbsp;&nbsp;&nbsp; y : integer;<br>
+&nbsp;&nbsp;&nbsp; z : integer absolute y;</span></font></p>
+</div>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <span lang="pt-br"><b>Exemplo 5:</b> Obter o tamanho de uma string usando uma 
+variável absoluta.</span><p><font face="Courier New" size="2"><span lang="pt-br">var<br>
+&nbsp;&nbsp; str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : string[100];<br>
+&nbsp;&nbsp; strlength : byte absolute str;<br>
+begin<br>
+&nbsp;&nbsp; str := 'string';<br>
+&nbsp;&nbsp; writeln('Tamanho de str = ', strlength);<br>
+&nbsp;&nbsp; strlength := 2;<br>
+&nbsp;&nbsp; writeln(str);&nbsp;&nbsp;&nbsp; {Escreve apenas st}<br>
+end.</span></font></p>
+</div>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

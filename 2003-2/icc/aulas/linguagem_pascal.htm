@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Linguagem Pascal: Comandos Básicos</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Linguagem Pascal: Comandos Básicos</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Tipos de Dados</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Numéricos</span><ul>
+  <li><span style="font-family: Times New Roman">Inteiro é Integer</span></li>
+  <li><span style="font-family: Times New Roman">Real é Real</span></li>
+</ul>
+  </li>
+  <li><span style="font-family: Times New Roman">Literais</span><ul>
+    <li><span style="font-family: Times New Roman">Literal[N] é String[N]</span></li>
+  </ul>
+  </li>
+  <li><span style="font-family: Times New Roman">Lógico</span><ul>
+    <li><span style="font-family: Times New Roman">Lógico (valores Verdadeiro e 
+    Falso) é boolean (valores True e False)</span></li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Variáveis</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Seção var</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo:</span></li>
+</ul>
+<pre>var
+   Contador: integer;
+   Preco: real;
+   Nome: string[30];
+   Termino: boolean;</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Instruções Primitivas</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Atribuição </span>
+  <font face="Courier New">:=</font><span style="font-family: Times New Roman"> 
+  (exemplo: </span><font face="Courier New">Contador := 1</font><span style="font-family: Times New Roman">)</span></li>
+  <li><span style="font-family: Times New Roman">Saída: </span>
+  <font face="Courier New">writeln ('O preço é:', Preço);</font></li>
+  <li><span style="font-family: Times New Roman">Entrada: </span>
+  <font face="Courier New">readln(Preco, Nome);</font></li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">SE</span></b></h2>
+<pre>if &lt;condição&gt; then
+   &lt;comando1&gt;
+else
+   &lt;comando2&gt;;</pre>
+<hr>
+<h2><span style="font-family: Times New Roman">CASO</span></h2>
+<pre>case &lt;expressão&gt; of
+   &lt;R1&gt;: &lt;comando1&gt;;
+   &lt;R2&gt;: &lt;comando2&gt;;
+   ...
+else
+   &lt;comandos&gt;
+end;</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">PARA</span></b></h2>
+<pre>for &lt;contador&gt; := &lt;Inicio&gt; to &lt;Fim&gt; do
+   &lt;comando&gt;;</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">ENQUANTO</span></b></h2>
+<pre>while &lt;condição&gt; do
+   &lt;comando&gt;;</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">REPITA</span></b></h2>
+<pre>repeat
+   &lt;comandos&gt;
+until &lt;condição&gt;</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Outros</span></b></h2>
+<ul>
+  <li>algoritmo é <font face="Courier">program</font></li>
+  <li>início é <font face="Courier">begin</font></li>
+  <li>fim é <font face="Courier">end</font></li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exemplos</span></b></h2>
+<pre>program Fatorial;</pre>
+<pre>var
+   Res, Num : integer;</pre>
+<pre>begin
+   Res := 1;
+   readln(Num);</pre>
+<pre>   while Num &gt; 1 do
+     begin
+        Res := Res * Num;
+        Num := Num - 1
+     end;</pre>
+<pre>   writeln(Res)
+end.</pre>
+<pre>program PG;</pre>
+<pre>var
+   Contador, Termo, Soma : integer;</pre>
+<pre>begin
+   Contador := 1;
+   Termo := 3; writeln(Termo);
+   Soma := 3;</pre>
+<pre>   repeat
+      Termo := Termo * 3;
+      Soma := Soma + Termo;
+      Contador := Contador + 1;
+      writeln(Termo);
+   until Contador = 20;</pre>
+<pre>   writeln(Soma);
+end.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p>Implemente os programas referentes às questões:</p>
+<p><span style="font-family: Times New Roman">37) Q21 - básico.</span></p>
+<p><span style="font-family: Times New Roman">38) Q22 - caso.</span></p>
+<p><span style="font-family: Times New Roman">39) Q26 - para.</span></p>
+<p><span style="font-family: Times New Roman">40) Q30 - enquanto.</span></p>
+
+<p><span style="font-family: Times New Roman">41) Q32 - repita</span></p>
+
+<p><span style="font-family: Times New Roman">42) Q33 - repita</span></p>
+
+<p><span style="font-family: Times New Roman">43) Q35 - repita</span></p>
+
+</body>
+
+</html>

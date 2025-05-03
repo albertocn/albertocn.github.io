@@ -1,0 +1,265 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Listas Restritas</title>
+</head>
+
+<body>
+
+<p><font size="6"><b>Listas Restritas</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> São listas onde existe alguma restrição 
+na forma com que são atualizadas ou acessadas. A limitação imposta à lista 
+determina uma ordenação dos itens diferente da ordem natural dos valores dos 
+dados.</span></p>
+<p><span lang="pt-br">Iremos ver dois tipos de listas restritas: Pilha e Fila.</span></p>
+<p>&nbsp;</p>
+
+<p><b><font size="5">Pilha</font></b></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> Uma pilha é uma lista em que as 
+operações de inserção e remoção são feitas na mesma extremidade da lista, 
+conhecido como topo da pilha.</span></p>
+<p>Esta restrição de acesso (ou disciplina) <span lang="pt-br">que caracteriza a 
+pilha é denominada <b>LIFO</b>, abreviação de <b>&quot;Last In First Out&quot;</b>, isto é, o último a 
+entrar será o primeiro a sair.</span></p>
+<p>Graficamente temos:</p>
+<p><img border="0" src="figuras/pilha.png" width="761" height="476"></p>
+<p>&nbsp;</p>
+<p>A tabela abaixo descreve as principais operações:</p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber2" width="482">
+  <tr>
+    <td align="center" width="117"><b>Operação</b></td>
+    <td align="center" width="352"><b>Descrição</b></td>
+  </tr>
+  <tr>
+    <td width="117"><b>Inicializar</b></td>
+    <td width="352">Executa as ações necessárias para aprontar a pilha.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Empilhar</b></td>
+    <td width="352">Coloca um elemento no topo da pilha.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Desempilhar</b></td>
+    <td width="352">Remove o elemento que está no topo da pilha.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Topo</b></td>
+    <td width="352">Retorna o elemento que está no topo da pilha.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Vazia</b></td>
+    <td width="352">Indica se a pilha está vazia.</td>
+  </tr>
+</table>
+<p>Há basicamente 2 formas de implementar uma pilha:</p>
+<ol>
+  <li><b>Usando uma lista encadeada</b>: o elemento inserido é colocado na 
+  cabeça da lista.</li>
+  <li><b>Usando um array</b>: o elemento inserido é colocado na posição nº de elementos 
+  + 1.</li>
+</ol>
+<p>&nbsp;</p>
+<p><b><font size="4">Pilha baseada em lista encadeada</font></b></p>
+<hr>
+<p>Para ver uma implementação de uma Pilha usando lista encadeada, abra a unit
+<a href="pdfs/PILHAE.pdf">PilhaE</a> e para um programa que demonstra como usá-la 
+para testar o casamento de parênteses de uma expressão
+<a href="pdfs/TESTEXP.pdf">TestExp</a>.</p>
+<p>O procedimento <b>Inicializar</b> faz com que o topo receba nil e o tamanho 
+seja igual a zero. </p>
+<p>O procedimento <b>Empilhar</b> coloca a informação em um novo nó e faz com 
+que este nó aponte para o topo antigo. Em seguida, o topo passa a ser este novo 
+nó.</p>
+<p>O procedimento <b>Desempilhar</b> obtém a informação contida no nó do topo, 
+retira este nó da lista encadeada e faz com que o topo seja o nó abaixo do 
+retirado.</p>
+<p>O procedimento <b>Topo</b> obtém a informação contida no nó que está no topo 
+da pilha.</p>
+<p>&nbsp;</p>
+<p><b><font size="4">Pilha baseada em array</font></b></p>
+<hr>
+<p>A implementação de uma pilha usando array é muito semelhante a uma lista 
+encadeada. A principal diferença é que não podemos tirar elementos do meio da 
+pilha, podendo fazê-lo apenas no topo da pilha que corresponde ao último 
+elemento preenchido do array.</p>
+<p>Graficamente teríamos:</p>
+<p><img border="0" src="figuras/pilha_array.png" width="438" height="186"></p>
+<p>A pilha só precisa de uma variável que indica qual é o último elemento 
+preenchido do array. As inserções (Empilhamento) e remoções (Desempilhamento) 
+são feitas sempre, respectivamente, após o topo ou nele.</p>
+<p>Após a Inicialização, teríamos:</p>
+<p>
+<img border="0" src="figuras/pilha_array_inicializada.png" width="279" height="34"></p>
+<p>Depois de empilhar A, B, C:</p>
+<p><img border="0" src="figuras/pilha_array_abc.png" width="278" height="34"></p>
+<p>Depois de desempilhar 1 item (obrigatoriamente C):</p>
+<p><img border="0" src="figuras/pilha_array_ab.png" width="279" height="35"></p>
+<p>&nbsp;</p>
+
+<p><font size="5"><b>Fila</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> É uma lista na qual as inserções são 
+feitas em uma extremidade chamada &quot;cauda&quot; ou &quot;fundo&quot;, e as remoções são feitas 
+na outra extremidade, chamada &quot;cabeça&quot; ou &quot;frente&quot;.</span></p>
+<p>Numa fila, o primeiro a entrar é o primeiro a sair. Esta política de acesso é 
+denominada <b>FIFO</b> (<b>&quot;First In, First Out&quot;</b>). Ilustrando teríamos:</p>
+<p><img border="0" src="figuras/fila.png" width="670" height="376"></p>
+<p>&nbsp;</p>
+<p>A tabela abaixo descreve as principais operações:</p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber3" width="482">
+  <tr>
+    <td align="center" width="117"><b>Operação</b></td>
+    <td align="center" width="352"><b>Descrição</b></td>
+  </tr>
+  <tr>
+    <td width="117"><b>Inicializar</b></td>
+    <td width="352">Cria uma fila vazia.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Inserir</b></td>
+    <td width="352">Insere um elemento no fundo (cauda) da fila.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Retirar</b></td>
+    <td width="352">Retira um elemento que está na frente (cabeça) da fila.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Frente</b></td>
+    <td width="352">Retorna o elemento que está na frente (cabeça) da fila.</td>
+  </tr>
+  <tr>
+    <td width="117"><b>Vazia</b></td>
+    <td width="352">Indica se a fila está vazia.</td>
+  </tr>
+</table>
+<p>Há basicamente 2 formas de implementar uma fila:</p>
+<ol>
+  <li><b>Usando uma lista encadeada</b>:<ol>
+  <li>O elemento inserido é colocado no fim da lista (cauda). </li>
+  <li>A retirada é feita no início (cabeça).</li>
+</ol>
+  </li>
+  <li><b>Usando um array</b>:<ol>
+  <li>há duas variáveis (Início e Fim) que indicam as extremidades da fila 
+  (cabeça e cauda).</li>
+  <li>Ao retirar um elemento, isto é feito na posição Início.</li>
+  <li>Ao inserir, o novo elemento é colocado na posição Fim + 1.</li>
+</ol>
+  </li>
+</ol>
+<p>&nbsp;</p>
+<p><b><font size="4">Fila baseada em lista encadeada</font></b></p>
+<hr>
+<p>Inserindo A e B:</p>
+<p><img border="0" src="figuras/fila_enc_ab.png" width="462" height="61"></p>
+<p>&nbsp;</p>
+<p>Retirando o elemento da frente (A):</p>
+<p><img border="0" src="figuras/fila_enc_b.png" width="294" height="61"></p>
+<p>&nbsp;</p>
+<p>Inserindo C:</p>
+<p><img border="0" src="figuras/fila_enc_bc.png" width="461" height="60"></p>
+<p>&nbsp;</p>
+<p>Para ver uma implementação de uma Fila usando lista encadeada, abra a unit
+<a href="pdfs/FILAE.pdf">FilaE</a>. Para ver um programa de exemplo que usa uma 
+Fila e uma Pilha para descobrir se uma string é um palíndromo. Abra o programa
+<a href="pdfs/PALINDRO.pdf">Palindromo</a>.</p>
+<p>Os procedimentos/funções <b>Vazia</b>, <b>Cheia</b> e <b>Tamanho</b> são 
+semelhantes aos da lista encadeada, mudando apenas o tipo do parâmetro passado.</p>
+<p>&nbsp;</p>
+<p><b><font size="4">Fila baseada em array</font></b></p>
+<hr>
+<p>A implementação de uma fila é semelhante à de uma lista seqüencial onde as 
+inserções são feitas no final da lista e as remoções no início.</p>
+<p>Fila Vazia:</p>
+<p><img border="0" src="figuras/fila_array_vazia.png" width="279" height="34"></p>
+<p>Inserindo A e B:</p>
+<p><img border="0" src="figuras/fila_array_ab.png" width="278" height="35"></p>
+<p>Retirando o elemento da frente (A):</p>
+<p><img border="0" src="figuras/fila_array_b.png" width="279" height="35"></p>
+<p>Inserindo C:</p>
+<p><img border="0" src="figuras/fila_array_bc.png" width="278" height="36"></p>
+<p>&nbsp;</p>
+<p>Graficamente teríamos:</p>
+<p><img border="0" src="figuras/fila_array.png" width="292" height="106"></p>
+<p>&nbsp;</p>
+<p>Para evitar que a cada retirada de um item da fila seja necessário deslocar 
+todos os elementos do array para a &quot;esquerda&quot;, usamos três variáveis: <b>Início</b>,
+<b>Fim</b> e <b>Tamanho</b>.</p>
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" cellpadding="20" id="AutoNumber4">
+  <tr>
+    <td>
+    <img border="0" src="figuras/fila_array_manipulacao_vazia.png" width="116" height="35"><p>
+    Inicio = 0<br>
+    Fim = 0<br>
+    Tamanho = 0</td>
+    <td>
+    <img border="0" src="figuras/fila_array_manipulacao_abcd.png" width="116" height="35"><p>
+    Inicio = 1<br>
+    Fim = 4<br>
+    Tamanho = 4</td>
+    <td>
+    <img border="0" src="figuras/fila_array_manipulacao_bcd.png" width="115" height="35"><p>
+    Inicio = 2<br>
+    Fim = 4<br>
+    Tamanho = 3</td>
+  </tr>
+  <tr>
+    <td>
+    <img border="0" src="figuras/fila_array_manipulacao_cd.png" width="115" height="35"><p>
+    Inicio = 3<br>
+    Fim = 4<br>
+    Tamanho = 2</td>
+    <td>
+    <img border="0" src="figuras/fila_array_manipulacao_cde.png" width="115" height="35"><p>
+    Inicio = 3<br>
+    Fim = 1<br>
+    Tamanho = 3</td>
+    <td>
+    <img border="0" src="figuras/fila_array_manipulacao_cdef.png" width="115" height="35"><p>
+    Inicio = 3<br>
+    Fim = 2<br>
+    Tamanho = 4</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b>Funcionamento geral da Inserção</b><p><font face="Courier New" size="2"><span lang="pt-br">
+  if tamanho &lt; Max then<br>
+  &nbsp;&nbsp;
+  begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fim := (Fim mod Max) + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itens[Fim] := item;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc(tamanho)<br>
+&nbsp;&nbsp; end<br>
+  else<br>
+&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln('Fila Cheia');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; halt;<br>
+&nbsp;&nbsp; end;</span></font></p>
+</div>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b>Funcionamento geral da Retirada</b><p><font face="Courier New" size="2"><span lang="pt-br">
+  if tamanho &gt; 0 then<br>
+  &nbsp;&nbsp;
+  begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item := itens[Inicio];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inicio := (Inicio mod Max) + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dec(tamanho)<br>
+&nbsp;&nbsp; end<br>
+  else<br>
+&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writeln('Fila Vazia');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; halt;<br>
+&nbsp;&nbsp; end;</span></font></p>
+</div>
+
+</body>
+
+</html>

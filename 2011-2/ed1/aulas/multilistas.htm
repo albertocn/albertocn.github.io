@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Multilistas</title>
+</head>
+
+<body>
+
+<p><span lang="pt-br"><font size="6"><b>Multilistas</b></font></span></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> É um tipo de lista onde cada nó contém 
+mais de um apontador. </span></p>
+<p><span lang="pt-br">Logo, um lista duplamente encadeada é um exemplo de 
+multilista (lista com ligações múltiplas). </span></p>
+<p><span lang="pt-br">Outro exemplo é conhecido como matriz esparsa, na qual o 
+nó será alocado quando a posição receber um valor. Uma das vantagens dessa 
+estrutura é a economia de espaço quando o número de elementos da matriz 
+preenchidos é bem menor que a da matriz esparsa.</span></p>
+<p>Quando a matriz não é esparsa, perde-se bastante espaço pois é necessário 
+armazenar para cada nó, além do valor em si:</p>
+<ul>
+  <li>O número da linha;</li>
+  <li>O número da coluna;</li>
+  <li>O apontador para a próxima linha;</li>
+  <li>O apontador para a próxima coluna;</li>
+</ul>
+<p>Dada a matriz com valores 2 (2,2), 3 (2,3) -2 (3,1) e 8 (3,3), mostrada 
+abaixo: </p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="3" id="AutoNumber1" cellspacing="3">
+  <tr>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <td align="center">0</td>
+    <td align="center">2</td>
+    <td align="center">3</td>
+  </tr>
+  <tr>
+    <td align="center">-2</td>
+    <td align="center">0</td>
+    <td align="center">8</td>
+  </tr>
+</table>
+<p>Teríamos graficamente a estrutura:</p>
+<p><img border="0" src="figuras/matesp.png" width="683" height="323"></p>
+<p>&nbsp;</p>
+<p>Para ver uma implementação de uma Matriz Esparsa, abra a unit
+<a href="pdfs/MATESP.pdf">MatEsp</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/DMATESP.pdf">DMatEsp</a>.</p>
+<p>O procedimento <b>Inicializar</b> cria a linha 0 e a coluna 0 e ajusta os 
+apontadores. Supondo que desejamos criar uma matriz esparsa com 3 linhas e 2 
+colunas, ao chamarmos Inicializar, teríamos a matriz abaixo:</p>
+<p>
+<img border="0" src="figuras/matesp_inicializada.png" width="512" height="323"></p>
+<p>A função <b>ObterAcima</b> retorna o apontador para o nó que está acima da 
+linha e da coluna especificados. Da mesma forma, A função <b>ObterEsquerda</b> 
+retorna o apontador para o nó que está à esquerda da linha e da coluna 
+especificados. Em ambos os casos, quando o nó não existir, o apontador retornado 
+é necessário para inserir o nó naquela posição. </p>
+
+</body>
+
+</html>

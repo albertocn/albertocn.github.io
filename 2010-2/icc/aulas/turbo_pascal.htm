@@ -1,0 +1,183 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Turbo Pascal: Instruções de Uso</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Turbo Pascal: Instruções de Uso</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Introdução</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">O Turbo Pascal 7 é um ambiente 
+  integrado de desenvolvimento (IDE), que permite editar, compilar e executar 
+  programas escritos na linguagem Pascal.</span></li>
+  <li><span style="font-family: Times New Roman">A compilação é o processo pelo 
+  qual o programa escrito em linguagem de alto nível (Pascal) é convertido em um 
+  programa executável (EXE) que contém instruções apropriadas para o computador.</span></li>
+  <li><span style="font-family: Times New Roman">Existem outras IDE's e 
+  compiladores para o Pascal, mas esse será adotado no nosso curso.</span></li>
+  <li><span style="font-family: Times New Roman">Em um ambiente integrado de 
+  desenvolvimento é mais fácil programar, pois podemos editar, compilar e 
+  executar programas em um ambiente que proporciona um conjunto de facilidades.</span></li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Instalação</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Criar um diretório chamado TP7 
+  no diretório raiz. (C:\TP7)</span><ul>
+  <li>Se tiver baixado o arquivo compactado <a href="../download/TP7.zip">TP7.zip</a>, 
+  descompacte e coloque os arquivos (TURBO.EXE, (2) TURBO.ICO, (3) TURBO.TPH e 
+  (4) TURBO.TPL) no diretório C:\TP7.</li>
+  <li><span style="font-family: Times New Roman">Caso contrário, copie os 
+  arquivos </span>(1) <a href="../download/TURBO.EXE">TURBO.EXE</a>, (2)
+  <a href="../download/TURBO.ICO">TURBO.ICO</a>, (3)
+  <a href="../download/TURBO.TPH">TURBO.TPH</a> e (4)
+  <a href="../download/TURBO.TPL">TURBO.TPL</a> para o diretório C:\TP7.</li>
+</ul>
+  </li>
+  <li><span style="font-family: Times New Roman">O Turbo Pascal 7 é um ambiente 
+  integrado de desenvolvimento (IDE), que permite editar, compilar e executar 
+  programas escritos na linguagem Pascal.</span></li>
+  <li>Para facilitar o uso do TP7, pode-se criar um atalho para o arquivo 
+  TURBO.EXE e colocá-lo na área de trabalho, menu ou barra de tarefas.</li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Principais Comandos</span></b></h2>
+<ul>
+  <li>Menu File<ul>
+  <li><b>New</b> =&gt; Cria um novo arquivo PAS. Deve-se informar o nome e 
+  diretório para o arquivo.</li>
+  <li><b>Open</b> =&gt; Abre um arquivo PAS existente. Deve-se informar o nome e 
+  diretório do arquivo.</li>
+  <li><b>Save</b> =&gt; Salva o arquivo que está sendo editado.</li>
+  <li><b>Save as</b> =&gt; Salva o arquivo que está sendo editado com um 
+  nome/diretório diferente.</li>
+  <li><b>Save all</b> =&gt; Salva todos os arquivos que estão sendo editados.</li>
+  <li><b>Change dir</b> =&gt; Muda o diretório corrente. O padrão é o diretório de 
+  instalação do TP7.</li>
+  <li><b>Print</b> =&gt; Imprime o arquivo sendo editado.</li>
+  <li><b>Printer setup</b> =&gt; Configuração de impressão.</li>
+  <li><b>Dos shell</b> =&gt; Executa o prompt do MS-DOS. Para voltar ao TP7, 
+  execute EXIT.</li>
+  <li><b>Exit</b> =&gt; Sai do TP7.</li>
+</ul>
+  </li>
+</ul>
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Edit</span><ul>
+  <li><b>Undo</b><span style="font-family: Times New Roman"> =&gt; Desfaz um 
+  comando.</span></li>
+  <li><b>Redo</b><span style="font-family: Times New Roman"> =&gt; Refaz um comando 
+  que foi desfeito.</span></li>
+  <li><b>Cut</b><span style="font-family: Times New Roman"> =&gt; Corta a parte do 
+  programa selecionado, colocando-a na área de transferência.</span></li>
+  <li><b>Copy</b><span style="font-family: Times New Roman"> =&gt; Copia a parte do 
+  programa selecionado, colocando-a na área de transferência.</span></li>
+  <li><b>Paste</b><span style="font-family: Times New Roman"> =&gt; Cola o conteúdo 
+  da área de transferência.</span></li>
+  <li><b>Clear</b><span style="font-family: Times New Roman"> =&gt; Limpa a parte 
+  do programa selecionado.</span></li>
+  <li><b>Show clipboard</b><span style="font-family: Times New Roman"> =&gt; Exibe 
+  o conteúdo da área de transferência</span></li>
+</ul>
+  </li>
+</ul>
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Search</span><ul>
+  <li><b>Find</b><span style="font-family: Times New Roman"> =&gt; Busca por um 
+  conjunto de caracteres qualquer no programa.</span></li>
+  <li><b>Replace</b><span style="font-family: Times New Roman"> =&gt; Substitui um 
+  conjunto de caracteres no programa por outro.</span></li>
+  <li><b>Search again</b><span style="font-family: Times New Roman"> =&gt; Executa 
+  a busca até a próxima ocorrência do conjunto de caracteres no programa.</span></li>
+  <li><b>Go to line number</b><span style="font-family: Times New Roman"> =&gt; 
+  Move o cursor para a linha especificada.</span></li>
+</ul>
+  </li>
+</ul>
+
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Run</span><ul>
+  <li><b>Run</b><span style="font-family: Times New Roman"> =&gt; Executa o 
+  programa corrente. Após a execução, volta ao editor.</span></li>
+</ul>
+  </li>
+</ul>
+
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Compile</span><ul>
+  <li><b>Compile</b><span style="font-family: Times New Roman"> =&gt; Compila o 
+  arquivo atual</span></li>
+  <li><b>Make</b><span style="font-family: Times New Roman"> =&gt; Compila o 
+  arquivo atual e todos os dependentes modificados</span></li>
+  <li><b>Build</b><span style="font-family: Times New Roman"> =&gt; Compila o 
+  arquivo atual e todos os dependentes (mesmo sem terem sido modificados)</span></li>
+  <li><b>Destination</b><span style="font-family: Times New Roman"> =&gt; Pode 
+  indicar Memory ou Disk. O último grava um arquivo (EXE) que pode ser executado 
+  fora do ambiente do TP7.</span></li>
+</ul>
+  </li>
+</ul>
+
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Options</span><ul>
+  <li><b>Open</b><span style="font-family: Times New Roman"> =&gt; Abre um arquivo 
+  de configuração da IDE.</span></li>
+  <li><b>Save</b><span style="font-family: Times New Roman"> =&gt; Salva a 
+  configuração do IDE.</span></li>
+  <li><b>Save as</b><span style="font-family: Times New Roman"> =&gt; Salva a 
+  configuração do IDE, dando-lhe um nome e diretório.</span></li>
+</ul>
+  </li>
+</ul>
+
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Window</span><ul>
+  <li><b>Tile</b> =&gt; Divide a tela em janelas para permitir visualização de mais 
+  de um programa ao mesmo tempo.</li>
+  <li><b>Cascade</b> =&gt; Arruma as janelas em cascata, permitindo ver apenas o 
+  nome do programa e o conteúdo do que que está na janela da frente.</li>
+  <li><b>Close all</b> =&gt; Fecha todas as janelas.</li>
+  <li><b>Size/Move</b> =&gt; Permite dimensionar e mover janelas.</li>
+  <li><b>Zoom</b> =&gt; Faz com que a janela atual ocupe toda a tela disponível.</li>
+  <li><b>Next</b> =&gt; Passa da janela atual para a seguinte.</li>
+  <li><b>Previous</b> =&gt; Volta para a janela anterior.</li>
+  <li><b>Close</b><span style="font-family: Times New Roman"> =&gt; Fecha a janela 
+  atual.</span></li>
+  <li><b>List</b><span style="font-family: Times New Roman"> =&gt; Exibe uma lista 
+  das janelas abertas (cada uma com um programa).</span></li>
+</ul>
+  </li>
+</ul>
+
+<ul>
+  <li><span style="font-family: Times New Roman">Menu Help</span><ul>
+  <li><b>Contents</b><span style="font-family: Times New Roman"> =&gt; Mostra o 
+  conteúdo da ajuda.</span></li>
+  <li><b>Index</b><span style="font-family: Times New Roman"> =&gt; Permite 
+  procurar comandos através do nome.</span></li>
+</ul>
+  </li>
+</ul>
+
+</body>
+
+</html>

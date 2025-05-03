@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Strings em C</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Strings em C</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Introdução</span></b></h2>
+<ul>
+  <li>C não tem um tipo de dados String, porém suporta a definição Strings na 
+  forma de vetor de caracteres. Sendo assim, a literal &quot;Computador&quot;, que possui 
+  10 caracteres, pode ser armazenada em uma variável char[11]. Um caractere 
+  adicional '\0' é usado no final da String para delimitar o seu final.</li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Funções de manipulação de 
+Strings</span></b></h2>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="696">
+  <tr>
+    <td align="center" width="102"><b>Função</b></td>
+    <td align="center" width="584"><b>Descrição</b></td>
+  </tr>
+  <tr>
+    <td align="left" width="102">gets(s1)</td>
+    <td width="584">Leitura via teclado da string s1</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">strcpy(s1, s2)</td>
+    <td width="584">Copia sobre s1 o valor de s2</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">strcat(s1, s2)</td>
+    <td width="584">Concatena s1 e s2, colocando s2 no final de s1</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">strlen(s1)</td>
+    <td width="584">Retorna o tamanho de s1 (número de caracteres)</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">strcmp(s1, s2)</td>
+    <td width="584">Retorna 0 se s1 é igual a s2, negativo se s1 &lt; s2 ou 
+    positivo se s1 &gt; s2</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">strchr(s1, ch)</td>
+    <td width="584">Retorna um apontador para a primeira ocorrência do caractere 
+    ch em s1 ou 0 se não achá-lo.</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">strstr(s1, s2)</td>
+    <td width="584">Retorna um apontador para a primeira ocorrência da string s2 
+    em s1 ou 0 se não achá-lo</td>
+  </tr>
+</table>
+&nbsp;<p>
+<span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o: 
+usando as funções de manipulação de Strings</font></b></span></p>
+<pre>main() {
+   // Declarando Strings
+   char s1[30], s2[30], s3[30];
+
+   // Faz a leitura de Strings
+   gets(s1);
+   gets(s2);
+
+   // Mede o tamanho das Strings (strlen)
+   printf(&quot;tamanho de s1 = %d\n&quot;, strlen(s1));
+   printf(&quot;tamanho de s2 = %d\n&quot;, strlen(s2));
+
+   // Concatena Strings e guarda na primeira (strcat)
+   printf(&quot;s1 concatenado com s2 = %s\n&quot;, strcat(s1, s2));
+
+   // Copia o valor de uma String em outra
+   printf(&quot;copiando s1 para s3 = %s\n&quot;, strcpy(s3, s1));
+
+   // Compara Strings (strcmp)
+   printf(&quot;s1 comparado com s2? %d\n&quot;, strcmp(s1, s2));
+   printf(&quot;s1 comparado com s3? %d\n&quot;, strcmp(s1, s3));
+   printf(&quot;s2 comparado com s1? %d\n&quot;, strcmp(s2, s1));
+
+   // Procura um caractere na String (strchr)
+   printf(&quot;caractere \'a\' existe em s1 ? %d\n&quot;, strchr(s1, 'a'));
+
+   // Procura por uma String dentro de outra (strstr)
+   printf(&quot;string \&quot;abc\&quot; existe em s1 ? %d\n&quot;, strstr(s1, &quot;abc&quot;));
+}</pre>
+
+</body>
+
+</html>

@@ -1,0 +1,361 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Árvores Binárias</title>
+</head>
+
+<body>
+
+<p><font size="6"><b>Árvores Binárias</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> São estruturas do tipo árvore com as 
+seguintes características:</span></p>
+<ul>
+  <li>A árvore tem grau <span lang="pt-br">2.</span></li>
+  <li>Cada subárvore é identificada como subárvores esquerda e direita.</li>
+  <li>Pode haver uma ordenação entre as subárvores.</li>
+</ul>
+<p>Exemplo:</p>
+<p><img border="0" src="figuras/arvore_binaria.png" width="284" height="193"></p>
+<p>&nbsp;</p>
+<h3>Implementação Seqüencial</h3>
+<hr>
+<p>A implementação seqüencial de árvore binária tem as seguintes 
+características:</p>
+
+<ul>
+  <li>Usa uma estrutura estática tipo array.</li>
+  <li>Os nós de cada nível são armazenados de forma contígua, ordenados da 
+  esquerda para a direita.</li>
+  <li>Um nó inexistente é deixado &quot;em branco&quot;, mas ocupa espaço no array, 
+  gerando desperdício de memória.</li>
+</ul>
+<p>Graficamente, teríamos:</p>
+
+<p><img border="0" src="figuras/arvore_binaria_seq.png" width="197" height="76"></p>
+
+<p>&nbsp;</p>
+
+<h3>Implementação Encadeada</h3>
+<hr>
+<p>A implementação encadeada de árvore binária tem as seguintes características:</p>
+
+<ul>
+  <li>Usa um estrutura dinâmica com apontadores.</li>
+  <li>Cada nó contém os dados e os apontadores para as subárvores esquerda e 
+  direita.</li>
+</ul>
+<p>Graficamente, teríamos:</p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_enc.png" width="602" height="269"></p>
+
+<p>&nbsp;</p>
+
+<p>A implementação encadeada de árvore binária é mais usada do que a estática 
+porque e mais eficiente em termos de espaço em memória.</p>
+
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b>Definição de uma árvore binária em pascal</b><p><font face="Courier New" size="2"><span lang="pt-br">
+  type<br>
+&nbsp;&nbsp; ArvoreBinaria = ^No;<br>
+&nbsp;&nbsp; No = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dado: tipo_do_dado;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Esquerdo,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Direito,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pai : ArvoreBinaria;<br>
+  </span>&nbsp;<span lang="pt-br">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;</span></font></p>
+</div>
+<p>Para ver uma implementação de uma árvore binária encadeada, abra a unit
+<a href="pdfs/ARVBIN.pdf">ArvBin</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/PARVBIN.pdf">PArvBin</a>.</p>
+<p>O procedimento <b>CriarNo</b> recebe um apontador <b>ArvoreBinaria</b> e o 
+dado que será colocado no nó. Além de alocar uma variável dinâmica para o nó, 
+copia o dado para esta variável e faz com que os apontadores para o pai, para o 
+nó esquerdo e para o nó direito sejam inicializados através do procedimento <b>
+Inicializar</b>.</p>
+
+<p>A função <b>ExisteNo</b> retorna <b>true</b> se existe um nó na árvore 
+binária passada seguindo pela direção especificada.</p>
+
+<p>O procedimento <b>Deslocar</b> move o apontador do tipo <b>ArvoreBinaria</b> 
+na direção especificada. Se a direção for nó raiz, <b>Deslocar</b> só encerra 
+quando <b>ArvoreBinaria</b> não tiver mais um nó pai.</p>
+
+<p>O procedimento <b>ObterDado</b> coloca em <b>Dado</b> (parâmetro), o valor 
+contido no nó passado.</p>
+
+<p>O procedimento <b>AlterarDado</b> modifica o valor do dado contido no nó 
+passado para o valor passado como parâmetro.</p>
+
+<p>O procedimento <b>AdicionarFilho</b> coloca um novo nó na direção 
+especificada (nó esquerdo ou nó direito) e copia o dado passado para ele.</p>
+
+<p>&nbsp;</p>
+
+<h3>Algoritmos Especiais</h3>
+
+<hr>
+<p>O procedimento <b>DisposeArvore</b> libera a árvore passada da memória.</p>
+
+<p>Dada a árvore abaixo:</p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_dispose_exemplo.png" width="249" height="193"></p>
+
+<p>&nbsp;</p>
+
+<p>Teríamos a seguinte execução do procedimento recursivo <b>DisposeArvore</b>:</p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_dispose.png" width="707" height="403"></p>
+
+<p>&nbsp;</p>
+
+<p>O procedimento <b>Deltree</b> elimina uma subárvore de uma árvore. Além de 
+desalocar da memória, faz com que o nó que apontava para a raiz da subárvore 
+aponte para nil.</p>
+
+<p>a) Removendo uma subárvore (o apontador passado para Deltree não é a raiz)</p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_deltree.png" width="641" height="318"></p>
+
+<p>b) Removendo uma árvore completamente, quando o apontador passado para 
+Deltree é o nó raiz.</p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_deltree_raiz.png" width="430" height="407"></p>
+
+<p>&nbsp;</p>
+<h3>Caminhamento</h3>
+
+<hr>
+<p><b>Definição:</b> Caminhamento é o ato de percorrer todos os nós da árvore de 
+uma forma sistemática sendo cada nó &quot;visitado&quot; visitado uma única vez.</p>
+<p>Um caminhamento completo sobre uma árvore produz uma seqüência linear dos 
+nós, de modo que cada nó da árvore passa a ter um nó seguinte ou um nó anterior, 
+ou ambos, para uma dada forma de caminhamento.</p>
+<p>No caso de árvores binárias existem 3 tipos de caminhamento mais 
+freqüentemente utilizados. São eles:</p>
+<ul>
+  <li>Caminhamento <b>LRN (pós-ordem)</b></li>
+  <li>Caminhamento <b>NLR (pré-ordem)</b></li>
+  <li>Caminhamento <b>LNR (in-ordem</b> ou <b>central)</b></li>
+</ul>
+<p>onde: L = Left, R = Rigth e N = Node</p>
+<p>&nbsp;</p>
+<h3>Caminhamento Pós-Ordem (LRN)</h3>
+<hr>
+<p>Nesse caminhamento, partindo da raiz, visitamos todos os nós da subárvore 
+esquerda, depois os subnós da subárvore direita e, por último, o nó na raiz.</p>
+<p>Esse algoritmo é repetido para cada nó.</p>
+<p>Seja uma árvore que representa uma expressão matemática A * (B + C) - (D + 
+E):</p>
+<p>
+<img border="0" src="figuras/arvore_binaria_expressao.png" width="287" height="268"></p>
+<p>&nbsp;</p>
+<p>Percorrendo a árvore usando o Pós-Ordem, teríamos a expressão na notação 
+Pós-Fixada:</p>
+<p><b>A B C + * D E + -</b></p>
+<p>Para avaliar a expressão acima, usamos o seguinte algoritmo:</p>
+<ol>
+  <li>Se for operando empilha.</li>
+  <li>Senão se for operador desempilha dois operandos da pilha, efetua a 
+  operação indicada pelo operador e empilha o resultado.</li>
+  <li>Ao terminar, o resultado estará na pilha.</li>
+</ol>
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" cellpadding="20" id="AutoNumber4">
+  <tr>
+    <td align="center">
+    1) Lê A, B, C e Empilha<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p1.png" width="89" height="158"></td>
+    <td align="center">
+    2) Lê + e desempilha dois operandos<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p2.png" width="88" height="157"></td>
+    <td align="center">
+    3) Coloca o resultadona pilha<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p3.png" width="110" height="156"></td>
+    <td align="center">
+    4) Lê * e desempilha 2 operandos<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p4.png" width="89" height="157"></td>
+  </tr>
+  <tr>
+    <td align="center">
+    5) Coloca o resultado na pilha<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p5.png" width="133" height="157"></td>
+    <td align="center">
+    6) Lê D e E e empilha<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p6.png" width="136" height="161"></td>
+    <td align="center">
+    7) Lê + e desempilha 2 operandos<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p7.png" width="135" height="161"></td>
+    <td align="center">
+    8) Coloca o resultado na pilha<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p8.png" width="134" height="159"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+    9) Lê - e desempilha 2 operandos
+    <p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p9.png" width="134" height="159"></td>
+    <td colspan="2" align="center">
+    10) Coloca o resultado na pilha<p>
+    <img border="0" src="figuras/arvore_binaria_expressao_p10.png" width="223" height="159"></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2"><span lang="pt-br">
+  procedure PosOrdem(Arvore : ArvoreBinaria);<br>
+  begin<br>
+&nbsp;&nbsp; if Arvore &lt;&gt; nil then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PosOrdem(Arvore^.Links[NoEsquerdo]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PosOrdem(Arvore^.Links[NoDireito]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visite(Arvore);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<br>
+  end;</span></font></div>
+<p>&nbsp;</p>
+<h3>Caminhamento Pré-Ordem (NLR)</h3>
+<hr>
+<p>Nesse caminhamento, partindo da raiz, visitamos o nó raiz, em seguida todos 
+os nós da subárvore esquerda e finalmente os nós da subárvore direita.</p>
+<p>Percorrendo a árvore exemplo, teríamos a expressão na notação prefixada:</p>
+<p><b>- * A + B C + D E</b></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2"><span lang="pt-br">
+  procedure PreOrdem(Arvore : ArvoreBinaria);<br>
+  begin<br>
+&nbsp;&nbsp; if Arvore &lt;&gt; nil then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visite(Arvore);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PreOrdem(Arvore^.Links[NoEsquerdo]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PreOrdem(Arvore^.Links[NoDireito]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<br>
+  end;</span></font></div>
+<p>&nbsp;</p>
+<h3>Caminhamento In-Ordem ou Central (LNR)</h3>
+<hr>
+<p>Nesse caminhamento, partindo da raiz, visitamos todos os nós da subárvore 
+esquerda, depois o nó raiz e finalmente os nós da subárvore direita.</p>
+<p>Percorrendo a árvore exemplo, teríamos a expressão na notação infixa:</p>
+<p><b>-A * (B + C) - (D + E)</b></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2"><span lang="pt-br">
+  procedure InOrdem(Arvore : ArvoreBinaria);<br>
+  begin<br>
+&nbsp;&nbsp; if Arvore &lt;&gt; nil then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InOrdem(Arvore^.Links[NoEsquerdo]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visite(Arvore);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InOrdem(Arvore^.Links[NoDireito]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<br>
+  end;</span></font></div>
+<p>&nbsp;</p>
+<p><b>Exemplo: Determinar as características de uma árvore.</b></p>
+<ul>
+  <li>Número de nós;</li>
+  <li>Altura da árvore (maior nível);</li>
+  <li>Comprimento médio dos caminhos (soma dos comprimentos dos caminhos / 
+  número de nós).</li>
+</ul>
+<table border="0" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber5">
+  <tr>
+    <td>
+    <img border="0" src="figuras/arvore_binaria_caracteristicas.png" width="286" height="268"></td>
+    <td>&nbsp;</td>
+    <td valign="top"><b>Número de nós</b> = 7<p><b>Altura</b> = 3</p>
+    <p><b>Comprimento médio</b> = (0 + 1 + 1 + 2 + 2 + 2 + 3) / 7 = 11/7 = 1,57</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2">procedure Caracteristicas(Arvore : 
+  ArvoreBinaria; var NumNos, Altura : integer; var CompMedio : real);<br>
+  var <br>
+&nbsp;&nbsp; Soma : integer;<br>
+  <br>
+  procedure InOrd(Arvore : ArvoreBinaria; Nivel : integer);<br>
+  begin { InOrd }<br>
+&nbsp;&nbsp; if not Vazia(Arvore) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InOrd(Arvore^.Links[NoEsquerdo], 
+  Nivel + 1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc(NumNos);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Soma := Soma + Nivel;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if Nivel &gt; Altura then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Altura := 
+  Nivel;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InOrd(Arvore^.Links[NoDireito], 
+  Nivel + 1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<br>
+  end; { InOrd }<br>
+  <br>
+  begin { Caracteristicas }<br>
+&nbsp;&nbsp; NumNos := 0;<br>
+&nbsp;&nbsp; Altura := 0;<br>
+&nbsp;&nbsp; Soma := 0;<br>
+&nbsp;&nbsp; InOrd(Arvore, 0);<br>
+&nbsp;&nbsp; CompMedio := Soma / NumNos;<br>
+  end; { Caracteristicas }</font></div>
+<p>&nbsp;</p>
+<h3>Tipo Procedural</h3>
+<hr>
+<p>Cada vez que é necessário percorrer uma árvore e executar uma operação 
+(visitar) sobre cada nó, é necessário reescrever o algoritmo de caminhamento e 
+dentro dele chamar um procedimento diferente.</p>
+<p>Para solucionar esse problema, podemos usar um parâmetro do <b>tipo 
+procedural</b> no procedimento de caminhamento, isto é, passar uma espécie de 
+endereço, que nada mais é do que um apontador para o procedimento que será 
+chamado de dentro do procedimento de caminhamento, utilizando o nome do 
+parâmetro.</p>
+<p>Definindo um tipo procedural:</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b><font face="Courier New" size="2">type ParamVisite = procedure (Arvore : 
+  ArvoreBinaria);</font></b></div>
+<p>De forma genérica:</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b><font face="Courier New" size="2">type<br>
+&nbsp;&nbsp; &lt;identificador&gt; = procedure (&lt;lista_de_parâmetros&gt;);<br>
+&nbsp;&nbsp; &lt;identificador&gt; = function (&lt;lista_de_parâmetros&gt;) : &lt;tipo_de_retorno&gt;;</font></b>&nbsp;&nbsp;&nbsp;
+</div>
+<p>&nbsp;</p>
+<p><b>Exemplo: Redefinindo PosOrdem para receber um parâmetro do tipo procedural 
+ParamVisite.</b></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b><font face="Courier New" size="2">procedure PosOrdem(Arvore : ArvoreBinaria; 
+  Visite : ParamVisite);<br>
+  begin<br>
+&nbsp;&nbsp; if not Vazia(Arvore) then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PosOrdem(Arvore^.Links[NoEsquerdo], 
+  Visite);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PosOrdem(Arvore^.Links[NoDireito], 
+  Visite);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visite(Arvore);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<br>
+  end;</font></b></div>
+<p>&nbsp;</p>
+<p>Criando um procedimento do <b>tipo procedural ParamVisite</b>:</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b><font face="Courier New" size="2">procedure ImprimirDadoDoNo(Arvore : 
+  ArvoreBinaria); far;<br>
+  var Dado: tipo_do_dado;<br>
+  begin<br>
+&nbsp;&nbsp; ObterDado(Arvore, Dado);<br>
+&nbsp;&nbsp; writeln(Dado);<br>
+  end;</font></b></div>
+<p>O procedimento criado deve ter os tipos dos parâmetros iguais. Se for uma 
+função, o tipo de retorno também deve coincidir.</p>
+<p>A <b>diretiva far</b> é usada para forçar o uso de endereços absolutos 
+(incluem o segmento e o deslocamento dentro do segmento) ao chamar a função ou 
+procedimento. Normalmente só é necessário o deslocamento (<b>endereço relativo</b>).</p>
+
+</body>
+
+</html>

@@ -1,0 +1,376 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Classificação</title>
+</head>
+
+<body>
+
+<p><font size="6"><b>Classificação</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Conceito:</b> Classificar dados é o processo pelo qual 
+se determina a ordem em que devem ser apresentados os dados, geralmente em forma 
+de tabela, de modo que obedeçam a seqüência estabelecida por um ou mais de seus 
+campos. Estes campos especificados como determinantes da ordem de classificação 
+são chamados de chaves de classificação.</span></p>
+<p><b>Ambiente de classificação:</b> As características do meio no qual estão 
+armazenados os dados afetam de forma decisiva o processo de classificação, uma 
+vez que existem diferenças acentuadas no modo como os dados são acessados na 
+memória principal e na memória secundária.</p>
+<ul>
+  <li>Na <b>memória principal</b> o tempo de acesso a qualquer endereço é 
+  constante.</li>
+  <li>Na <b>memória secundária</b> (disco magnético, por exemplo) os dados são 
+  transferidos em blocos para a memória principal e nela são feitas as 
+  operações.</li>
+</ul>
+<p>Dessa forma, os métodos de classificação de dados contidos inteiramente na 
+memória principal (classificação interna) podem envolver a manipulação em 
+qualquer seqüência, ao passo que os métodos de classificação de dados 
+armazenados em memória secundária (classificação externa), bloco a bloco.</p>
+<p>&nbsp;</p>
+<h3>Apresentação do Resultado</h3>
+<hr>
+<p>O resultado de um processo de classificação é a seqüência ordenada das 
+entradas que se deseja classificar. Várias são as alternativas que podemos 
+especificar a ordem na qual devem ser apresentados os dados classificados. As 
+mais comuns são:</p>
+<ul>
+  <li>Contigüidade Física</li>
+  <li>Vetor Indireto de Ordenação</li>
+  <li>Encadeamento</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Contigüidade Física</h3>
+<hr>
+<p>Nesta alternativa as entradas são remanejadas fisicamente de modo que no 
+final da classificação estarão fisicamente ordenadas na seqüência especificada 
+pela chave de classificação.</p>
+<p>Esta alternativa, muitas vezes, pode gerar um custo bastante alto, uma vez 
+que, envolve a movimentação física das entradas da tabela para suas novas 
+posições. Por exemplo, para a tabela abaixo (desordenada), onde só é mostrada a 
+chave de classificação, teríamos como resultado a tabela abaixo da original 
+(ordenada).</p>
+<p><b>Tabela original (desordenada):</b></p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber1">
+  <tr>
+    <th>Endereço Físico</th>
+    <th>Chave</th>
+    <th>Dados</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">10</td>
+    <td align="center">DCOMP</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">50</td>
+    <td align="center">DFI</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">20</td>
+    <td align="center">DEC</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">30</td>
+    <td align="center">DEL</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td align="center">90</td>
+    <td align="center">DEQ</td>
+  </tr>
+</table>
+<p><b>Tabela modificada (ordenada):</b></p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber1">
+  <tr>
+    <th>Endereço Físico</th>
+    <th>Chave</th>
+    <th>Dados</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">10</td>
+    <td align="center">DCOMP</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">20</td>
+    <td align="center">DEC</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">30</td>
+    <td align="center">DEL</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">50</td>
+    <td align="center">DFI</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td align="center">90</td>
+    <td align="center">DEQ</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h3>Vetor Indireto de Ordenação</h3>
+<hr>
+<p>Nesta alternativa as entradas são mantidas nas suas posições originais e a 
+seqüência de ordenação é ditada por meio de um vetor que é gerado durante o 
+processo de classificação. Usando os mesmos dados do exemplo anterior teríamos a 
+tabela de entradas e um vetor indireto de ordenação associado, como é mostrado 
+abaixo.</p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber1">
+  <tr>
+    <th>Endereço Físico</th>
+    <th>Chave</th>
+    <th>Dados</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">10</td>
+    <td align="center">DCOMP</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">50</td>
+    <td align="center">DFI</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">20</td>
+    <td align="center">DEC</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">30</td>
+    <td align="center">DEL</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td align="center">90</td>
+    <td align="center">DEQ</td>
+  </tr>
+</table>
+<p><b>Vetor indireto de ordenação:</b></p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber1">
+  <tr>
+    <th>Endereço Físico</th>
+    <th>Ordem</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">1</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">3</td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">4</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">2</td>
+  </tr>
+  <tr>
+    <td align="center">5</td>
+    <td align="center">5</td>
+  </tr>
+</table>
+<p>A vantagem principal desta alternativa é que ela não envolve a movimentação 
+das entradas da tabela e suas posições originais. Note que é possível 
+classificarmos uma mesma tabela segurando diversos critérios diferentes, obtendo 
+conseqüentemente um vetor indireto de ordenação para cada uma das chaves.</p>
+<p>&nbsp;</p>
+<h3>Encadeamento</h3>
+<hr>
+<p>Nesta alternativa, as entradas são mantidas nas suas posições originais e uma 
+lista encadeada que inclui todas as entradas da tabela ordenadas pelo valor da 
+chave, é gerada durante o processo de classificação.</p>
+<p>Diferentemente da alternativa anterior, onde o vetor indireto de ordenação é 
+separado da tabela de dados, nesta alternativa um campo é acrescido à tabela 
+para indicar a seqüência ordenada. Em cada entrada, o conteúdo do campo é igual 
+ao endereço da próxima entrada na ordem de classificação.</p>
+<p>Esta alternativa permite também a ordenação de uma mesma tabela segundo 
+diferentes critérios, através do uso de campos adicionais para o encadeamento.</p>
+<p>
+<img border="0" src="figuras/classificacao_encadeamento.png" width="480" height="237"></p>
+<p>&nbsp;</p>
+<h2>Métodos de Classificação</h2>
+<hr>
+<p>Os métodos de classificação estão agrupados em várias famílias. Dentre elas 
+temos:</p>
+<ul>
+  <li>Classificação por Inserção;</li>
+  <li>Classificação por Troca;</li>
+  <li>Classificação por Seleção;</li>
+  <li>Classificação por Intercalação;</li>
+  <li>Classificação por Distribuição.</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Classificação por Inserção</h3>
+<hr>
+<p><b>Definição:</b> A característica comum a todos os métodos de classificação 
+por inserção é que eles efetuam a ordenação da lista pela inserção de cada um 
+dos elementos em sua posição correta dentro de uma sublista classificada.</p>
+<p>&nbsp;</p>
+<p><b>Método de Inserção Direta</b></p>
+<p>Neste método os elementos da lista são divididos em dois segmentos. 
+Inicialmente, o primeiro segmento contém apenas o 1º elemento (a<sub>1</sub>) 
+estando portanto classificado. O segundo segmento, formado pelos elementos a<sub>2</sub>, 
+a<sub>3</sub>, ..., a<sub>n</sub> (sendo n o número de elementos da lista) 
+continua sem ordenação.</p>
+<p>Por meio de iterações sucessivas, cada elemento do 2º segmento é inserido 
+ordenadamente no 1º, até que todos sejam inseridos. O funcionamento do método é 
+mostrado abaixo.</p>
+<p><b>Lista Original: 10, 50, 20, 30 e 90</b></p>
+<p>
+<img border="0" src="figuras/classificacao_insercao_direta.png" width="430" height="333"></p>
+<p>&nbsp;</p>
+
+<p>Para ver  a implementação do método de inserção direta, abra as units
+<a href="pdfs/DEFDADOS.pdf">DefDados</a> e <a href="pdfs/INSERCAO.pdf">Insercao</a>.</p>
+
+<p>&nbsp;</p>
+<h3>Classificação por Troca</h3>
+<hr>
+<p><b>Definição:</b> Caracteriza-se por efetuar a classificação através da 
+comparação sucessiva de pares de elementos, trocando de posição caso esteja fora 
+da ordem desejada.</p>
+<p>&nbsp;</p>
+<p><b>Método da Bolha</b></p>
+<p>A cada passo, cada elemento da lista é comparado com o seu sucessor, sendo os 
+dois trocados de posição caso estejam fora de ordem. São executados tantos 
+passos quanto necessários, até que em um deles não ocorram trocas, estando assim 
+a lista ordenada.</p>
+<p>Em cada passo, o valor é borbulhado para a última posição do segmento da 
+lista considerada.</p>
+<p>No 1º passo, o segmento tem o tamanho da lista, e nos passos seguintes o seu 
+tamanho é determinado pela posição onde ocorreu a última troca. O funcionamento 
+do método é mostrado abaixo.</p>
+<p><b>Lista Original: 50, 40, 30, 20 e 10</b></p>
+<p>
+<img border="0" src="figuras/classificacao_troca_bolha.png" width="427" height="335"></p>
+<p>&nbsp;</p>
+
+<p>Para ver  a implementação do método da Bolha, abra a unit
+<a href="pdfs/TROCA.pdf">Troca</a>.</p>
+
+<p>&nbsp;</p>
+<p><b>Método Quick Sort</b></p>
+<p>Este método baseia-se no princípio de que é mais rápido classificar duas 
+listas de N/2 elementos do que apenas uma com N elementos, ou seja, aplica o 
+princípio &quot;dividir para conquistar&quot;.</p>
+<p>A partição começa através da seleção de um elemento da lista. O elemento 
+escolhido é chamado pivô. Há vários critérios para escolhê-lo, mas adotaremos o 
+elemento central (que normalmente é uma boa escolha).</p>
+<p>O particionamento é obtido tomando o elemento pivô e, por comparações e troca 
+sucessivas, fazendo com que os menores valores ou iguais ao pivô passam para a 
+esquerda e os maiores para sua direita.</p>
+<p>Para executar uma determinada partição foram introduzidos dois apontadores 
+(indicadores): o primeiro (I) começa na posição 1 do segmento e percorre para a 
+direita; o segundo (J) começa no final do segmento e o percorre para a esquerda. 
+O apontador (I) procura elementos maiores que o pivô e o apontador (J) por 
+elementos menores ou iguais ao pivô. O processo termina quando o apontador (I) é 
+maior ou igual ao apontador (J).</p>
+<p><b>Lista Original: 50, 40, 30, 20 e 10</b></p>
+<p>
+<img border="0" src="figuras/classificacao_troca_quicksort.png" width="419" height="509"></p>
+<p>&nbsp;</p>
+
+<p>Para ver  a implementação do método Quick Sort, abra a unit
+<a href="pdfs/TROCA.pdf">Troca</a>.</p>
+
+<p>&nbsp;</p>
+<h3>Classificação por Seleção</h3>
+<hr>
+<p><b>Definição:</b> Nos métodos de classificação por seleção a ordenação é 
+efetuada pela seleção sucessiva do menor valor da lista. A cada passo o elemento 
+de menor valor é colocado em sua posição definitiva na lista classificada e o 
+processo é repetido para o segmento que contém os elementos não selecionados.</p>
+<p>&nbsp;</p>
+<p><b>Método de Seleção Direta</b></p>
+<p>Este método consiste em se determinar a posição do menor valor dentre N 
+elementos a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub> é trocar o elemento 
+que está nessa posição como que está na posição 1. Em seguida, determina-se a 
+posição do menor elemento de a<sub>2</sub> até a<sub>n</sub> e troca-se o 
+elemento que está nessa posição com o que está na posição. O processo continua 
+até que o menor valor entre a<sub>n-1</sub> e a<sub>n</sub> é trocado (se 
+necessário) e colocado na posição n-1.</p>
+<p><b>Lista Original: 10, 50, 20, 30 e 90</b></p>
+<p>
+<img border="0" src="figuras/classificacao_selecao_direta.png" width="432" height="385"></p>
+
+<p>Para ver  a implementação do método de Seleção Direta, abra a unit
+<a href="pdfs/SELECAO.pdf">Selecao</a>.</p>
+
+<p>&nbsp;</p>
+<h3>Classificação por Intercalação</h3>
+<hr>
+<p><b>Definição:</b> Nos métodos de classificação por intercalação a ordenação é 
+efetuada pela divisão da lista não ordenada em listas menores, que são ordenadas 
+separadamente e depois unidas de forma que seus elementos sejam intercalados em 
+uma lista ordenada. Desta forma, a cada intercalação de 2 sublistas, obtém-se 
+uma lista ordenada contendo os elementos das 2 sublistas.</p>
+<p>&nbsp;</p>
+<p><b>Método Merge Sort</b></p>
+<p>O Merge Sort utiliza a abordagem de &quot;dividir para conquistar&quot;. Divide a lista 
+ao meio, ordena as duas sublistas através de chamadas recursivas e então une (Merge) 
+as sublistas ordenadas em uma lista ordenada.</p>
+<p>O caso de parada da recursão é quando há apenas um elemento na sublista, 
+estando portanto ordenada.</p>
+<p>O algoritmo recursivo é bastante simples, sendo mostrado abaixo:</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2">procedure MergeSort(var Lista : 
+  Tipo_da_Lista; Primeiro, Ultimo : TamLista);<br>
+  var Meio : TamLista;<br>
+  begin<br>
+&nbsp;&nbsp; if Primeiro &lt; Ultimo then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Meio := (Ultimo + Primeiro) div 
+  2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MergeSort(Lista, Primeiro, 
+  Meio);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MergeSort(Lista, Meio + 1, 
+  Ultimo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Merge(Lista, Primeiro, Meio, 
+  Ultimo);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;<br>
+  end;</font></div>
+<p>O procedimento <b>MergeSort</b> utiliza um procedimento chamado <b>Merge</b> 
+que recebe duas listas ordenadas, faz a cópia para uma lista temporária na ordem 
+correta e no final copia os elementos de volta para a lista (antes era dividida 
+em duas sublistas ordenadas).</p>
+<p>O Merge Sort tem uma característica importante, que é possuir o mesmo 
+comportamento independente do conteúdo da lista, tendo a mesma complexidade para 
+o melhor, pior ou caso médio.</p>
+<p>Tem como desvantagem a necessidade de uma estrutura temporária para efetuar a 
+união (Merge), que deve ter capacidade igual ou superior à da lista a ser 
+ordenada.</p>
+<p>Fazendo uma união (Merge) das duas sublistas ordenadas abaixo:</p>
+<p>
+<img border="0" src="figuras/classificacao_intercalacao_merge_sort_p1.png" width="460" height="144"></p>
+<p>&nbsp;</p>
+<p>
+<img border="0" src="figuras/classificacao_intercalacao_merge_sort_p2.png" width="642" height="423"></p>
+<p>&nbsp;</p>
+<p>
+<img border="0" src="figuras/classificacao_intercalacao_merge_sort_p3.png" width="712" height="475"></p>
+
+<p>Para ver  a implementação do método Merge Sort, abra a unit
+<a href="pdfs/INTERCAL.pdf">Intercal</a>.</p>
+
+</body>
+
+</html>

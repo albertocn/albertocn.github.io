@@ -1,0 +1,214 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Linguagem C: Comandos Básicos</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Linguagem C: Controle de Fluxo</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estruturas de Decisão</span></b></h2>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando If</font></span></b></p>
+<p><span style="font-family: Times New Roman">O comando if permite executar um 
+comando (ou conjunto de comandos entre { e }) se uma dada condição for 
+satisfeita.</span></p>
+<pre>if (&lt;condição&gt;)
+   &lt;comando&gt;;</pre>
+<p><span style="font-family: Times New Roman">If com um bloco de comendos entre 
+{ e }.</span></p>
+<pre>if (&lt;condição&gt;) 
+{
+    &lt;sequencia-de-comandos&gt;
+}</pre>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando If - 
+Else</font></span></b></p>
+<pre>if (&lt;condição&gt;)
+   &lt;comando1&gt;;
+else
+   &lt;comando2&gt;;</pre>
+<pre>if (&lt;condição&gt;)
+{
+   &lt;sequencia-de-comandos1&gt;
+}
+else
+{
+   &lt;sequencia-de-comandos2&gt;
+}</pre>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span></font></pre>
+<pre>main() {
+   int x = 0;
+   printf(&quot;Digite x: &quot;);
+   scanf(&quot;%d&quot;, &amp;x);
+
+   if (x == 0)
+      printf(&quot;x == 0&quot;);
+   else
+      printf(&quot;x != 0&quot;);
+
+   int y = 0;
+   printf(&quot;\nDigite y: &quot;);
+   scanf(&quot;%d&quot;, &amp;y);
+
+   if (y == 0) 
+   {
+      printf(&quot;y == 0&quot;);
+   }
+   else
+   {
+      printf(&quot;y != 0&quot;); 
+   }
+
+   printf(&quot;\nFIM&quot;);
+}</pre>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando 
+Condicional</font></span></b></p>
+<p>O comando condicional ? oferece uma alternativa ao if-else em algumas 
+situações. Este comando permite avaliar uma condição, que caso seja verdadeira 
+retorna o valor da primeira expressão e se for falsa retorna o valor da segunda 
+expressão.</p>
+<pre>&lt;condição&gt; ? &lt;expressão1&gt; : &lt;expressão2&gt;;</pre>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span></font></pre>
+<pre>main() {
+   int x = -1;
+   printf(&quot;Digite x: &quot;);
+   scanf(&quot;%d&quot;, &amp;x);
+   int y = x == -1 ? 0 : x;
+   printf(&quot;Valor de y: %d&quot;, y);
+}</pre>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span></font></pre>
+<pre>main() {
+   int x = 0;
+   printf(&quot;Digite x: &quot;);
+   scanf(&quot;%d&quot;, &amp;x);
+
+   printf( (x == 0) ? &quot;x == 0&quot; : &quot;x != 0&quot; );
+
+   int y = 0;
+   printf(&quot;\nDigite y: &quot;);
+   scanf(&quot;%d&quot;, &amp;y);
+
+   printf( (y == 0) ? &quot;y == 0&quot; : &quot;y != 0&quot; ); 
+   printf(&quot;\nFIM&quot;);
+}</pre>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando Switch</font></span></b></p>
+<p>O comando <i>switch</i> serve associar conjuntos de comandos a certos valores 
+resultantes de uma expressão. Funciona como um substituto ao <i>if</i> para 
+casos em que um comando ou conjunto de comandos é executado para cada valor 
+resultante de uma expressão. Um exemplo de uso do <i>switch</i> é o tratamento 
+de menus. Para cada opção de menu, uma ação deve ser executada. A opção de menu 
+é avaliada na expressão e de acordo com seu valor, a ação correspondente é 
+executada.</p>
+<pre>switch( &lt;expressao&gt; ) { 
+   case constante1  : Sequencia de instrucoes 1
+   case constante2  : Sequencia de instrucoes 2
+   ...
+   case constante n : Sequencia de instrucoes n
+   default : Sequencia de comando x
+}</pre>
+<p>Exemplo:</p>
+<pre>main() {
+   int mes;
+   printf(&quot;Digite o numero do mes: &quot;);
+   scanf(&quot;%d&quot;, &amp;mes);
+
+   switch (mes) {
+      case  1: printf(&quot;Janeiro&quot;);   break;
+      case  2: printf(&quot;Fevereiro&quot;); break;
+      case  3: printf(&quot;Março&quot;);     break;
+      case  4: printf(&quot;Abril&quot;);     break;
+      case  5: printf(&quot;Maio&quot;);      break;
+      case  6: printf(&quot;Junho&quot;);     break;
+      case  7: printf(&quot;Julho&quot;);     break;
+      case  8: printf(&quot;Agosto&quot;);    break;
+      case  9: printf(&quot;Setembro&quot;);  break;
+      case 10: printf(&quot;Outubro&quot;);   break;
+      case 11: printf(&quot;Novembro&quot;);  break;
+      case 12: printf(&quot;Dezembro&quot;);  break;
+      default: printf(&quot;Mes inexistente&quot;);
+   }
+}</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Estruturas de Repetição</span></b></h2>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando For</font></span></b></p>
+<p>O comando <i>for</i> permite executar um comando (ou bloco de comandos quando 
+usamos { }) repetidas vezes. Antes da primeira iteração ocorrer, os comandos 
+iniciais são executados e a condição de entrada é testada. Se a condição for 
+verdadeira (valor 1), a primeira iteração é executada. Quando chega-se ao final 
+da primeira iteração, executamos os comandos pós-iteração. Em seguida, a 
+condição de entrada é checada novamente e se for verdadeira, a segunda iteração 
+é executada. Esse processo continua até a condição ser falsa.</p>
+<pre>for ( &lt;comandos-iniciais&gt;; &lt;condição-entrada&gt;; &lt;comandos-pós-iteração&gt; )
+   &lt;comando&gt;</pre>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando While</font></span></b></p>
+<p>O comando <i>while</i> permite executar um comando (ou bloco de comandos 
+quando usamos { }) repetidas vezes. A primeira iteração acontece se a condição 
+de entrada no laço é verdadeira (valor 1) fazendo com que o comando dentro do 
+while seja executado. Em seguida, checa-se novamente a condição de entrada no 
+laço e, caso seja verdadeira, a segunda iteração é executada. Este processo se 
+repete até que a condição de entrada seja falsa (valor 0).</p>
+<pre>while ( &lt;condição-entrada&gt; )
+   &lt;comando&gt;</pre>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comando Do While</font></span></b></p>
+<p>O comando <i>do while</i> permite executar um comando (ou bloco de comandos 
+quando usamos { }) repetidas vezes. A primeira iteração sempre acontece, já que 
+a condição de permanência é testada apenas no final das iterações. Logo, caso a 
+condição seja verdadeira, a segunda iteração é executada. Este processo se 
+repete até a condição do laço ser falsa (valor 0).</p>
+<pre>do 
+   &lt;comando&gt;
+while ( &lt;condição-permanência&gt; )</pre>
+<p><b><span style="font-family: Times New Roman"><font size="4">Comandos Break e 
+Continue</font></span></b></p>
+<p>O comando <i>break</i> faz com que o laço corrente seja encerrado, levando ao 
+próximo comando após o laço. Já o <i>continue</i>, pula a iteração corrente, 
+passando para a próxima, mas antes testando as condições de entrada do laço.</p>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exemplo 1: Fatorial</span></b></h2>
+<pre>main() {
+   long res = 1, num;
+
+   scanf(&quot;%d&quot;, &amp;num);
+
+   while (num &gt; 1)
+      res *= num--; 
+
+   printf(&quot;%d&quot;, res);
+}</pre>
+<h2><b><span style="font-family: Times New Roman">Exemplo 2: Progressão 
+Geométrica</span></b></h2>
+<pre>main() {
+   long contador = 1, termo = 3, soma = 3;
+
+   printf(&quot;%d\n&quot;, termo);
+
+   do {
+      termo *= 3;
+      soma += termo;
+      contador++;
+      printf(&quot;%d\n&quot;, termo);
+   }
+   while (contador != 20);
+
+   printf(&quot;%d\n&quot;, soma);
+}</pre>
+
+</body>
+
+</html>

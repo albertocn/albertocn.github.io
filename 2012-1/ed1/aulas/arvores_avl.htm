@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Árvores Balanceadas AVL</title>
+</head>
+
+<body>
+
+<p><font size="6"><b>Árvores Balanceadas AVL</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> Uma árvore é considerada AVL quando a 
+altura de suas sub</span><span lang="en-us">árvores direita e esquerda diferem 
+no máximo 1 unidade, isto é, a </span>árvore permanece sempre balanceada<span lang="en-us">.
+</span>AVL <span lang="pt-br">vem da abreviatura dos nomes de seus criadores 
+G.M. Adelson-Velskii e&nbsp; E.M. Landis, em 1962.</span></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b><font face="Courier New" size="2">Definição de uma árvore AVL</font></b><p>
+  <font face="Courier New" size="2">type<br>
+&nbsp;&nbsp; TDirecao = (NoEsquerdo, NoDireito);<br>
+&nbsp;&nbsp; PNo = ^No;<br>
+&nbsp;&nbsp; No = record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dado : Tipo_do_Dado;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Links : array[NoEsquerdo..NoDireito] 
+  of PNo;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balanco : -1..1;<br>
+&nbsp;&nbsp; end;<br>
+&nbsp;&nbsp; ArvoreAVL = PNo;</font></p>
+</div>
+<p><b>Exemplo: Observe os balanços de cada nó da árvore AVL abaixo</b></p>
+<p>
+<img border="0" src="figuras/arvore_avl_exemplo.png" width="331" height="285"></p>
+<p>&nbsp;</p>
+<p><b>Exemplo: Efetuando uma inserção em uma árvore AVL</b></p>
+<p>
+<img border="0" src="figuras/arvore_avl_insercao_pivo.png" width="661" height="284"></p>
+<p>Após a inserção de B no exemplo acima, a árvore passou a ficar desbalanceada. 
+Para corrigir tal situação, aplicamos <b>rotações</b> para tornar a árvore 
+balanceada novamente.</p>
+<p>&nbsp;</p>
+
+<h3>Rotações</h3>
+<hr>
+<p><b>Rotação Simples para Direita:</b> Quando pivô e filho esquerdo têm mais 
+elementos no lado esquerdo.</p>
+<p>
+<img border="0" src="figuras/arvore_avl_rot_simp_dir_ex.png" width="601" height="298"></p>
+<p>Após a inserção do valor 3, a árvore AVL ficou desbalanceada. O pivô (nó que 
+contém 8) tem balanço 2 e seu filho esquerdo (nó que contém 4) tem balanço 1. Ao 
+aplicar a rotação simples para direita, a árvore volta a ficar balanceada.</p>
+<p>&nbsp;</p>
+
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2">procedure RotacaoParaDireita(var Pivo : 
+  PNo);<br>
+  var Temp, FilhoEsq : PNo;<br>
+  begin<br>
+&nbsp;&nbsp; FilhoEsq := Pivo^.Links[NoEsquerdo];<br>
+&nbsp;&nbsp; Temp := FilhoEsq^.Links[NoDireito];<br>
+&nbsp;&nbsp; FilhoEsq^.Links[NoDireito] := Pivo;<br>
+&nbsp;&nbsp; Pivo^.Links[NoEsquerdo] := Temp;<br>
+  end;</font></div>
+<p>&nbsp;</p>
+
+<p><b>Rotação Simples para Esquerda:</b> Quando pivô e filho direito têm mais 
+elementos no lado direito.</p>
+<p>
+<img border="0" src="figuras/arvore_avl_rot_simp_esq_ex.png" width="643" height="361"></p>
+<p>Após a inserção do valor 13, a árvore AVL ficou desbalanceada. O pivô (nó que 
+contém 10) tem balanço -2 e seu filho esquerdo (nó que contém 12) tem balanço 
+-1. Ao aplicar a rotação simples para esquerda, a árvore volta a ficar 
+balanceada.</p>
+<p>&nbsp;</p>
+
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <font face="Courier New" size="2">procedure RotacaoParaEsquerda(var Pivo : 
+  PNo);<br>
+  var Temp, FilhoDir : PNo;<br>
+  begin<br>
+&nbsp;&nbsp; FilhoDir := Pivo^.Links[NoDireito];<br>
+&nbsp;&nbsp; Temp := FilhoDir^.Links[NoEsquerdo];<br>
+&nbsp;&nbsp; FilhoDir^.Links[NoEsquerdo] := Pivo;<br>
+&nbsp;&nbsp; Pivo^.Links[NoDireito] := Temp;<br>
+  end;</font></div>
+<p>&nbsp;</p>
+
+<p><b>Rotação Dupla uma para Esquerda outra para Direita:</b> Quando pivô tem 
+mais elementos do lado esquerdo e filho tem mais elementos do lado direito.</p>
+<p>
+<img border="0" src="figuras/arvore_avl_rot_dupla_esq_dir_ex.png" width="769" height="322"></p>
+<p>Após a inserção do valor 7, a árvore fica desbalanceada. Como o pivô (nó com 
+valor 8) tem mais elementos do lado esquerdo, mas seu filho esquerdo (nó com 
+valor 4) possui mais elementos do lado direito, é preciso primeiro fazer uma 
+rotação à esquerda em torno do filho esquerdo para depois efetuar a rotação para 
+a direita sobre o pivô.</p>
+<p>&nbsp;</p>
+<p><b>Rotação Dupla uma para Direita outra para Esquerda:</b> Quando pivô tem 
+mais elementos do lado direito e filho tem mais elementos do lado esquerdo.</p>
+<p>
+<img border="0" src="figuras/arvore_avl_rot_dupla_dir_esq_ex.png" width="714" height="283"></p>
+<p>Após a inserção do valor 11, a árvore fica desbalanceada. Como o pivô (nó com 
+valor 10) tem mais elementos do lado direito, mas seu filho direito (nó com 
+valor 12) possui mais elementos do lado esquerdo, é preciso primeiro fazer uma 
+rotação à direita em torno do filho direito para depois efetuar a rotação para a 
+esquerda sobre o pivô (nó com valor 10).</p>
+<p>&nbsp;</p>
+
+<p>De forma geral, teríamos o quadro abaixo:</p>
+
+<p>
+<img border="0" src="figuras/arvore_avl_rotacoes.png" width="510" height="811"></p>
+
+<p>&nbsp;</p>
+
+<p>Para ver uma implementação de uma árvore AVL, abra a unit
+<a href="pdfs/ARVAVL.pdf">ArvAvl</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/PARVAVL.pdf">PArvAvl</a>.</p>
+
+<p>A <b>remoção</b> em árvore AVL também pode provocar desbalanceamento, por isso 
+sempre após uma remoção devemos verificar se há necessidade de rotação. A implementação consiste em executar as mesmas rotações acima descritas.</p>
+
+</body>
+
+</html>

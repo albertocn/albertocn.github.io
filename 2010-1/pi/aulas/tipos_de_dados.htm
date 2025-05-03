@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Tipos de Dados</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Tipos de Dados</font></h1>
+<hr>
+<h2><span style="font-family: Times New Roman">Introdução</span></h2>
+<h3><span style="font-family: Times New Roman">São elementos de composição de um 
+algoritmo:</span></h3>
+<ul>
+  <li><span style="font-family: Times New Roman">Instruções - Ações</span></li>
+  <li><span style="font-family: Times New Roman">Dados - Entrada</span></li>
+  <li><span style="font-family: Times New Roman">Informações - Saída</span></li>
+</ul>
+<h3><span style="font-family: Times New Roman">Os dados classificam-se conforme 
+os tipos de seus conteúdos (significados, interpretações) compondo os tipos de 
+dados.</span></h3>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Tipos de Dados</span></b></h2>
+<h3><span style="font-family: Times New Roman">Numéricos</span></h3>
+<ul>
+  <li><span style="font-family: Times New Roman">Compostos por números</span></li>
+  <li><span style="font-family: Times New Roman">Podem ser:</span><ul>
+  <li><span style="font-family: Times New Roman">Inteiros -&nbsp; positivos ou 
+  negativos e não apresentam componentes decimais. Exemplo: idade</span></li>
+  <li><span style="font-family: Times New Roman">Reais - positivos ou negativos 
+  e podem ter componentes fracionários. Exemplo: preço</span></li>
+</ul>
+  </li>
+</ul>
+<h3><span style="font-family: Times New Roman">Literais</span></h3>
+<ul>
+  <li>Composto por letras, dígitos numéricos e/ou símbolos especiais</li>
+  <li>Também denominados alfanuméricos</li>
+  <li>São assinalados por aspas ou apóstrofos</li>
+  <li>O comprimento N de um literal L consiste no número N de caracteres 
+  apresentados por L</li>
+  <li>Exemplo: 'casa' (comprimento 4), 'manaus' (comprimento 6)</li>
+</ul>
+<h3><span style="font-family: Times New Roman">Lógicos</span></h3>
+<ul>
+  <li>Podem assumir os valores: verdadeiro ou falso</li>
+  <li>São denominados também booleanos</li>
+  <li>Exemplo: dado que controla exibição da saída</li>
+</ul>
+<pre>se Resposta = verdadeiro então
+  escreva ('Afirmativo')
+senão
+  escreva ('Negativo');</pre>
+<h3>Exemplo</h3>
+<pre>algoritmo ConvênioMédico;</pre>
+<pre>variáveis
+  Idade: inteiro;
+  Plano: literal[8];
+  Base,
+  Preço : real;
+  PlanoValido: lógico;</pre>
+<pre>início
+  leia(Plano);</pre>
+<pre>  PlanoValido &lt;- verdadeiro;</pre>
+<pre>  se Plano = 'B' então
+    Base &lt;- 15.00
+  senão
+    se Plano = 'A' então
+      Base &lt;- 20.00
+    senão
+      se Plano = 'Especial' então
+        Base &lt;- 25.00
+      senão
+        inicio
+          escreva ('Plano inexistente');
+          PlanoValido &lt;- falso;
+        fim</pre>
+<pre>  se PlanoValido = verdadeiro então
+    inicio
+      leia(Idade);</pre>
+<pre>      se Idade &lt;= 20 então
+        Preço &lt;- Base * 3
+      senão
+        se Idade &gt;= 21 e Idade &lt;= 40 então
+          Preço &lt;- Base * 2
+        senão
+          se Idade &gt;= 41 então
+            Preço &lt;- Base * 2.5;</pre>
+<pre>      exibir (Preço);
+    fim</pre>
+<pre>fim.</pre>
+<pre>&nbsp;</pre>
+<h3>Exercícios</h3>
+<p>5) Identifique os tipos de dados manipulados pelo algoritmo AnalisaEmprestimo 
+apresentado como ilustração de aula.</p>
+<p>6) Identifique uma situação problema cuja solução implique no uso de um 
+algoritmo. Escreva o algoritmo usando pseudocódigo e assinale neste os tipos de 
+dados manipulados.</p>
+
+</body>
+
+</html>

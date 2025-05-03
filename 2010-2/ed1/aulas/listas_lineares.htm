@@ -1,0 +1,259 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Listas Lineares</title>
+</head>
+
+<body>
+
+<p><span lang="pt-br"><font size="6"><b>Listas Lineares</b></font></span></p>
+<hr>
+<p><span lang="pt-br">Uma lista linear permite representar um conjunto de dados 
+do mesmo tipo onde a ordem linear entre eles é preservada.</span></p>
+<p><span lang="pt-br">Alguns exemplos de utilização são:</span></p>
+<ul>
+  <li><span lang="pt-br">Uma lista de supermercado</span><ul>
+    <li><span lang="pt-br">Neste tipo de lista a ordenação é casual.</span></li>
+  </ul>
+  </li>
+  <li><span lang="pt-br">A lista telefônica</span><ul>
+    <li><span lang="pt-br">Contém registros com nome da pessoa, endereço e 
+    número de telefone.</span></li>
+    <li><span lang="pt-br">A ordenação é alfabética pelo último nome da pessoa.</span></li>
+  </ul>
+  </li>
+  <li><span lang="pt-br">A lista de alunos da Universidade</span><ul>
+    <li><span lang="pt-br">Cada registro contém a matrícula, o nome, a data de 
+    nascimento, etc.</span></li>
+  </ul>
+  </li>
+</ul>
+<p><span lang="pt-br">As principais operações que podem ser executadas em Listas 
+Lineares são:</span></p>
+<ul>
+  <li><span lang="pt-br">Inserir um componente na lista.</span></li>
+  <li><span lang="pt-br">Remover um componente da lista.</span></li>
+  <li><span lang="pt-br">Alterar um componente da lista.</span></li>
+  <li><span lang="pt-br">Procurar um componente da lista</span></li>
+</ul>
+<p>&nbsp;</p>
+
+<p><b><font size="5">Lista Seqüencial</font></b></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> Uma lista é dita seqüencial quando seus 
+componentes são armazenados em posições contíguas na memória.</span></p>
+<p><span lang="pt-br">A implementação mais comum de uma lista seqüencial usa um 
+vetor (array), mas pode ser também usado um arquivo ou conjunto.</span></p>
+<p>Para ver uma implementação de uma lista Sequencial, abra a unit
+<a href="pdfs/LSTSEQ.pdf">LstSeq</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/DLSTSEQ.pdf">DLstSeq</a>.</p>
+<p>&nbsp;</p>
+
+<p><b><font size="5">Lista Encadeada</font></b></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> Uma lista encadeada é uma coleção de registros 
+em que cada registro tem um campo que indica a localização do registro seguinte 
+na lista.</span></p>
+<p><span lang="pt-br">Assim, a ordenação é fornecida explicitamente por esse 
+campo. Esquematicamente podemos representar uma lista ligada da seguinte forma:</span></p>
+<p><img border="0" src="figuras/lst_enc.png" width="417" height="30"></p>
+<p><span lang="pt-br">Onde o registro que representa cada componente da lista 
+possui um campo que aponta para o próximo registro numa certa seqüência de 
+ordenação.</span></p>
+<p><span lang="pt-br"><b>Cabeça</b>: Primeiro registro (elemento) da lista.</span></p>
+<p><span lang="pt-br"><b>Cauda</b>: Último elemento da lista. Para indicar que 
+não ha elementos após a cauda, atribui-se <b>nil</b> ao apontador para o 
+próximo, já que não existe um próximo.</span></p>
+<p><span lang="pt-br">A principal vantagem das listas encadeadas sobre as listas 
+seqüenciais é que as primeiras podem aumentar e reduzir de tamanho 
+dinamicamente, podendo assim ser usadas em diversas situações sem comprometer o 
+uso de memória.</span></p>
+<p><span lang="pt-br">A principal desvantagem das listas encadeadas é a 
+necessidade de armazenamento adicional para guardar os apontadores.</span></p>
+<p>Para ver uma implementação de uma lista Encadeada, abra a unit
+<a href="pdfs/LSTENC.pdf">LstEnc</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/DLSTENC.pdf">DLstEnc</a>.</p>
+<p>&nbsp;</p>
+<p><b><font size="4">Inserção</font><font size="4"> na lista encadeada</font></b></p>
+<hr>
+<p><span lang="pt-br">Inicialmente a cabeça da lista aponta para nil, indicando 
+que a mesma está vazia (1). Após a inserção do um Item 1 na lista, a cabeça 
+aponta para ele, e o apontador para o próximo Item contido no Item 1 aponta para 
+nil, já que após ele não há outros itens (2). Caso um outro elemento (Item 2) 
+seja inserido, ele passa a ser a cabeça da lista e seu apontador para o próximo 
+elemento da lista aponta para a antiga cabeça da lista (Item 1), como pode ser 
+verificado em (3).</span></p>
+<p><img border="0" src="figuras/lst_enc_insercao.png" width="441" height="222"></p>
+<p>&nbsp;</p>
+<p><b><font size="4">Remoção na lista encadeada</font></b></p>
+<hr>
+<p><span lang="pt-br">Quando o item a ser removido encontra-se na cabeça da 
+lista, executamos os seguintes passos:</span></p>
+<p><span lang="pt-br">1) Navegamos na lista até encontrar o item a ser removido 
+e guardamos o apontador para o próximo item (segundo) da lista.</span></p>
+<p><span lang="pt-br">2) Fazemos com que o apontador para a cabeça passe a 
+apontar para o item seguinte à cabeça da lista, através do apontador obtido no 
+passo 1.</span></p>
+<p><span lang="pt-br">3) Já que a cabeça já foi ajustada, executamos o <b>
+dispose</b> no item que localizava-se na cabeça da lista, liberando a memória 
+referente ao Item removido da lista.</span></p>
+<p><span lang="pt-br">4) A lista passa a ter um elemento a menos e a variável 
+dinâmica que continha o elemento apontado pela cabeça da lista foi desalocado da 
+memória.</span></p>
+<p><span style="background-color: #FFFF00" lang="pt-br">
+<img border="0" src="figuras/lst_enc_remocao_cabeca.png" width="442" height="291"></span></p>
+<p><span lang="pt-br">Quando o item a ser removido não se encontra na cabeça da 
+lista, é necessário atualizar o apontador do item anterior. Sendo assim, usamos 
+um apontador (PAtual) para procurar o Item a ser removido e outro (PAnterior) 
+para guardar o Item anterior na lista encadeada. Desta forma, ao encontrar o 
+Item (1), temos um apontador para o item anterior a ele (PAnterior) e para o 
+próprio item (PAtual), como mostra (2). De posse destes apontadores, podemos 
+ajustar o apontador para o próximo do item apontador por PAnterior para o 
+endereço apontado pelo campo próximo do item apontado por PAtual. Em seguida, 
+usamos o dispose para desalocar a variável dinâmica que guarda o item removido 
+(3). Ao final, temos uma lista encadeada com um item a menos e com todos os 
+apontadores ajustados.</span></p>
+<p><span lang="pt-br"><font size="6"><b>
+<img border="0" src="figuras/lst_enc_remocao_meio.png" width="575" height="383"></b></font></span></p>
+<p>&nbsp;</p>
+
+<p><span lang="pt-br"><b><font size="5">Lista Ordenada</font></b></span></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> É uma lista que mantém os seus elementos 
+sempre ordenados por algum critério.</span></p>
+<p>Deve ser usada quando é necessário acessar os elementos da lista de forma 
+ordenada. Quando a ordem não for importante, deve-se considerar o uso de outro 
+tipo de lista pois as op<span lang="pt-br">erações de inserção e remoção são 
+mais caras (exigem mais processamento)&nbsp; nas listas ordenadas.</span></p>
+<p><span lang="pt-br">A forma mais comum de se implementar uma lista ordenada é 
+usando uma lista encadeada, onde o primeiro nó é menor que o segundo e assim por 
+diante. Graficamente teríamos:</span></p>
+<p><img border="0" src="figuras/lst_ord.png" width="521" height="56"></p>
+<p>Para </p>
+<p>Para ver uma implementação de uma lista Ordenada, abra a unit
+<a href="pdfs/LSTORD.pdf">LstOrd</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/DLSTORD.pdf">DLstOrd</a>.</p>
+<p>O procedimento <b>inicializar</b> faz com que a <b>cabeça</b> da lista aponte 
+para <b>nil</b>, indicando que não há elementos na lista.</p>
+<p>O procedimento <b>apagar</b> e as funções <b>cheia</b>, <b>vazia</b> e <b>
+tamanho</b> são iguais à da lista encadeada, recebendo apenas um parâmetro com 
+tipo diferente.</p>
+<p>A função <b>inserir</b> coloca o item passado na posição correta da lista, ou 
+seja, mantendo a ordem da mesma. A lista não deve conter uma chave igual à do 
+item passado. Se a chave do item passado for menor do que a do primeiro da 
+lista, será inserido no início e tornar-se-á a <b>cabeça</b> da lista (situação 
+1). Caso contrário, será inserido no <b>meio</b> (situação 3) ou no <b>final</b> 
+(situação 2) da lista, dependendo do valor de sua chave e dos elementos contidos 
+na lista (situação 2).</p>
+<p><b>Situação 1: Inserindo um valor no início da lista:</b></p>
+<p>
+<img border="0" src="figuras/lst_ord_ins_cabeca.png" width="531" height="288"></p>
+<p>&nbsp;</p>
+<p><b>Situação 2: Inserindo um valor no final da lista:</b></p>
+<p><img border="0" src="figuras/lst_ord_ins_final.png" width="527" height="282"></p>
+<p>&nbsp;</p>
+<p><b>Situação 3: Inserindo um valor no meio da lista:</b></p>
+<p><img border="0" src="figuras/lst_ord_ins_meio.png" width="527" height="281"></p>
+<p>&nbsp;</p>
+<p>A função <b>remover</b> encontra um item na lista com a chave passada, libera 
+a memória alocada pelo item e ajusta apontadores. No caso da remoção, 
+encontramos 2 situações: remoção do elemento da cabeça ou que não está na 
+cabeça.</p>
+<p><b>Situação 1: Removendo um item da cabeça da lista:</b></p>
+<p>
+<img border="0" src="figuras/lst_ord_rem_cabeca.png" width="533" height="335"></p>
+<p>&nbsp;</p>
+<p><b>Situação 2: Removendo um item que não está na cabeça da lista:</b></p>
+<p>
+<img border="0" src="figuras/lst_ord_rem_exceto_cabeca.png" width="535" height="336"></p>
+
+<p>&nbsp;</p>
+
+<p><span lang="pt-br"><b><font size="5">Lista Circular</font></b></span></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> É uma lista encadeada na qual o último 
+elemento aponta para a cabeça da lista. </span></p>
+<p>Graficamente teríamos:</p>
+<p><img border="0" src="figuras/lst_circ.png" width="494" height="110"></p>
+<p>As listas vistas até agora não possuem nó cabeça (apesar de poderem). Um <b>
+nó cabeça</b> é um nó criado na inicialização da lista e que permanece sendo a 
+cabeça mesmo após inserções e remoções. O nó cabeça não guarda informações, a 
+não ser o apontador para o primeiro nó da lista.</p>
+<p>Uma lista circular com nó cabeça <b>vazia</b> teria a seguinte estrutura:</p>
+<p><img border="0" src="figuras/lst_circ_vazia.png" width="181" height="106"></p>
+<p>&nbsp;</p>
+<p>Já uma lista circular com 2 itens teria a seguinte estrutura:</p>
+<p><img border="0" src="figuras/lst_circ.png" width="494" height="110"></p>
+<p>Observe que em ambas as situações o nó cabeça não é usado para armazenar 
+valores.</p>
+<p>Para ver uma implementação de uma lista Circular com no cabeça, abra a unit
+<a href="pdfs/LSTCIRC.pdf">LstCirC</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/DLSTCIRC.pdf">DLstCirC</a>.</p>
+<p>O procedimento <b>Inicializar </b>faz com que o nó cabeça seja criado e 
+ajusta o <b>tamanho</b> para zero. Também faz com que o apontador para o próximo 
+contido no nó cabeça aponte para ele mesmo.</p>
+<p>A função <b>Inserir</b> cria um novo nó e o coloca após o nó cabeça, fazendo 
+com que o seu próximo seja igual ao anteriormente apontado pelo nó cabeça.</p>
+<p><img border="0" src="figuras/lst_circ_ins.png" width="495" height="283"></p>
+<p>&nbsp;</p>
+<p>A função <b>Remover</b> retira o primeiro nó com a chave informada. Se 
+encontrar, ajusta os apontadores e apaga o nó.</p>
+<p><img border="0" src="figuras/lst_circ_rem.png" width="496" height="334"></p>
+<p>Observe que mesmo quando o último elemento é removido, o nó cabeça continua, 
+conforme mostrado abaixo:</p>
+<p><img border="0" src="figuras/lst_circ_rem2.png" width="363" height="343"></p>
+<p>&nbsp;</p>
+<p>O procedimento para <b>Apagar</b> libera todos os nós da lista, incluindo o 
+nó cabeça. Não é correto chamar nenhuma outra operação (a não ser <b>Inicializar</b>) 
+após chamar Apagar.</p>
+<p><img border="0" src="figuras/lst_circ_apagar.png" width="495" height="305"></p>
+<p>&nbsp;</p>
+
+<p><span lang="pt-br"><b><font size="5">Lista Duplamente Encadeada</font></b></span></p>
+<hr>
+<p><b>Definição:</b> Uma lista duplamente encadeada (ou duplamente ligada) é uma 
+lista com ligações múltiplas em que cada nó tem um campo que aponta para o nó 
+anterior na lista e outro campo que aponta para o nó seguinte.</p>
+<p>Graficamente temos:</p>
+<p><img border="0" src="figuras/lst_denc.png" width="583" height="122"></p>
+<p>&nbsp;</p>
+<p>As listas duplamente encadeadas são bastante úteis quando desejamos <b>
+percorrer os nós em qualquer sentido</b>, como em um editor de textos (cada 
+linha é um nó) ou uma agenda (cada pessoa é um nó).</p>
+<p>Uma lista duplamente encadeada possui um apontador para o início da lista (<b>cabeça</b>) 
+e outro para o final (<b>cauda</b>).</p>
+<p>Para ver uma implementação de uma lista Circular com no cabeça, abra a unit
+<a href="pdfs/LSTDENC.pdf">LstDEnc</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/DLSTDENC.pdf">DLstDEnc</a>.</p>
+<p>A função <b>Inserir</b> coloca o novo nó na cabeça da lista. Se a lista 
+estiver vazia, o novo nó também será a cauda.</p>
+<p><img border="0" src="figuras/lst_denc_ins.png" width="585" height="353"></p>
+<p>&nbsp;</p>
+<p>A função <b>Remover</b> apaga um nó da lista e ajusta os apontadores (cabeça, 
+cauda, anterior e proximo) quando necessário</p>
+<p><b>a) Removendo no meio</b></p>
+<p><img border="0" src="figuras/lst_denc_rem_meio.png" width="585" height="389"></p>
+<p>&nbsp;</p>
+<p><b>b) Removendo na cabeça</b></p>
+<p>
+<img border="0" src="figuras/lst_denc_rem_cabeca.png" width="583" height="388"></p>
+<p>&nbsp;</p>
+<p><b>c) Removendo na cauda</b></p>
+<p>
+<img border="0" src="figuras/lst_denc_rem_cauda.png" width="584" height="387"></p>
+<p>&nbsp;</p>
+<p><b>d) Removendo o último</b></p>
+<p>
+<img border="0" src="figuras/lst_denc_rem_ultimo.png" width="301" height="346"></p>
+<p>&nbsp;</p>
+<p>As funções <b>Tamanho</b>, <b>Cheia e Vazia</b> são semelhantes às da lista 
+circular, diferindo apenas nos tipos de parâmetros (passam de <b>Lista_Circular</b> 
+para <b>Lista_Duplamente_Enc</b>).</p>
+
+</body>
+
+</html>

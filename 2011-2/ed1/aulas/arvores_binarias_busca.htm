@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Árvores Binárias de Busca</title>
+</head>
+
+<body>
+
+<p><font size="6"><b>Árvores Binárias de Busca</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> É uma árvore binária em que todos os 
+valores na subárvore esquerda são menores que o da raiz e todos os valores da 
+subárvore direita são maiores (ou iguais) que o da raiz.</span></p>
+<p>Exemplos de árvores binária<span lang="pt-br">s de busca:</span></p>
+<p><img border="0" src="figuras/arvore_binaria.png" width="284" height="193"></p>
+<p>&nbsp;</p>
+<p>
+<img border="0" src="figuras/arvore_binaria_busca.png" width="315" height="379"></p>
+<p>&nbsp;</p>
+<p>Usando o caminhamento central, teríamos:</p>
+<p>Seqüência (1° árvore): A, B, C, D, E, F e G.</p>
+<p>Seqüência (2° árvore): 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 e 110.</p>
+<h3>&nbsp;</h3>
+<h3>Implementação de uma Árvore Binária de Busca</h3>
+<hr>
+<p>Para ver uma implementação de uma árvore binária encadeada, abra a unit
+<a href="pdfs/ARVBINB.pdf">ArvBinB</a> e para um programa que demonstra como usá-la, 
+veja <a href="pdfs/PARVBINB.pdf">PArvBinB</a>.</p>
+<p>A função <b>EncontrarChave</b> busca na árvore passada a chave informada. Se 
+encontrar, <b>P</b> apontará para o nó que a contém e a função retorna <b>true</b>. 
+Caso não encontre, a função retorna <b>false</b> e <b>P</b> aponta para o nó que 
+seria o seu pai caso existisse.</p>
+
+<p>A função <b>Inserir</b> usa <b>EncontrarChave</b> para verificar se a chave 
+já existe. Caso exista, retorna <b>false</b>. Se não existir, aproveita o 
+apontador <b>P</b> (aponta para o pai correto do nó a ser inserido) e inclui na 
+subárvore esquerda de P se a chave sendo inserida for menor ou na direita se for 
+maior, retornando <b>true</b>.</p>
+
+<p>A remoção de um nó pode ser mais simples ou complexa de acordo com o número 
+de subárvores que possui.</p>
+
+<p><b>a) Removendo um nó sem subárvore (folha)<span lang="en-us">:</span></b></p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_busca_rem_folha.png" width="508" height="200"></p>
+
+<p>Nesse caso, basta apagar o nó e atualizar o apontador para ele no pai para <b>
+nil</b>.</p>
+
+<p>&nbsp;</p>
+
+<p><b>b) Removendo um nó com uma subávore:</b></p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_busca_rem_1subarvore.png" width="587" height="263"></p>
+
+<p>Nesse caso basta desviar o apontador que apontava para o nó a ser removido 
+para a sua única subárvore. Por último, elimina-se o nó.</p>
+
+<p>&nbsp;</p>
+
+<p><b>c) Removendo um nó com duas subávore:</b></p>
+
+<p>
+<img border="0" src="figuras/arvore_binaria_busca_rem_2subarvore.png" width="756" height="381"></p>
+
+<p>Nesse caso é necessário encontrar o <b>sucessor imediato</b>, copiar o seu 
+conteúdo para o nó a ser removido e remover o nó que continha o sucessor 
+imediato.</p>
+
+<p>Para remover um nó nesse caso teremos que colocar um outro nó no lugar 
+daquele que vai ser removido. Para a escolha desse nó podemos usar duas 
+abordagens:</p>
+
+<ol>
+  <li><b>Sucessor imediato</b>: utilizamos o nó mais à esquerda da subárvore 
+  direita do nó a ser removido.</li>
+  <li><b>Predecessor imediato</b>: utilizamos o nó mais à direita da subávore 
+  esquerda do nó a ser removido.</li>
+</ol>
+
+</body>
+
+</html>

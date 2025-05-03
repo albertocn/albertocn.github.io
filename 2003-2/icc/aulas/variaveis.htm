@@ -1,0 +1,201 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Variáveis</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Variáveis</font></h1>
+<hr>
+<h2><span style="font-family: Times New Roman">Introdução</span></h2>
+<h3><span style="font-family: Times New Roman">Exemplo</span></h3>
+<ul>
+  <li>Algoritmo que calcula as possibilidades de empréstimo bancário de um dado 
+  salário:</li>
+</ul>
+<pre>algoritmo CalculaEmprestimo;</pre>
+<pre>variáveis
+   Salario,
+   Emprestimo : real</pre>
+<pre>início
+   leia(Salario);</pre>
+<pre>   se Salario &gt;= 175.00 então
+      início
+         Emprestimo &lt;- 150.00;
+         enquanto 0.12 * Emprestimo &lt; 0.15 * Salario faça
+            início
+               escreva('EMPRÉSTIMO:', Emprestimo);
+               escreva('PRESTAÇÃO:',  0.12 * Emprestimo);
+               Emprestimo &lt;- Emprestimo + 50.00;
+            fim
+      fim;
+   senão
+      escreva('SALARIO INSUFICIENTE');
+fim.</pre>
+<pre>&nbsp;</pre>
+<h3><b>Rastreando</b></h3>
+<pre>Salário - 300.00 (comprometimento mensal = 45)
+Empréstimo 150  200  250  300  350
+Prestação   18   24   30   36   42
+</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Conceito</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">São elementos computacionais 
+  cujos conteúdos variam durante a execução de um programa/algoritmo</span></li>
+</ul>
+<h3>Características</h3>
+<ul>
+  <li>Referem-se a espaços em memória e funcionam como gavetas que armazenam 
+  dados ou informações.</li>
+  <li>Ao armazenar-se um conteúdo X numa variável que contém Y, X substitui Y e 
+  Y é irrecuperável.</li>
+  <li>São referenciados nos programas pelos seus nomes ou identificadores.</li>
+  <li>Podem ser numéricas, alfanuméricas ou lógicas.</li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Declaração</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">A utilização de variáveis em 
+  algoritmos requer a declaração prévia dessas</span></li>
+  <li><span style="font-family: Times New Roman">É efetuada na seção <u>
+  variáveis</u>, como segue:</span><pre>variáveis
+   Identificador : Tipo;</pre>
+  </li>
+  <li><span style="font-family: Times New Roman"><b>onde:</b></span><ul>
+  <li><span style="font-family: Times New Roman">Tipo - real, inteiro, literal 
+  ou logico; conforme os dados contidos nas variáveis</span></li>
+  <li><span style="font-family: Times New Roman">Identificador - nome qualquer, 
+  preferencialmente significativo usado para referenciar as variáveis. Devem ser 
+  únicos.</span></li>
+</ul>
+  </li>
+</ul>
+<h3>Exemplo</h3>
+<pre>variáveis
+   Preço:  real;
+   Idade:  inteiro;
+   Nome:   literal[30];
+   Valido: logico;</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Variáveis Literais</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Usadas para armazenar/manipular 
+  dados alfanuméricos</span></li>
+  <li><span style="font-family: Times New Roman">Declaração:</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Identificador: literal[N];</pre>
+</blockquote>
+<ul>
+  <li><span style="font-family: Times New Roman"><b>onde:</b></span><ul>
+    <li><span style="font-family: Times New Roman">N - indica o nº máximo de 
+    caracteres componentes da variável. Também denominado tamanho.</span></li>
+  </ul>
+  </li>
+  <li><span style="font-family: Times New Roman">O tamanho máximo que uma 
+  variável literal pode assumir é 255.</span></li>
+  <li><span style="font-family: Times New Roman">É possível fazer referência a 
+  cada dígito componente de uma variável literal.</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Nome: literal[30];
+   Letra: literal[1];</pre>
+  <pre>início
+   Nome &lt;- 'Marta';
+   Letra &lt;- Nome[3];</pre>
+</blockquote>
+<ul>
+  <li><span style="font-family: Times New Roman">É possível concatenar o 
+  conteúdo de variáveis literais.</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Nome : literal[10];
+   Sobrenome: literal[10];
+   NomeCompleto: literal[21];</pre>
+  <pre>início
+   Nome &lt;- 'Mario';
+   Sobrenome &lt;- 'Andrade'
+   NomeCompleto &lt;- Nome + ' ' + Sobrenome</pre>
+</blockquote>
+<ul>
+  <li><span style="font-family: Times New Roman">A variável <b>NomeCompleto</b> 
+  conterá <b>'Mario Andrade'</b>.</span></li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Variáveis Lógicas</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Possuem apenas dois valores 
+  possíveis: verdadeiro ou falso.</span></li>
+  <li><span style="font-family: Times New Roman">São usadas geralmente em 
+  instruções de controle.</span></li>
+  <li><span style="font-family: Times New Roman">Declaração</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Identificador : Logica;</pre>
+</blockquote>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Autorizacao : Logica;</pre>
+</blockquote>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Variáveis Numéricas</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Conforme os dados que 
+  armazenam, podem ser do tipo inteiro ou real.</span></li>
+  <li><span style="font-family: Times New Roman">Declaração:</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Identificador1 : inteiro;
+   Identificador2 : real;</pre>
+</blockquote>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo</span></li>
+</ul>
+<blockquote>
+  <pre>variáveis
+   Idade: inteiro;
+   Preço: real;</pre>
+</blockquote>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p>7) Ajuste o algoritmo ConvenioMedico de forma que seja exibida a tabela de 
+preços, por idade, dos três planos A, B e Especial</p>
+<p>8) Tomando 3(três) palavras, com 4(quatro) letras cada, como segue: </p>
+<pre>   CAMA
+   ASAS
+   LARA</pre>
+<p>É possível obter vocábulos tanto no sentido horizontal quanto no vertical. 
+Escrever um algoritmo para ler as três palavras (horizontais) e exibir os 
+vocábulos dispostos na vertical.</p>
+<p>9) Considere duas variáveis X e Y, é possível armazenar o conteúdo de X em Y 
+e o de Y em X? Como?</p>
+
+</body>
+
+</html>

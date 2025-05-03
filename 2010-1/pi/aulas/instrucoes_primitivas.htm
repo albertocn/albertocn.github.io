@@ -1,0 +1,158 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Instruções Primitivas</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Instruções Primitivas</font></h1>
+<hr>
+<h2><span style="font-family: Times New Roman">Introdução</span></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">São aquelas que efetuam tarefas 
+  essenciais na execução de algoritmos</span><ul>
+  <li><span style="font-family: Times New Roman">Entrada de Dados</span></li>
+  <li><span style="font-family: Times New Roman">Saída de Dados</span></li>
+  <li><span style="font-family: Times New Roman">Atribuição</span></li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Atribuição</span></b></h2>
+<ul>
+  <li><font face="Courier New">Variável</font><span style="font-family: Courier New"> 
+  &lt;- Expressão;</span></li>
+  <li><span style="font-family: Times New Roman">O valor resultante da expressão 
+  é armazenado na variável</span></li>
+  <li><span style="font-family: Times New Roman">Importante atentar para a 
+  necessidade de garantir que a variável tenha tipo compatível com o resultado 
+  da expressão.</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo:</span></li>
+</ul>
+<pre>variáveis
+   Numero : inteiro;
+   Preco : real;
+   Nome : literal;</pre>
+<pre>início
+   Numero &lt;- 42;
+   Preco &lt;- 4.5;
+   Nome &lt;- 'Maria';
+   Numero &lt;- Numero * Preco; <b>{ errado }</b>
+   Preco &lt;- Preco * Numero;
+   Preco &lt;- Numero;
+   Nome &lt;- Preco; <b>{ errado }</b>
+   Numero &lt;- Numero / 3; <b>{ errado }</b>
+fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Saída de Informações</span></b></h2>
+<ul>
+  <li>Promove a exibição, para o usuário, das informações</li>
+  <li><font face="Courier New">escreva( lista );</font><ul>
+    <li>Onde <b>lista</b> consiste numa relação de variáveis constantes ou 
+    expressões.</li>
+  </ul>
+  </li>
+  <li>&nbsp;Exemplo:</li>
+</ul>
+<pre>variáveis
+   Produto : literal[20];
+   Quantidade : inteiro;
+   PrecoUnitario : real;</pre>
+<pre>início
+   Produto &lt;- 'arroz';
+   Quantidade &lt;- 20;
+   PrecoUnitario &lt;- 0.75;
+   escreva( 'PRODUTO: ',  Produto, ' QUANTIDADE: ', Quantidade,
+            'PREÇO: ', Preco, ' PREÇO UNITÁRIO: ', PrecoUnitario );</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Entrada de Dados</span></b></h2>
+<ul>
+  <li>Possibilita a leitura dos dados a serem manipulados pelos programas</li>
+  <li><font face="Courier New">leia( lista );</font><ul>
+    <li>Onde <b>lista</b> consiste numa relação de variáveis</li>
+  </ul>
+  </li>
+  <li>Exemplo:</li>
+</ul>
+<pre>variáveis
+   Produto : literal[20];
+   Quant : inteiro;
+   Preco : real;</pre>
+<pre>início
+   leia( Produto, Quant, Preco );
+</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Amigabilidade</span></b></h2>
+<ul>
+  <li>Propriedade dos algoritmos relativa à boa interação com os usuários.</li>
+  <li>Para garantir mínima amigabilidade os algoritmos devem apresentar:<ul>
+    <li>Mensagens de orientação</li>
+    <li>Exibir títulos e subtítulos</li>
+    <li>Som (beeps) e cores adequadas</li>
+    <li>Antes da leitura dos dados, exibição de mensagem (literal) 
+    solicitando-os. Exemplo:</li>
+  </ul>
+  </li>
+</ul>
+<blockquote>
+  <blockquote>
+<p>escreva ( 'Preço unitário: ' );<br>
+leia ( PrecoUnitario );</p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li>Exemplo</li>
+</ul>
+<pre>algoritmo Calculadora;</pre>
+<pre>variávies
+   Operando,
+   Resultado : real;
+   Operacao : literal[1];</pre>
+<pre>início
+   escreva ('Calculadora');
+   escreva ('Selecione a operação: +, -, *, /');
+   leia (Operacao);
+   escreva ('Digite o primeiro operando: ');
+   leia (Resultado);
+   escreva ('Digite o segundo operando: ');
+   leia (Operando);</pre>
+<pre>   se Operacao = '+' então
+      Resultado &lt;- Resultado + Operando
+   senão
+      se Operacao = '-' então
+         Resultado &lt;- Resultado - Operando
+      senão
+         se Operacao = '*' então
+            Resultado &lt;- Resultado * Operando
+         senão
+            se Operacao = '/' então
+               Resultado &lt;- Resultado / Operando;</pre>
+<pre>   escreva ('O resultado é: ', Resultado);
+fim.</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p>12) Reescreva o algoritmo ConvenioMedico de forma que este possa apresentar 
+melhor amigabilidade.</p>
+<p>13) Ajuste o algoritmo Calculadora de forma a impossibilitar divisões por 
+zero.</p>
+
+</body>
+
+</html>

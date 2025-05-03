@@ -1,0 +1,550 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Linguagem C: Comandos Básicos</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Linguagem C: Comandos Básicos</font></h1>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman">Um programa em C é um conjunto de funções definidas pelo 
+programador, funções que utilizarão outras funções definidas pelo programador e 
+algumas funções oferecidas pelo sistema (as funções oferecidas pelo sistema sao 
+chamadas <i>funções de 
+biblioteca</i> ou funções predefinidas).</span></p>
+<p><span style="font-family: Times New Roman"><b><font size="5">Estrutura de um 
+programa em C</font></b></span></p>
+<pre>main()
+{</pre>
+<pre>}</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Tipos de Dados</font></b></span></p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0">
+  <tr>
+    <td align="center"><b>Tipo</b></td>
+    <td align="center"><b>Número de bytes</b></td>
+    <td align="center"><b>Faixa de valores</b></td>
+  </tr>
+  <tr>
+    <td align="center">char</td>
+    <td align="center">1</td>
+    <td>Caracteres da tabela ASCII</td>
+  </tr>
+  <tr>
+    <td align="center">int</td>
+    <td align="center">2</td>
+    <td>Números inteiros de –32768 a 32767</td>
+  </tr>
+  <tr>
+    <td align="center">long ou long int</td>
+    <td align="center">4</td>
+    <td>Números inteiros de –65536 a 65535</td>
+  </tr>
+  <tr>
+    <td align="center">float</td>
+    <td align="center">4</td>
+    <td>Números reais de –3,4x10<sup>38</sup> a –3,4x10<sup>-38</sup> e 3,4x10<sup>-38</sup> 
+    a 3,4x10<sup>38</sup></td>
+  </tr>
+  <tr>
+    <td align="center">double</td>
+    <td align="center">8</td>
+    <td>Números reais de –1,7x10<sup>308</sup> a -1,7x10<sup>-308</sup> e 1,7x10<sup>-308</sup> 
+    a 1,7x10<sup>308</sup></td>
+  </tr>
+  <tr>
+    <td align="center">void</td>
+    <td align="center">0</td>
+    <td>Conjunto vazio</td>
+  </tr>
+</table>
+<p><span style="font-family: Times New Roman"><b><font size="5">Variáveis</font></b></span></p>
+<pre>&lt;tipo&gt; &lt;identificador&gt;;
+&lt;tipo&gt; &lt;identificador&gt; = &lt;valor-inicial&gt;;
+&lt;tipo&gt; &lt;lista-ident-sep-por-vírgula&gt;;</pre>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman; font-weight: 700">
+<font size="4">Exemplos:</font></span></p>
+<pre>char caractere;
+int idade;
+long totalAlunos;
+float valor;
+double dividaExterna;</pre>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman"><b><font size="5">
+Comentários</font></b></span></p>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman">Usando // comenta-se 
+apenas a linha corrente a partir de onde o // foi colocado. Já usando /* */, o 
+texto que fica entre /* e */ torna-se um comentário, mesmo que esteja contido em 
+mais de uma linha.</span></p>
+<pre>main()
+{
+   // Isto é um comentário
+   /* Isto também é um comentário
+       Continua sendo comentário aqui */
+}</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Constantes</font></b></span></p>
+<p><span style="font-family: Times New Roman">const </span>&lt;tipo&gt; 
+&lt;identificador&gt; = &lt;valor&gt;;</p>
+<pre><span style="font-family: Times New Roman; font-weight: 700"><font size="4">Exemplos:</font></span></pre>
+<pre>const float PI = 3.1416;
+const int MIN = 0, MAX = 100;</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Comandos de 
+atribuição</font></b></span></p>
+<p ALIGN="LEFT">&lt;var&gt; = &lt;valor&gt;;<br>
+&lt;var&gt;++;<br>
+&lt;var&gt;--;<br>
+++&lt;var&gt;;<br>
+--&lt;var&gt;;</p>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman; font-weight: 700">
+<font size="4">Exemplos:</font></span></p>
+<pre>x = 1;
+x++;     // incrementa o valor de x para 2
+x--;     // decrementa o valor de x para 1
+y = x++; // y recebe o valor de x (1) e x é incrementado para 2
+z = ++x; // o valor de x é incrementado para 3 e depois z recebe 3</pre>
+<p ALIGN="LEFT">O comando de atribuição, além de guardar o valor na variável, 
+retorna este valor, o que permite que um comando de atribuição seja usado como 
+uma expressão (em um if, por exemplo).</p>
+<p><span style="font-family: Times New Roman"><b><font size="5">Expressões 
+aritméticas</font></b></span></p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0">
+  <tr>
+    <td align="center"><b>Operador</b></td>
+    <td align="center"><b>Operação</b></td>
+  </tr>
+  <tr>
+    <td align="center">+</td>
+    <td align="center">adição</td>
+  </tr>
+  <tr>
+    <td align="center">-</td>
+    <td align="center">subtração</td>
+  </tr>
+  <tr>
+    <td align="center">*</td>
+    <td align="center">multiplicação</td>
+  </tr>
+  <tr>
+    <td align="center">/</td>
+    <td align="center">divisão</td>
+  </tr>
+  <tr>
+    <td align="center">%</td>
+    <td align="center">módulo (resto da divisão)</td>
+  </tr>
+</table>
+<pre><span style="font-family: Times New Roman; font-weight: 700"><font size="4">Exemplos:</font></span></pre>
+<pre>2 + 2   // resulta em 4;
+10 % 3  // resto da divisão de 10 por 3 = 1
+</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Associando 
+Atribuições e Operações Aritméticas</font></b></span></p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber2" cellpadding="0" width="247">
+  <tr>
+    <td align="center" width="64"><b>Operador</b></td>
+    <td align="center" width="173"><b>Operação</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="64">+=</td>
+    <td align="center" width="173">adição e atribuição</td>
+  </tr>
+  <tr>
+    <td align="center" width="64">-=</td>
+    <td align="center" width="173">subtração e atribuição</td>
+  </tr>
+  <tr>
+    <td align="center" width="64">*=</td>
+    <td align="center" width="173">multiplicação e atribuição</td>
+  </tr>
+  <tr>
+    <td align="center" width="64">/=</td>
+    <td align="center" width="173">divisão e atribuição</td>
+  </tr>
+  <tr>
+    <td align="center" width="64">%=</td>
+    <td align="center" width="173">módulo e atribuição</td>
+  </tr>
+</table>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplos:</span></font></pre>
+<pre>int x = 0;
+x += 3;    // equivale a x = x + 3;
+x *= 2;    // equivale a x = x * 2;
+x -= 1;    // equivale a x = x - 1;</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Operadores 
+Relacionais</font></b></span></p>
+<pre>Quando a operação relacional resulta em verdadeiro, ela retorna o valor 1. Quando falso, retorna o valor 0.</pre>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0">
+  <tr>
+    <td align="center"><b>Operador</b></td>
+    <td align="center"><b>Operação</b></td>
+  </tr>
+  <tr>
+    <td align="center">&gt;</td>
+    <td align="center">maior</td>
+  </tr>
+  <tr>
+    <td align="center">&lt;</td>
+    <td align="center">menor</td>
+  </tr>
+  <tr>
+    <td align="center">&gt;=</td>
+    <td align="center">maior ou igual</td>
+  </tr>
+  <tr>
+    <td align="center">&lt;=</td>
+    <td align="center">menor ou igual</td>
+  </tr>
+  <tr>
+    <td align="center">==</td>
+    <td align="center">igual</td>
+  </tr>
+  <tr>
+    <td align="center">!=</td>
+    <td align="center">diferente</td>
+  </tr>
+</table>
+<pre><span style="font-family: Times New Roman; font-weight: 700"><font size="4">Exemplos:</font></span></pre>
+<pre>2 == 2   // 2 é igual a 2?
+3 != 2   // 3 é diferente de 2?
+3 &gt;= 2   // 3 é maior ou igual a 2?</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Expressões 
+Lógicas</font></b></span></p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="281">
+  <tr>
+    <td align="center" width="82"><b>Operador</b></td>
+    <td align="center" width="184"><b>Operação lógica</b></td>
+    <td align="center" width="127"><b>Tipo</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="82">&amp;&amp;</td>
+    <td align="center" width="184">e</td>
+    <td align="center" width="127">Binário</td>
+  </tr>
+  <tr>
+    <td align="center" width="82">||</td>
+    <td align="center" width="184">ou</td>
+    <td align="center" width="127">Binário</td>
+  </tr>
+  <tr>
+    <td align="center" width="82">^^</td>
+    <td align="center" width="184">ou exclusivo</td>
+    <td align="center" width="127">Binário</td>
+  </tr>
+  <tr>
+    <td align="center" width="82">!</td>
+    <td align="center" width="184">negação</td>
+    <td align="center" width="127">Unário</td>
+  </tr>
+</table>
+<p ALIGN="LEFT">&nbsp;</p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="372">
+  <tr>
+    <td align="center" colspan="7" width="364"><b>Avaliação de Expressões 
+    Lógicas</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="43" bgcolor="#C0C0C0"><i><b>A</b></i></td>
+    <td align="center" width="43" bgcolor="#C0C0C0"><i><b>B</b></i></td>
+    <td align="center" width="57"><i><b>A &amp;&amp; B</b></i></td>
+    <td align="center" width="62"><i><b>A || B</b></i></td>
+    <td align="center" width="61"><i><b>A ^^ B</b></i></td>
+    <td align="center" width="47"><i><b>!A</b></i></td>
+    <td align="center" width="39"><i><b>!B</b></i></td>
+  </tr>
+  <tr>
+    <td align="center" width="43" bgcolor="#C0C0C0">1</td>
+    <td align="center" width="43" bgcolor="#C0C0C0">1</td>
+    <td align="center" width="57">1</td>
+    <td align="center" width="62">1</td>
+    <td align="center" width="61">0</td>
+    <td align="center" width="47">0</td>
+    <td align="center" width="39">0</td>
+  </tr>
+  <tr>
+    <td align="center" width="43" bgcolor="#C0C0C0">1</td>
+    <td align="center" width="43" bgcolor="#C0C0C0">0</td>
+    <td align="center" width="57">0</td>
+    <td align="center" width="62">1</td>
+    <td align="center" width="61">1</td>
+    <td align="center" width="47">0</td>
+    <td align="center" width="39">1</td>
+  </tr>
+  <tr>
+    <td align="center" width="43" bgcolor="#C0C0C0">0</td>
+    <td align="center" width="43" bgcolor="#C0C0C0">1</td>
+    <td align="center" width="57">0</td>
+    <td align="center" width="62">1</td>
+    <td align="center" width="61">1</td>
+    <td align="center" width="47">1</td>
+    <td align="center" width="39">0</td>
+  </tr>
+  <tr>
+    <td align="center" width="43" bgcolor="#C0C0C0">0</td>
+    <td align="center" width="43" bgcolor="#C0C0C0">0</td>
+    <td align="center" width="57">0</td>
+    <td align="center" width="62">0</td>
+    <td align="center" width="61">0</td>
+    <td align="center" width="47">1</td>
+    <td align="center" width="39">1</td>
+  </tr>
+</table>
+<p><span style="font-family: Times New Roman"><b><font size="5">Entrada dos 
+dados</font></b></span></p>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman">A função <i>scanf</i> 
+é usada para efetuar a entrada de dados. Ela está disponível na biblioteca de 
+funções stdio (<i>standard input output</i>). Para que seja possível usar a 
+função <i>scanf</i>, é preciso fazer um <i>include</i> (inclusão) do arquivo de 
+cabeçalho <i>stdio.h</i> no programa.</span></p>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman">A função <i>scanf</i> 
+recebe uma <i>expressão de controle</i> seguida de uma <i>lista de argumentos</i>. 
+A expressão de controle contém mensagens e <i>códigos de formatação</i> (veja 
+tabela abaixo) que indicam o tipo de dado esperado na expressão de controle. Os 
+valores lidos são armazenados em seqüência na lista de argumentos (variáveis) 
+passada após a expressão de controle. É importante notar que os nomes das 
+variáveis devem ser precedidos de &amp; para indicar que será passada a referência 
+para a variável e não uma cópia do valor da mesma. Isso permite que a função 
+altere internamente o valor do parâmetro associado à variável e esta alteração 
+seja refletida na variável passada.</span></p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="404">
+  <tr>
+    <td align="center" width="389" colspan="2"><b>Tabela de Conversão da função</b>
+    <b><i>scanf</i></b></td>
+  </tr>
+  <tr>
+    <td align="center" width="168"><b>Código de formatação</b></td>
+    <td align="center" width="221"><b>Valor Armazenado</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%c</td>
+    <td align="left" width="221">um caractere</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%d</td>
+    <td align="left" width="221">um inteiro no sistema decimal</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%i</td>
+    <td align="left" width="221">um inteiro no sistema decimal</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%o</td>
+    <td align="left" width="221">um inteiro no sistema octal</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%x</td>
+    <td align="left" width="221">um inteiro no sistema hexadecimal</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%ld</td>
+    <td align="left" width="221">um inteiro do tipo long</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%e</td>
+    <td align="left" width="221">um número na notação científica</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%f</td>
+    <td align="left" width="221">um número em ponto flutuante</td>
+  </tr>
+  <tr>
+    <td align="center" width="168">%s</td>
+    <td align="left" width="221">uma cadeia de caracteres</td>
+  </tr>
+</table>
+<pre><span style="font-family: Times New Roman; font-weight: 700"><font size="4">Exemplo:</font></span></pre>
+<pre>// leitura de um caractere
+char letra;
+scanf(&quot;%c&quot;, &amp;letra);</pre>
+<pre>// Leitura de dia mes e ano
+int dia, mes, ano;
+scanf(&quot;%d/%d/%d&quot;, &amp;dia, &amp;mes, &amp;ano);
+</pre>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman">Para a leitura de um 
+caractere, podemos usar as funções <i>getch</i> e <i>getche</i>, que capturam e 
+retornam o caractere digitado no teclado. A diferença entre as duas funções é 
+que <i>getch</i> não exibe o caractere digitado na tela. Ambos são definidos na 
+biblioteca de funções <i>conio</i>.</span></p>
+<p ALIGN="LEFT"><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span><span style="font-family: Times New Roman; "> 
+Lendo caracteres e repetindo 3 vezes</span></font></p>
+<pre>main() {
+   char c = getch();
+   printf(&quot;Caractere digitado: %c%c%c&quot;, c, c, c);
+   printf(&quot;\n&quot;);
+   char c2 = getche();
+   printf(&quot; Caractere digitado: %c%c%c&quot;, c2, c2, c2);
+}</pre>
+<p><span style="font-family: Times New Roman"><b><font size="5">Saída de dados</font></b></span></p>
+<p ALIGN="LEFT"><span style="font-family: Times New Roman">A saída de dados pode 
+ser feita através da chamada à função <i>printf</i> também pertencente à 
+biblioteca de funções <i>stdio</i>. Desta forma, o procedimento de declaração <i>
+include</i> desta biblioteca é também requerido.</span></p>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span><span style="font-family: Times New Roman; "> Usando códigos de formatação</span></font></pre>
+<pre>main() {
+   printf(&quot;%c&quot;, 'A'); // exibe o caractere A
+   printf(&quot;%d&quot;, 'A'); // exibe o número 65
+   printf(&quot;%d&quot;, 65);  // exibe o número 65
+   printf(&quot;%c&quot;, 65);  // exibe o caractere A
+   printf(&quot;%o&quot;, 65);  // exibe o número octal 101
+   printf(&quot;%x&quot;, 65);  // exibe o número hexadecimal 41
+}</pre>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span><span style="font-family: Times New Roman; "> Leitura das partes de uma data</span></font></pre>
+<pre>main() {
+   // Leitura de dia mes e ano
+   int dia, mes, ano;
+   printf(&quot;Digite uma data: &quot;);
+   scanf(&quot;%d/%d/%d&quot;, &amp;dia, &amp;mes, &amp;ano);</pre>
+<pre>   // Imprime dia, mes e ano separadamente
+   printf(&quot;dia %d\n&quot;, dia);
+   printf(&quot;mes %d\n&quot;, mes);
+   printf(&quot;ano %d\n&quot;, ano);
+}</pre>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplo:</span><span style="font-family: Times New Roman; "> Formatação de números fracionários</span></font></pre>
+<pre>main() {
+   printf(&quot;%8.2f\n&quot;, 12.54321);
+   printf(&quot;%8.2f\n&quot;, 123.54321);
+   printf(&quot;%8.2f\n&quot;, 1234.54321);
+   printf(&quot;%8.2f\n&quot;, 12345.54321);
+}</pre>
+<div align="left">
+<p align="left"><span style="font-family: Times New Roman">O resultado da 
+execução do programa acima é mostrado abaixo. O código de formatação %8.2f 
+indica que o formato de impressão do número do tipo float será de tamanho total 
+8, sendo 2 o tamanho da parte fracionária.</span></div>
+  <pre>   12.54
+  123.54
+ 1234.54
+12345.54</pre>
+  <pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Códigos Especiais</span></font></pre>
+  <div align="left">
+<p align="left"><span style="font-family: Times New Roman">De acordo com a 
+tabela de códigos especiais abaixo, podemos exibir alguns caracteres, como &quot;, % 
+e \, dentro de uma mensagem e a realização de ações que permitem a formatação da 
+saída, como quebra de linha, tabulação e retrocesso.<br>
+&nbsp;</span></div>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="320">
+  <tr>
+    <td align="center" width="305" colspan="2"><b>Tabela de Códigos Especiais</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="86"><b>Código</b></td>
+    <td align="center" width="219"><b>Ação</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\n</td>
+    <td align="left" width="219">executa uma quebra de linha</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\t</td>
+    <td align="left" width="219">executa uma tabulação</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\b</td>
+    <td align="left" width="219">executa um retrocesso (<i>backspace</i>)</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\f</td>
+    <td align="left" width="219">leva o cursor para a próxima página</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\a</td>
+    <td align="left" width="219">executa um sinal sonoro (beep)</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\&quot;</td>
+    <td align="left" width="219">mostra o caractere &quot;</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\\</td>
+    <td align="left" width="219">mostra o caractere \</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">\%</td>
+    <td align="left" width="219">mostra o caractere %</td>
+  </tr>
+</table>
+<pre><font size="4"><span style="font-family: Times New Roman; font-weight: 700">Exemplos:</span></font></pre>
+<pre>main() {
+   printf(&quot;abc\b\b\bABC\n&quot;); // Imprime abc, apaga e depois imprime ABC e quebra a linha
+   printf(&quot;xyz\tXYZ&quot;);       // Imprime xyz, a tabulação e XYZ
+   printf(&quot;\\&quot;);             // Imprime uma barra
+   printf(&quot;\&quot;&quot;);             // Imprime aspas
+}
+</pre>
+<h2><b><span style="font-family: Times New Roman">Funções Predefinidas</span></b></h2>
+<p><span style="font-family: Times New Roman">A tabela abaixo contém uma lista 
+das funções predefinidas disponíveis.</span></p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="483">
+  <tr>
+    <td align="center" width="86"><b>Função</b></td>
+    <td align="center" width="138"><b>Parâmetros</b></td>
+    <td align="center" width="330"><b>Retorna</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="86">tolower(c)</td>
+    <td align="center" width="138">char</td>
+    <td align="left" width="330">caractere minúsculo correspondente a c</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">toupper(c)</td>
+    <td align="center" width="138">char</td>
+    <td align="left" width="330">caractere maiúsculo correspondente a c</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">fabs(n)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">valor absoluto de n</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">sqrt(n)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">raiz quadrada de n</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">power(x,y)</td>
+    <td align="center" width="138">double, double</td>
+    <td align="left" width="330">x elevado a y</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">sin(x)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">seno de x</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">cos(x)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">coseno de x</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">tan(x)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">tangente de x</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">log(n)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">logaritmo natural de n</td>
+  </tr>
+  <tr>
+    <td align="center" width="86">log10(n)</td>
+    <td align="center" width="138">double</td>
+    <td align="left" width="330">logaritmo decimal de n</td>
+  </tr>
+</table>
+    
+</body>
+
+</html>

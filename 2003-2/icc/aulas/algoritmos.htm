@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Algoritmos</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Algoritmos</font></h1>
+<hr>
+<h2>Algoritmo</h2>
+<h3>O que é um algoritmo?</h3>
+<ul>
+  <li>“Algoritmo é a descrição de um conjunto de comandos que, obedecidos, 
+  resultam numa sucessão finita de ações.”</li>
+</ul>
+<h3>Definição de ação: “É um acontecimento que, a partir de um estado inicial, 
+após um período de tempo finito, produz um estado final previsível e bem 
+definido.</h3>
+<h3>Exemplo: Escrever um algoritmo para fazer e servir café:</h3>
+<ul>
+  <li>Esquentar a água.</li>
+  <li>Coar o café.</li>
+  <li>Pegar xícara.</li>
+  <li>Servir o café na xícara.</li>
+  <li>Fim algoritmo.</li>
+</ul>
+<h3>Características:</h3>
+<ul>
+  <li>Útil para instruir máquinas;</li>
+  <li>Constitui resolução, não única, de um dado problema;</li>
+  <li>Tipicamente é construído através de iterações experimentais;</li>
+  <li>Exigem poder de abstração;</li>
+  <li>Compõe a essência dos programas;</li>
+  <li>Apresenta inúmeros campos de aplicação:<ul>
+    <li>Instruções para utilizar aparelhos;</li>
+    <li>Receitas culinárias;</li>
+    <li>Guia para preenchimento do IR;</li>
+    <li>Forma de cálculo de impostos e taxas</li>
+  </ul>
+  </li>
+</ul>
+<h3>Fases da construção de um programa:</h3>
+<ul>
+  <li>Estudar o problema;</li>
+  <li>Identificar solução (entrada, processamento, saída)</li>
+  <li>Escrever algoritmo (refinando-o sucessivamente);</li>
+  <li>Implementar programa (transcrição do algoritmo);</li>
+  <li>Testar implementação;</li>
+  <li>Efetuar manutenção.</li>
+</ul>
+<p>&nbsp;</p>
+<h3>Exercício:</h3>
+<p>1) Os algoritmos também podem ser úteis para instruir pessoas na execução de 
+tarefas como montagem de móveis e operação de máquinas. Identifique uma situação 
+onde o uso de algoritmos faz-se necessário e construa a solução correspondente.</p>
+<p>&nbsp;</p>
+<h3>Classificação</h3>
+<ul>
+  <li>Descrição narrativa<ul>
+    <li>Usa linguagem natural (p.e.: receita culinária)</li>
+    <li>Vantagens:<ul>
+      <li>Facilidade de interpretação;</li>
+    </ul>
+    </li>
+    <li>Desvantagens:<ul>
+      <li>Ambigüidade</li>
+      <li>Imprecisão</li>
+    </ul>
+    </li>
+    <li>Inadequado para instruir máquinas.</li>
+  </ul>
+  </li>
+  <li>Fluxograma<ul>
+    <li>Explora símbolos gráficos para representar instruções</li>
+    <li>Apresenta vários padrões.</li>
+    <li>É inadequado para representar soluções complexas</li>
+    <li>Não oferece praticidade nas iterações consecutivas</li>
+    <li>Principais símbolos:</li>
+  </ul>
+  </li>
+</ul>
+<p><img border="0" src="images/principais_simbolos_fluxograma.gif" width="504" height="138"></p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/fluxograma_emprestimo_bancario_salario.gif" width="563" height="643"></p>
+
+<p>Algoritmo que analisa a possibilidade de empréstimo bancário a partir do 
+salário do cliente.</p>
+
+<p>&nbsp;</p>
+
+<ul>
+  <li>Pseudocódigo<ul>
+    <li>Usa linguagem natural restrita</li>
+    <li>Adequado para instruir máquinas</li>
+    <li>Adequado para representar soluções complexas</li>
+    <li>Oferece praticidade nas iterações de aperfeiçoamento</li>
+  </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+
+<pre>Algoritmo AnalisaEmprestimo;</pre>
+<pre>constantes Juros = 0.02;</pre>
+<pre>variáveis
+  Salário,
+  Empréstimo,
+  Prestação: real;
+  Autorização: lógica;</pre>
+<pre>início</pre>
+<pre>  leia (salário);</pre>
+<pre>  autorização &lt;- verdadeirro;</pre>
+<pre>  enquanto autorização = verdadeiro faça
+    inicio</pre>
+<pre>      leia(empréstimo);</pre>
+<pre>      prestação &lt;- (0.10 + juros) * emprestimo;</pre>
+<pre>      se prestação &lt; 0.15 * salário então
+        início
+          escreva (“Empréstimo Autorizado”);
+          autorização &lt;- falso;
+        fim
+      senão
+        inicio
+          leia (autorização);
+          se autorização = falso então
+            escreva (“empréstimo não autorizado”);
+        fim</pre>
+<pre>    fim {enquanto}</pre>
+<pre>fim {algoritmo}</pre>
+<p>&nbsp;</p>
+<h3>Exercícios:</h3>
+
+<p>1 – Elabore um algoritmo usando descrição narrativa, fluxograma e 
+pseudocódigo para orientar uma pessoa a trocar o pneu de um carro.</p>
+
+<p>2 – Ajuste o fluxograma dado abaixo de forma que sejam identificados os 
+alunos reprovados por falta – aqueles que apresentam freqüência inferior a 60.</p>
+
+<p><img border="0" src="images/fluxograma_exercicio3.gif" width="477" height="381"></p>
+
+<p>3 – Ajuste o algoritmo dado abaixo de forma que sejam identificados os alunos 
+reprovados por falta – os que apresentam freqüência inferior a 60.</p>
+
+<pre>algoritmo Media;</pre>
+<pre>variáveis
+  N1,
+  N2,
+  Media : real</pre>
+<pre>início</pre>
+<pre>  leia N1, N2;</pre>
+<pre>  Media &lt;- (N1 + N2) / 2;</pre>
+<pre>  se Media &gt; 7 então
+    escreva &quot;Aprovado&quot;
+  senão
+    escreva &quot;Reprovado&quot;</pre>
+<pre>fim</pre>
+
+</body>
+
+</html>

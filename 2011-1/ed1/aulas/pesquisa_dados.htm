@@ -1,0 +1,121 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pesquisa de Dados</title>
+</head>
+
+<body>
+
+<p><span lang="pt-br"><font size="6"><b>Pesquisa de Dados</b></font></span></p>
+<hr>
+<p><span lang="pt-br">Consiste em buscar dados em uma estrutura usando um 
+algoritmo de pesquisa. Dois exemplos de algoritmo de pesquisa são pesquisa <b>
+seqüencial</b> e <b>binária</b>.</span></p>
+<p>&nbsp;</p>
+<p><span lang="pt-br"><font size="5"><b>Pesquisa Seqüencial e Binária</b></font></span></p>
+<hr>
+<p>A <b>pesquisa seqüencial</b> <span lang="pt-br">ou <b>linear</b> consiste em 
+procurar partindo de um ponto inicial e encerrando apenas quando o dado for 
+encontrado ou ao chegar ao final da estrutura sem encontrá-lo.</span></p>
+<p>A <b>pesquisa binária</b> é um algoritmo aplicado somente a estruturas 
+ordenadas, armazenadas em dispositivos de acesso direto. Consiste em comparar o 
+argumento de pesquisa com a chave localizada no meio da estrutura. Se o 
+argumento for maior, o processo é repetido para a metade superior da lista. Se 
+for menor, para a metade inferior. Caso contrário é porque o argumento é igual à 
+chave contida na estrutura.</p>
+<p>Para ver as implementações da pesquisa seqüencial e binária (iterativa e 
+recursiva), abra a unit <a href="pdfs/BUSCA.pdf">Busca</a>.</p>
+<p>&nbsp;</p>
+<p><span lang="pt-br"><font size="5"><b>Pesquisa por cálculo de endereço (Hashing)</b></font></span></p>
+<hr>
+<p>A pesquisa por cálculo de endereço (Hashing) baseia-se na idéia de calcular o 
+endereço de armazenamento do dado a partir do valor da chave, ou seja, aplica-se 
+uma função de cálculo de endereço (função Hashing) sobre a chave, obtendo-se 
+como resultado o endereço de armazenamento na tabela.</p>
+<p>Dessa forma, este método é mais do que um método de pesquisa. É um método de 
+organização física das tabelas.</p>
+<p>A função ideal seria aquela que gerasse um endereço diferente para cada um 
+dos N diferentes valores das chaves presentes na tabela. Entretanto, este tipo 
+de função não é conseguida e as funções normalmente utilizadas provocam 
+colisões, isto é, atribuem um mesmo endereço a diferentes valores de chave.</p>
+<p>Uma das funções mais usadas é:</p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <b><font face="Courier New" size="2">Hash(c) = (c mod TamTabela) + 1</font></b></div>
+<p><span lang="pt-br">Esta função pode ser adaptada para tipos de chaves 
+não-numéricas. Teríamos para uma chave do tipo String a seguinte função Hashing:</span></p>
+<div style="border-style: solid; border-width: 1; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1">
+  <p><b><font face="Courier New" size="2"><span lang="pt-br">
+  Soma := 0;<br>
+  for I := 1 to 5 do<br>
+&nbsp;&nbsp; Soma := Soma + ord(Chave[I]);<br>
+  Endereco := (Soma mod TamTabela) + 1;</span></font></b></p>
+</div>
+
+<p>Supondo que as chaves variam de 0 a 1000 e que o tamanho da tabela é igual a 
+100 (endereços variando de 1 a 100), os endereços correspondentes às chaves 
+abaixo seriam:</p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber1">
+  <tr>
+    <th>Chaves</th>
+    <th><span style="font-weight: 400">801</span></th>
+    <th><span style="font-weight: 400">305</span></th>
+    <th><span style="font-weight: 400">18</span></th>
+    <th><span style="font-weight: 400">752</span></th>
+    <th><span style="font-weight: 400">15</span></th>
+    <th><span style="font-weight: 400">101</span></th>
+    <th><span style="font-weight: 400">115</span></th>
+  </tr>
+  <tr>
+    <td align="center"><b>Endereços</b></td>
+    <td align="center">2</td>
+    <td align="center">6</td>
+    <td align="center">19</td>
+    <td align="center">53</td>
+    <td align="center">16</td>
+    <td align="center">2</td>
+    <td align="center">16</td>
+  </tr>
+  </table>
+
+<p>Note que as chaves 801 e 101 geram o endereço 2 segundo a função Hashing, 
+isto é, ocorre uma colisão. Uma das técnicas mais simples e usuais para 
+solucionar o problema de colisões é chamado <b>endereçamento aberto</b> e 
+consiste em procurar seqüencialmente, a partir do endereço gerado, o primeiro 
+endereço lido e nele armazenar o novo dado. Para o exemplo anterior teríamos:</p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber1">
+  <tr>
+    <th>Chaves</th>
+    <th><span style="font-weight: 400">801</span></th>
+    <th><span style="font-weight: 400">305</span></th>
+    <th><span style="font-weight: 400">18</span></th>
+    <th><span style="font-weight: 400">752</span></th>
+    <th><span style="font-weight: 400">15</span></th>
+    <th><span style="font-weight: 400">101</span></th>
+    <th><span style="font-weight: 400">115</span></th>
+  </tr>
+  <tr>
+    <td align="center"><b>Endereços</b></td>
+    <td align="center">2</td>
+    <td align="center">6</td>
+    <td align="center">19</td>
+    <td align="center">53</td>
+    <td align="center">16</td>
+    <td align="center">3</td>
+    <td align="center">17</td>
+  </tr>
+</table>
+<p>Uma solução alternativa para o problema das colisões consiste no uso de 
+encadeamento. Neste caso, todas as chaves que colidem em um mesmo endereço são 
+coletadas em uma mesma lista encadeada que tem como nós as chaves cujos 
+endereços calculados pela função Hashing colidem.</p>
+<p>Para ver a implementação de uma tabela Hash, abra a unit
+<a href="pdfs/TABHASH.pdf">TabHash</a> e o programa <a href="pdfs/TESTHASH.pdf">
+TestHash</a> que demonstra seu uso.</p>
+
+</body>
+
+</html>

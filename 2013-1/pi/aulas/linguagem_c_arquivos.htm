@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Arquivos em C</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Arquivos em C</font></h1>
+<hr>
+<ul>
+  <li><span style="font-family: Times New Roman">A capacidade de armazenar e 
+  processar dados em grande quantidade e com velocidade é uma das principais 
+  vantagens dos computadores.</span></li>
+  <li><span style="font-family: Times New Roman">Estes dados são normalmente 
+  armazenados em arquivos. </span></li>
+  <li><span style="font-family: Times New Roman">A linguagem C oferece um 
+  conjunto de funções que permitem abrir, ler, gravar e fechar arquivos.</span></li>
+  <li><span style="font-family: Times New Roman">Utilizando estas funções (ver 
+  tabela abaixo) é possível manter os dados gravados no computador mesmo após a 
+  execução do programa. Isto não seria possível sem tal recurso.</span></li>
+</ul>
+<h2><b><span style="font-family: Times New Roman">Funções de manipulação de 
+Arquivos</span></b></h2>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber2" cellpadding="0" width="705">
+  <tr>
+    <td align="center" width="131"><b>Função</b></td>
+    <td align="center" width="564"><b>Descrição</b></td>
+  </tr>
+  <tr>
+    <td align="left" width="131">fopen(nome, modo)</td>
+    <td width="564">Abre o arquivo com o nome especificado usando o modo. Por 
+    exemplo, para o modo &quot;wt&quot; o arquivo será aberto no modo escrita de texto. 
+    Retorna o apontador para o arquivo, que é usado para manipulá-lo.</td>
+  </tr>
+  <tr>
+    <td align="left" width="131">fclose(pontArq)</td>
+    <td width="564">Fecha o arquivo cujo apontador foi passado como parâmetro.</td>
+  </tr>
+  <tr>
+    <td align="left" width="131">fprintf(pontArq, str)</td>
+    <td width="564">Escreve no arquivo cujo apontador foi passado a String (str) 
+    passada.</td>
+  </tr>
+  <tr>
+    <td align="left" width="131">fgets(str, n, pontArq)</td>
+    <td width="564">Faz a leitura do arquivo apontado por pontArq de até n 
+    caracteres, colocando-os no array de caracteres str. A função retorna o 
+    mesmo valor armazenado em str ou NULL quando não conseguir mais ler 
+    caracteres (fim do arquivo).</td>
+  </tr>
+  </table>
+<h2>
+<span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o 
+1: 
+gravando um arquivo texto</font></b></span></h2>
+<pre>#include &lt;stdio.h&gt;
+main() {
+   // Declara uma variavel do tipo arquivo  
+   FILE *PontArq;
+   
+   // Abre o arquivo para escrita &quot;w&quot; no modo texto &quot;t&quot;
+   PontArq = fopen(&quot;Teste.txt&quot;, &quot;wt&quot;);
+   
+   // Imprime no arquivo a String passada
+   fprintf(PontArq, &quot;Arquivo de teste&quot;);
+
+   // Fecha o arquivo
+   fclose(PontArq);
+}</pre>
+<h2>
+<span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o 
+2: gravando um arquivo HTML</font></b></span></h2>
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>main()
+{
+   FILE *PontArq;
+   PontArq = fopen(&quot;Teste.htm&quot;, &quot;wt&quot;);
+
+   fprintf(PontArq, &quot;&lt;html&gt;\n&quot;);
+   fprintf(PontArq, &quot;&lt;head&gt;&lt;title&gt;Arquivos em C&lt;/title&gt;&lt;/head&gt;\n&quot;);
+   fprintf(PontArq, &quot;&lt;body&gt;\n&quot;);
+   fprintf(PontArq, &quot;&lt;B&gt;Exemplo de arquivo HTML&lt;/B&gt;\n&quot;);
+   fprintf(PontArq, &quot;&lt;/body&gt;\n&quot;);
+   fprintf(PontArq, &quot;&lt;/html&gt;&quot;); 
+
+   fclose(PontArq);
+}</pre>
+<pre><font size="4"><b><span style="font-family: Times New Roman">Ex</span></b></font><span style="font-family: Times New Roman"><font size="4"><b>empl</b></font><b><font size="4">o 3: lendo um arquivo texto</font></b></span></pre>
+<pre>#include &lt;stdio.h&gt;
+
+void ExibeArquivoTexto(char *s) {
+
+   // Abre o arquivo para leitura no modo texto
+   FILE *p = fopen(s, &quot;rt&quot;);
+
+   // Faz a leitura de cada linha do arquivo e exibe na tela
+   char Linha[80];
+   char *Fim = fgets(Linha, 80, p);
+   while (Fim != NULL) {
+      printf(&quot;%s&quot;, Linha);
+      Fim = fgets(Linha, 80, p);
+   }
+
+   // Fecha o arquivo
+   fclose(p);
+}
+
+main() {
+   // Obtem o nome do arquivo a ser exibido na tela
+   char NomeArq[30];
+   printf(&quot;Digite o nome do arquivo: &quot;);
+   scanf(&quot;%s&quot;, NomeArq);
+
+   // Chama funcao que le o arquivo
+   ExibeArquivoTexto(NomeArq);
+}</pre>
+
+</body>
+
+</html>

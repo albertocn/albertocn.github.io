@@ -1,0 +1,184 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Árvores</title>
+</head>
+
+<body>
+
+<p><font size="6"><b>Árvores</b></font></p>
+<hr>
+<p><span lang="pt-br"><b>Definição:</b> É uma estrutura onde a relação entre 
+seus elementos é de um para vários, também denominada estrutura hierárquica.</span></p>
+<p><img border="0" src="figuras/arvore_exemplo.png" width="282" height="121"></p>
+<p>Uma árvore consiste em um conjunto de nós, tal que:</p>
+<ul>
+  <li>Existe um nó denominado <b>raiz</b>.</li>
+  <li>Os demais nós formam m (m &gt;= 0) conjuntos onde cada um deles também é uma 
+  árvore.</li>
+</ul>
+<p><span lang="pt-br">Notações gráficas para representar árvores:</span></p>
+<p>
+<img border="0" src="figuras/arvore_representacoes.png" width="737" height="205"></p>
+<p>&nbsp;</p>
+<h3>Aplicações de Árvores</h3>
+<hr>
+<p>Árvores podem ser usadas em diversos tipos de aplicações:</p>
+<ul>
+  <li>Aplicações onde é necessário recuperar informações rapidamente (SGBD)</li>
+  <li>Programas onde as informações têm que ser estruturadas de forma 
+  hierárquica.</li>
+  <li>Aplicações onde é necessário armazenar expressões matemáticas.</li>
+</ul>
+<p>Para representar as expressões matemáticas A + B * 3 e (A + B) * 3 poderíamos 
+usar as árvores A e B abaixo:</p>
+<p><img border="0" src="figuras/arvore_exp_mat.png" width="472" height="193"></p>
+<p>&nbsp;</p>
+<h3>Terminologia</h3>
+<hr>
+<p>Cada elemento de uma árvore pode ser classificado como:</p>
+<table border="2" style="border-collapse: collapse" bordercolor="#111111" cellpadding="2" id="AutoNumber2">
+  <tr>
+    <th bgcolor="#C0C0C0"><span style="font-weight: 400"><b>Classificação</b></span></th>
+    <th bgcolor="#C0C0C0"><span style="font-weight: 400"><b>Descrição</b></span></th>
+  </tr>
+  <tr>
+    <td><b>Pai</b></td>
+    <td>quando fica imediatamente acima de outro nó.</td>
+  </tr>
+  <tr>
+    <td><b>Filho</b></td>
+    <td>quando fica imediatamente abaixo de outro nó.</td>
+  </tr>
+  <tr>
+    <td><b>Irmãos</b></td>
+    <td>se os nós têm o mesmo pai.</td>
+  </tr>
+  <tr>
+    <td><b>Raiz</b></td>
+    <td>se não tem nó pai (pode ter filhos)</td>
+  </tr>
+  <tr>
+    <td><b>Folha ou Terminal</b></td>
+    <td>quando não possui filhos (pode ter pai)</td>
+  </tr>
+</table>
+<p><img border="0" src="figuras/arvore_abcdfh.png" width="263" height="193"></p>
+<p>Dada a árvore acima, temos:</p>
+<ul>
+  <li>A, B, C, D, F e H são nós;</li>
+  <li>A é pai de B, C e F. F é pai de E e H;</li>
+  <li>B, C e F são filhos de A. D e H são filhos de F;</li>
+  <li>B, C e F são irmãos. D e H são irmãos;</li>
+  <li>A é a raiz da árvores;</li>
+  <li>B, C, D e H são folhas.</li>
+</ul>
+<p><b>Ancestral</b>: A é ancestral de B, C, F, D e H.</p>
+<p><b>Descendente</b>: B, C, F, D e H são descendentes de A. D e H são 
+descendentes de F.</p>
+<p><b>Arestas</b>: são as ligações entre os nós.</p>
+<p><b>Caminho</b>: é uma seqüência de nós n<sub>1</sub>, n<sub>2</sub>, ... , n<sub>i</sub> 
+tal que os nós sejam distintos e que exista uma aresta entre cada par de nós.</p>
+<p><b>Comprimento de um caminho</b>: número de arestas que um caminho contém. 
+Ex: A - F - D tem comprimento 2.</p>
+<p><b>Nível de um nó</b>: comprimento de um caminho que vai da raiz até o nó, 
+sendo o nível do no raiz igual a 0. Ex: A tem nivel 0; B nível 1 e D nivel 2.</p>
+<p><b>Altura de uma árvore</b>: é o nível mais alto de uma árvore. A árvore do 
+exemplo tem altura 2.</p>
+<p><b>Grau de um nó</b>: quantidade de subárvores de um nó. Ex: a tem grau 3, F 
+tem grau 2 e B tem grau 0.</p>
+<p><b>Grau da árvore</b>: quantidade máxima de subárvores para cada nó da 
+árvore.</p>
+<p><b>Subárvore</b>: é uma árvore formada por um dos nós filhos e seus 
+descendentes.</p>
+<p><b>Árvore Ordenada</b>: árvore onde a ordenação de suas subárvores é 
+importante.</p>
+<p>
+<img border="0" src="figuras/arvore_ordenada_dif.png" width="407" height="118"></p>
+<p>&nbsp;</p>
+<h3>Implementação Seqüencial</h3>
+<hr>
+<p>Na implementação seqüencial os nós de uma árvore são colocados 
+seqüencialmente na memória. Há, basicamente, duas formas de implementação 
+seqüencial de árvores. Uma para ser usada quando o grau da árvore é conhecido e 
+outra quando é desconhecido.</p>
+
+<p>Seja a árvore de exemplo abaixo:</p>
+
+<p><img border="0" src="figuras/arvore_abcdfh.png" width="263" height="193"></p>
+
+<p>&nbsp;</p>
+
+<p>A implementação com grau de árvore conhecido (no caso 3) seria:</p>
+
+<p>
+<img border="0" src="figuras/arvore_seq_grau_conhecido.png" width="360" height="76"></p>
+
+<p>&nbsp;</p>
+
+<p>A implementação com grau de árvore desconhecido seria:</p>
+
+<p>
+<img border="0" src="figuras/arvore_seq_grau_desconhecido.png" width="333" height="79"></p>
+
+<p>&nbsp;</p>
+
+<p>Desvantagens da implementação com grau de árvore conhecido:</p>
+
+<ul>
+  <li>Existe desperdício de espaço quando há nós com menos subárvores que o grau 
+  da árvore.</li>
+  <li>É necessário conhecer a altura da árvore antes de criar a estrutura.</li>
+</ul>
+<p>Desvantagens da implementação com grau de árvore desconhecido:</p>
+
+<ul>
+  <li>Há desperdício de espaço devido ao indicador de grau do nó.</li>
+  <li>É necessário mais processamento para manipulações dos nós. Inserções e 
+  remoções provocam movimentações dos nós.</li>
+</ul>
+<p>&nbsp;</p>
+
+<h3>Implementação Encadeada</h3>
+<hr>
+<p>A implementação encadeada oferece:</p>
+
+<ul>
+  <li>Melhor aproveitamento de memória.</li>
+  <li>Chance de alterar dinamicamente o tamanho da árvore.</li>
+</ul>
+<p>Há basicamente 2 formas de implementação encadeada:</p>
+
+<ul>
+  <li>Com grau conhecido (no caso 3)</li>
+</ul>
+<p>
+<img border="0" src="figuras/arvore_enc_grau_conhecido.png" width="636" height="325"></p>
+
+<p>&nbsp;</p>
+
+<ul>
+  <li>Com grau da árvore desconhecido<ul>
+    <li>Cada nó da árvore contém:<ul>
+      <li>Os dados</li>
+      <li>Uma lista encadeada com apontadores para n filhos (n &gt;= 0)</li>
+    </ul>
+    </li>
+  </ul>
+  </li>
+</ul>
+<p>
+<img border="0" src="figuras/arvore_enc_grau_desconhecido.png" width="685" height="287"></p>
+
+<p>&nbsp;</p>
+
+<p>A implementação com grau de árvore conhecido é mais simples quando comparada 
+à implementação com grau de árvore desconhecido.</p>
+
+</body>
+
+</html>

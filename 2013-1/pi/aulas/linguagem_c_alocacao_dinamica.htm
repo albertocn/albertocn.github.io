@@ -1,0 +1,187 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Alocação Dinâmica de Memória em C</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Alocação Dinâmica de Memória em C</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Funções de manipulação de 
+memória</span></b></h2>
+<p>A linguagem C oferece um conjunto de funções que permitem alocar memória 
+dinamicamente, trazendo bastante flexibilidade para a construção de estruturas 
+de dados mais complexas e eficientes. As funções mais importantes são descritas 
+abaixo e estão disponíveis na biblioteca <b>stdlib</b>.</p>
+<table border="3" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="0" width="696">
+  <tr>
+    <td align="center" width="102"><b>Função</b></td>
+    <td align="center" width="584"><b>Descrição</b></td>
+  </tr>
+  <tr>
+    <td align="left" width="102">malloc(numDeBytes)</td>
+    <td width="584">Retorna um apontador para uma variável dinâmica como tamanho 
+    especificado como parâmetro. Uma situação bastante comum é utilizar a função
+    <b>sizeof</b> para calcular o número de bytes a serem alocados baseando-se 
+    no tipo do dado.<p>Exemplo: int vetInt[] = (int*) maloc(sizeof(int) * 
+    NUM_ELEMENTOS)</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">free(ptr)</td>
+    <td width="584">Desaloca da memória a variável dinâmica apontada pelo 
+    apontador <b>ptr</b> passado como parâmetro.</td>
+  </tr>
+  <tr>
+    <td align="left" width="102">realloc(ptr, numDeBytes)</td>
+    <td width="584">Modifica o tamanho da variável dinâmica previamente alocada 
+    e apontada por <b>ptr</b> para o novo valor especificado pelo parâmetro <b>
+    numDeBytes</b>. Este pode ser maior ou menor que o anterior. Retorna um 
+    apontador, já que pode ser preciso mover os dados para um novo bloco de 
+    memória ao aumentar se tamanho. Caso isto ocorra, o conteúdo da variável 
+    antiga é copiada para o novo bloco, ou seja, nenhuma informação é perdida.
+    <p>Se ptr for NULL, aloca uma variável do tamanho determinado por <b>
+    numDeBytes</b> e devolve um ponteiro;</p>
+    <p>Se <b>numDeBytes</b> for zero, a memória apontada por <b>ptr</b> é 
+    liberada (semelhante a chamar free).</p>
+    <p>Se não houver memória suficiente para a alocação, um ponteiro nulo é 
+    devolvido e o bloco original é deixado inalterado.</td>
+  </tr>
+  </table>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo 1 (programa que aloca 
+  blocos de memória até não haver memória disponível):</span></li>
+</ul>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</pre>
+<pre>int main (){
+
+   long *p;
+
+   long num;
+   printf(&quot;\nDigite o tamanho inicial do vetor--&gt;&quot;);
+   scanf(&quot;%d&quot;, &amp;num);
+
+   do
+   {
+      p=(long *)malloc(num*sizeof(long));
+
+      if (!p)
+      {
+         printf (&quot;** \n\nErro: Memoria Insuficiente\n\n **&quot;);
+         getch();
+      }
+      else
+      {
+         printf (&quot;** \n\nMemoria Alocada com Sucesso %d bytes\n\n **&quot;, num*sizeof(long));
+      }
+   }
+   while (p);
+   return (0);
+}</pre>
+<ul>
+  <li>Exemplo 2: Programa que cria e manipula uma lista encadeada</li>
+</ul>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct no {
+   int valor;
+   struct no *prox;
+};
+
+// Definicao de um tipo de dados chamado noLista
+typedef struct no noLista;
+
+void insere(int x, noLista *p)
+{
+   noLista *nova;
+   nova = (noLista*) malloc( sizeof (noLista));
+   (*nova).valor = x;
+   nova-&gt;prox = (*p).prox;
+   p-&gt;prox = nova;
+}
+
+noLista* busca( int x, noLista *ini)
+{
+   noLista *p;
+   p = ini-&gt;prox;
+   while ((p != NULL) &amp;&amp; (p-&gt;valor != x))
+      p = p-&gt;prox;
+   return p;
+}
+
+void remover(noLista *p)
+{
+   noLista *noApagar = p-&gt;prox;
+   p-&gt;prox = noApagar-&gt;prox;
+   free(noApagar);
+}
+
+void imprime(noLista *cab)
+{
+   noLista *p;
+   p = cab-&gt;prox;
+   while (p != NULL)
+   {
+      printf(&quot;%d &quot;, (int) p-&gt;valor);
+      p = p-&gt;prox;
+   }
+}
+
+void apagarLista(noLista *cab)
+{
+   while(cab-&gt;prox != NULL)
+   {
+      printf(&quot; removendo %d &quot;, cab-&gt;prox-&gt;valor);
+      remover(cab);
+   }
+
+}
+
+int main()
+{
+   noLista cabeca;
+   cabeca.prox = NULL;
+
+   int i;
+   for (i = 1; i&lt;= 100; i++) 
+   {
+      insere(i, &amp;cabeca);
+   }
+ 
+   imprime(&amp;cabeca);
+
+   noLista *p = busca(50, &amp;cabeca);
+   if (p)
+   {
+      printf(&quot;\n50 foi encontrado\n&quot;);
+   }
+   else
+   {
+      printf(&quot;\n50 nao foi encontrado\n&quot;);
+   }
+
+   apagarLista(&amp;cabeca);
+}</pre>
+
+</body>
+
+</html>

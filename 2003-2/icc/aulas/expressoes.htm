@@ -1,0 +1,210 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Expressões</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Expressões</font></h1>
+<hr>
+<h2><span style="font-family: Times New Roman">Introdução</span></h2>
+<ul>
+  <li>Similares às expressões matemáticas.</li>
+  <li>São compostas por variáveis constantes e operadores que aplicados resultam 
+  num valor.</li>
+  <li>Exemplo:</li>
+</ul>
+<pre>algoritmo AreaTriangulo;</pre>
+<pre>variáveis
+   Base,
+   Altura,
+   Area : real</pre>
+<pre>início
+   leia(Base);
+   leia(Altura);</pre>
+<pre>   Area &lt;- Base * Altura / 2;</pre>
+<pre>   exibir(Area);
+fim</pre>
+<ul>
+  <li>Identificamos a expressão: <font face="Courier New">Area &lt;- Base * Altura 
+  / 2</font>, onde:<ul>
+    <li>Variáveis: Area, Base e Altura</li>
+    <li>Operadores: <font face="Courier New">&lt;-</font>, <font face="Courier New">
+    *</font> e <font face="Courier New">/</font></li>
+    <li>Constante: 2</li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Operadores</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Aplicados aos operandos, geram 
+  valores. Podem ser:</span><ul>
+  <li><span style="font-family: Times New Roman">Binários ( 2 operandos ) ou 
+  unários ( 1 operando ), quanto ao número de operandos sobre os quais atuam.</span></li>
+  <li><span style="font-family: Times New Roman">Aritméticos ( +, -, *, / ), 
+  lógicos ( e, ou, não ) e literais ( concatenação ), conforme os dados que 
+  manipulam</span></li>
+  <li><span style="font-family: Times New Roman">Relacionais ( =, &lt;&gt;, &gt;=, &lt;=, &lt; 
+  e &gt; )</span></li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Expressões Aritméticas</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Para resolução dessas são 
+  aplicadas as operações conforme a ordem determinada pela prioridade de 
+  matemática:</span><ol>
+    <li><span style="font-family: Times New Roman">Sinais</span></li>
+    <li><span style="font-family: Times New Roman">Exponenciação</span></li>
+    <li><span style="font-family: Times New Roman">Divisão e multiplicação</span></li>
+    <li><span style="font-family: Times New Roman">Adição e subtração.</span></li>
+  </ol>
+  </li>
+  <li>Exemplo:</li>
+</ul>
+<pre>X &lt;- 2 * 2 + 8 / 4
+X = 4 + 2
+X = 6</pre>
+<ul>
+  <li>Os parênteses têm o &quot;poder&quot; de redefinir a prioridade de resolução das 
+  operações</li>
+  <li>Exemplo:</li>
+</ul>
+<pre>X &lt;- 2 * (2 + 8) / 4
+X = 2 * 10/4
+X = 20/4
+X = 5</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Expressões Lógicas</span></b></h2>
+<ul>
+  <li>São aquelas cujo resultado é <u>verdadeiro</u> ou <u>falso</u>.</li>
+  <li><span style="font-family: Times New Roman">Geralmente usadas para compor 
+  instruções de controle (condições)</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo:</span></li>
+</ul>
+<pre>se (Idade &gt; 40) <b><u>e</u></b> (Plano = 'A') então</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Operadores: e, ou, não (usados 
+  combinados com os relacionais)</span></li>
+  <li><span style="font-family: Times New Roman">E ou Conjunção: </span>Condição 
+  satisfeita (V) somente se as duas sentenças forem verdadeiras<span style="font-family: Times New Roman">:</span></li>
+</ul>
+<table border="1" cellpadding="3">
+  <tr>
+    <th colspan="5">Tabela Verdade</th>
+  </tr>
+  <tr>
+    <td align="center"><b>A</b></td>
+    <td>V</td>
+    <td>F</td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+  <tr>
+    <td align="center"><b>B</b></td>
+    <td>F</td>
+    <td>V</td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+  <tr>
+    <td align="center"><b>A e B</b></td>
+    <td>F</td>
+    <td>F</td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+</table>
+<ul>
+  <li>OU ou Disjunção: Condição satisfeita (V) se pelo menos uma sentença for 
+  verdadeira:</li>
+</ul>
+<table border="1" cellpadding="3">
+  <tr>
+    <th colspan="5">Tabela Verdade</th>
+  </tr>
+  <tr>
+    <td align="center"><b>A</b></td>
+    <td>V</td>
+    <td>F</td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+  <tr>
+    <td align="center"><b>B</b></td>
+    <td>F</td>
+    <td>V</td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+  <tr>
+    <td align="center"><b>A e B</b></td>
+    <td>V</td>
+    <td>V</td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+</table>
+<ul>
+  <li><span style="font-family: Times New Roman">NÃO ou Negação:</span></li>
+</ul>
+<table border="1" cellpadding="3">
+  <tr>
+    <th colspan="3">Tabela Verdade</th>
+  </tr>
+  <tr>
+    <td align="center"><b>A</b></td>
+    <td>V</td>
+    <td>F</td>
+  </tr>
+  <tr>
+    <td align="center"><b>NÃO A</b></td>
+    <td>F</td>
+    <td>V</td>
+  </tr>
+</table>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Expressões Literais</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Concatenação - Junção</span></li>
+  <li><span style="font-family: Times New Roman">Comparação - Quanto à ordem 
+  alfabética</span></li>
+  <li><span style="font-family: Times New Roman">Exemplo:</span></li>
+</ul>
+<pre>variáveis
+   Nome1,
+   Nome2 : literal[10];</pre>
+<pre>início
+   Nome1 &lt;- 'Mario';
+   Nome2 &lt;- 'Andrade';</pre>
+<pre>   se (Nome1 &lt; Nome2) então { Comparação }
+      Nome1 &lt;- Nome1 + Nome2 { Concatenação }</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Exercícios</span></b></h2>
+<p>10) Escrever algoritmo para ler: (1) o tipo de polígono T - triângulo, Q - 
+quadrado ou R - retângulo e (2) as medidas desse e exibir área correspondente.</p>
+<p>11) Escrever algoritmo para ler os termos de uma equação do 2º grau e exibir 
+as raízes dessa.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,599 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Tipos Definidos pelo Usuário</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Tipos Definidos pelo Usuário</font></h1>
+<hr>
+<h2><span style="font-family: Times New Roman">Introdução</span></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Além dos tipos de dados simples 
+  estudados no capítulo II, na composição das soluções algorítmicas podemos 
+  fazer uso de tipos definidos pelo usuário. São eles:</span><ul>
+  <li><span style="font-family: Times New Roman">Tipo Registro</span></li>
+  <li><span style="font-family: Times New Roman">Tipo Vetor</span></li>
+  <li><span style="font-family: Times New Roman">Tipo Arquivo</span></li>
+</ul>
+  </li>
+  <li><span style="font-family: Times New Roman">Estes são definidos na seção
+  </span><font face="Courier New">tipo</font><span style="font-family: Times New Roman"> 
+  (algoritmo) ou </span><font face="Courier New">type</font><span style="font-family: Times New Roman"> 
+  (Pascal). 
+  São úteis à definição dos conteúdos de composição dos dados manipulados pelos 
+  algoritmos.</span></li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Tipo Registro</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Diferente dos demais tipos de 
+  dados, possibilitam o armazenamento de valores de diversos tipos 
+  (heterogêneo).</span></li>
+  <li><span style="font-family: Times New Roman">Estrutura em algoritmo:</span></li>
+</ul>
+<pre>tipo
+   &lt;registro&gt; = registro
+                  &lt;campo1&gt;: &lt;tipo1&gt;;
+                  &lt;campo2&gt;: &lt;tipo2&gt;;
+                  ...
+                  &lt;campoN&gt;: &lt;tipoN&gt;;
+                fim;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Estrutura em Pascal:</span></li>
+</ul>
+<pre>type
+   &lt;registro&gt; = record
+                  &lt;campo1&gt;: &lt;tipo1&gt;;
+                  &lt;campo2&gt;: &lt;tipo2&gt;;
+                  ...
+                  &lt;campoN&gt;: &lt;tipoN&gt;;
+                end;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo 1 (definição de um tipo 
+  que representa um aluno):</span></li>
+</ul>
+<pre>type
+   TipoAluno = record
+                  Nome: string[30];
+                  Matricula: string[8];
+                  Media: real;
+                  Frequencia: integer;
+               end;</pre>
+<pre>var
+   Aluno: TipoAluno;</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Exemplo 2 (definição de um tipo 
+  que representa um professor):</span></li>
+</ul>
+<pre>type
+   TipoProfessor = record
+                      Nome: string[30];
+                      Codigo: string[8];
+                      Salario: real;
+                      Ingresso: string[8];
+                   end;</pre>
+<pre>var
+   Prof: TipoProfessor;</pre>
+<ul>
+  <li>Cada elemento de composição de um registro é chamado campo. Os campos do 
+  registro TipoProfessor, por exemplo, são: nome, código, salário e ingresso.</li>
+  <li>Para fazer referência aos comandos de um registro deve ser usado: 
+  &lt;registro.campo&gt;.</li>
+  <li><a href="fontes/RELTURMA.PAS">Exemplo</a>:</li>
+</ul>
+<pre>program RelTurma;
+
+type
+  TipoAluno = record
+                 Nome: string[30];
+                 Matricula: string[8];
+                 Media: real;
+                 Frequencia: integer;
+              end;
+
+var
+   Aluno: TipoAluno;
+   Aprovados, 
+   Reprovados : integer;
+
+begin
+
+   Aprovados := 0;
+   Reprovados := 0;
+
+   write('Nome:'); readln(Aluno.Nome);
+
+   while Aluno.Nome &lt;&gt; 'fim' do
+     begin
+        write('Matricula:'); readln(Aluno.Matricula);
+        write('Media:'); readln(Aluno.Media);
+        write('Frequencia:'); readln(Aluno.Frequencia);
+
+        if (Aluno.Media &gt;= 7) and (Aluno.Frequencia &gt;= 60) then
+           Aprovados := Aprovados + 1
+        else
+           Reprovados := Reprovados + 1;
+
+        write('Nome:'); readln(Aluno.Nome);
+     end;
+
+   writeln('Total de Aprovados:', Aprovados);
+   writeln('Total de Reprovados:', Reprovados);
+end.</pre>
+<hr>
+<h2><span style="font-family: Times New Roman">Exercícios</span></h2>
+<p>44) Escreva um programa para ler os dados dos professores de um curso, a 
+saber: nome, código, salário e ingresso. Exibir o número de professores com 
+salário acima de R$ 500,00 e com ingresso após 01/01/2000.</p>
+
+<p>45) Ajuste o algoritmo RelTurma de forma que: seja exibido o número de 
+aprovados, reprovados por média, reprovados por falta e o cálculo da média da 
+turma.</p>
+
+<p>46) Escrever um programa para ler os dados dos atletas de um clube (nome, 
+idade, sexo, altura e peso) e determinar o número de atletas (1) do sexo 
+masculino com peso inferior a 80, (2) com mais de 25 anos com altura superior a 
+1,75 e (3) com altura entre 1,60 e 1,75 ou com peso superior a 55.</p>
+
+<p>47) A firma de entrega de encomendas deseja identificar: (1) o maior nº de 
+entregas efetuadas por um funcionário num dia de trabalho e (2) o menor tempo, 
+em horas gasto por um funcionário para efetuar as entregas num dia de trabalho 
+Para tanto, foi encomendado um algoritmo que lê (diariamente): o código do 
+funcionário, o número de entregas efetuadas por este (funcionário) e o tempo 
+gasto por este (funcionário) para efetuar as entregas.</p>
+
+<p>48) Implementar programa correspondente à questão 45.</p>
+
+<hr>
+<h2><b><span style="font-family: Times New Roman">Tipo Vetor e Matriz</span></b></h2>
+<ul>
+  <li>Os vetores e matrizes constituem o segundo tipo de dado definido pelo 
+  usuário.</li>
+  <li>Estes apresentam a capacidade de armazenar coleções (homogêneas) de dados.</li>
+  <li>Vetor</li>
+</ul>
+
+  <table border="1">
+    <tr>
+      <td>100</td>
+      <td>4</td>
+      <td>20</td>
+      <td>33</td>
+      <td>51</td>
+    </tr>
+  </table>
+  <ul>
+    <li>Matriz</li>
+</ul>
+
+<table border="1">
+  <tr>
+    <td>'A1'</td>
+    <td>'A2'</td>
+    <td>'A3'</td>
+  </tr>
+  <tr>
+    <td>'B1'</td>
+    <td>'B2'</td>
+    <td>'B3'</td>
+  </tr>
+  <tr>
+    <td>'C1'</td>
+    <td>'C2'</td>
+    <td>'C3'</td>
+  </tr>
+</table>
+
+<h3>Estrutura Tipo Vetor</h3>
+<pre>type
+   &lt;ident&gt; = array [1..N] of &lt;Tipo&gt;;</pre>
+<ul>
+  <li>Onde:<ul>
+    <li>&lt;Ident&gt; identifica o tipo vetor</li>
+    <li>N determina o máximo de elementos componentes do vetor</li>
+    <li>&lt;tipo&gt; tipo dos elementos do vetor</li>
+  </ul>
+  </li>
+  <li>Exemplo:</li>
+</ul>
+<pre>type
+   TipoVetor = array [1..10] of integer;</pre>
+<pre>var
+   Vetor: TipoVetor;</pre>
+<ul>
+  <li>Neste, Vetor é uma variável com capacidade para armazenar até 10 números 
+  inteiros.</li>
+</ul>
+<h3>Estrutura Tipo Matriz</h3>
+<pre>type
+   &lt;ident&gt; = array [1..L, 1..C] of &lt;Tipo&gt;;</pre>
+<ul>
+  <li>Onde:<ul>
+    <li>&lt;Ident&gt; identifica o tipo matriz</li>
+    <li>L determina o máximo de linhas</li>
+    <li>C determina o máximo de colunas</li>
+    <li>&lt;tipo&gt; tipo dos elementos da matrizr</li>
+  </ul>
+  </li>
+  <li>Exemplo:</li>
+</ul>
+<pre>type
+   TipoMatriz = array [1..5, 1..12] of real;
+   { Balanço anual de vendas de uma rede de lojas: 5 unidades x 12 meses }</pre>
+<pre>var
+   Matriz: TipoMatriz;</pre>
+<ul>
+  <li>Matriz com capacidade para armazenar até 60 valores (5x12) reais.</li>
+  <li>Para fazer referência aos elementos de um vetor ou matriz, fazemos uso dos 
+  índices, como segue:<ul>
+    <li><font face="Courier New">Vetor[7] := 43;</font>&nbsp; o sétimo elemento 
+    do vetor é 43.</li>
+    <li><font face="Courier New">writeln(Vetor[2]);</font>&nbsp; escreva o 
+    segundo elemento.</li>
+    <li><font face="Courier New">readln(Vetor[6]);</font>&nbsp; leia o sexto 
+    elemento.</li>
+    <li><font face="Courier New">Matriz[3,10] := 850,75;</font>&nbsp; a terceira 
+    linha (loja 3) da décima coluna (mês de outubro) teve um faturamento de R$ 
+    850,75.</li>
+  </ul>
+  </li>
+  <li><a href="fontes/MQMEDIA.PAS">Exemplo 1</a>: programa para ler N valores, 
+  calcular a média destes e determinar quais dos números lidos são maiores que a 
+  média.</li>
+</ul>
+<pre>program MaiorQueMedia;
+
+type
+   TipoVetor = array [1..100] of real;
+
+var
+   Vetor: TipoVetor;
+   N, I:  integer;
+   Soma,
+   Media: real;
+
+begin
+   Soma := 0;
+   write('N:'); readln(N);
+
+   for I := 1 to N do
+     begin
+        write('Vetor[', I, ']:'); readln(Vetor[I]);
+        Soma := Soma + Vetor[I];
+     end;
+
+   Media := Soma / N;
+
+   for I := 1 to N do
+      if Vetor[I] &gt; Media then
+         writeln(Vetor[I]);
+end.</pre>
+<ul>
+  <li><a href="fontes/ORDPALAV.PAS">Exemplo 2</a>: programa para ler N palavras, 
+  armazenar em um vetor, ordenar no vetor e imprimir.</li>
+</ul>
+<pre>program OrdenaPalavras;
+
+type
+   TipoVetor = array [1..30] of string[20];
+
+var
+   Vetor     : TipoVetor;
+   I, N,
+   Menor,
+   Ordenadas : integer;
+   Temp      : string[20];
+
+begin
+   write('N:'); readln(N);
+
+   for I := 1 to N do
+      readln(Vetor[I]);
+
+   Ordenadas := 0;
+   
+   repeat
+      inc(Ordenadas); { equivale a Ordenadas := Ordenadas + 1; }
+
+      Menor := Ordenadas;          
+
+      for I := Ordenadas + 1 to N do
+         if (Vetor[I] &lt; Vetor[Menor]) then
+            Menor := I;
+
+      Temp             := Vetor[Ordenadas];
+      Vetor[Ordenadas] := Vetor[Menor];
+      Vetor[Menor]     := Temp;
+   until Ordenadas = N - 1;   
+
+   for I := 1 to N do
+      writeln(Vetor[I]);
+end.</pre>
+<ul>
+  <li><a href="fontes/REDELOJA.PAS">Exemplo 3</a>: programa para criar as 
+  seguintes estruturas.</li>
+</ul>
+
+<table border="1" style="border-width: 0">
+  <tr>
+    <td style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: solid; border-bottom-width: 1">&nbsp;</td>
+    <td style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-style: solid; border-width: 1">Arenoso</td>
+    <td style="border-style: solid; border-width: 1">Cimento</td>
+    <td style="border-style: solid; border-width: 1">Bloco</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1">
+    Telha</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1">
+    Tijolo</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1">
+    ...</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <b>Vetor Produtos</b></td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1" align="center">
+    SE</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-top-style: solid; border-top-width: 1">
+    200</td>
+    <td style="border-top-style: solid; border-top-width: 1">80</td>
+    <td style="border-top-style: solid; border-top-width: 1">250</td>
+    <td style="border-top-style: solid; border-top-width: 1">300</td>
+    <td style="border-top-style: solid; border-top-width: 1">20</td>
+    <td style="border-top-style: solid; border-top-width: 1">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1" align="center">
+    SP</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">20</td>
+    <td>150</td>
+    <td>700</td>
+    <td>500</td>
+    <td>5</td>
+    <td>&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1" align="center">
+    RJ</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">150</td>
+    <td>70</td>
+    <td>180</td>
+    <td>900</td>
+    <td>500</td>
+    <td>&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1" align="center">
+    ...</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1; border-bottom-style: none; border-bottom-width: medium">
+    <b>Vetor<br>
+    Lojas</b></td>
+    <td style="border-style: none; border-width: medium">&nbsp;</td>
+    <td style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1; border-bottom-style: none; border-bottom-width: medium" colspan="6">
+    <p align="center"><b>Matriz<br>
+    Estoque</b></td>
+    <td style="border-style: none; border-width: medium">&nbsp;</td>
+  </tr>
+</table>
+<p>E definir:<br>
+a) estoque de um dado produto numa dada loja.<br>
+b) estoque de um dado produto.<br>
+c) estoque de uma dada loja.<br>
+d) loja em que um dado produto apresenta menor estoque.<br>
+e) produto com menor estoque em uma dada loja.</p>
+<pre>program RedeLojas;
+
+type
+   VetorProdutos = array[1..5] of string[10];
+   VetorLojas = array[1..3] of string[2];
+   MatrizEstoque = array[1..3, 1..5] of integer;
+
+var
+   Produtos: VetorProdutos;
+   Lojas:    VetorLojas;
+   Estoque:  MatrizEstoque;
+   Produto:  string[10];
+   Loja:     string[2];
+   Quant, P,
+   L, I, J:  integer;
+
+begin
+   { Leitura dos produtos }
+   writeln('Digite os 5 produtos');
+   for I := 1 to 5 do
+      readln(Produtos[I]);
+
+   { Leitura das lojas }
+   writeln('Digite as 3 lojas');
+   for I := 1 to 3 do
+      readln(Lojas[I]);
+
+   { Leitura do estoque por loja }
+   writeln('Digite o estoque dos produtos por loja');
+   for I := 1 to 3 do
+     for J := 1 to 5 do
+        readln(Estoque[I,J]);
+
+   { Item A - estoque de um dado produto numa dada loja }
+   write('Digite o produto:'); readln(Produto);
+   for I := 1 to 5 do
+      if Produtos[I] = Produto then
+         P := I;
+   write('Digite a loja:'); readln(Loja);
+   for J := 1 to 3 do
+      if Lojas[J] = Loja then
+         L := J;
+   writeln('Estoque do produto ', Produto, ' na loja ', Loja, ':', Estoque[L,P]);
+
+   { Item B - estoque de um dado produto }
+   write('Digite o produto:'); readln(Produto);
+   for I := 1 to 5 do
+      if Produtos[I] = Produto then
+         P := I;
+   Quant := 0;
+   for J := 1 to 3 do
+      Quant := Quant + Estoque[J,P];
+   writeln('Estoque do produto ', Produto, ':', Quant);
+
+   { Item C - estoque de uma dada loja }
+   write('Digite a loja:'); readln(Loja);
+   for J := 1 to 3 do
+      if Lojas[J] = Loja then
+         L := J;
+   Quant := 0;
+   for I :=  1 to 5 do
+      Quant := Quant + Estoque[L,I];
+   writeln('Estoque da loja ', Loja, ':', Quant);
+
+   { Item D - loja em que um dado produto apresenta menor estoque }
+   write('Digite o produto:'); readln(Produto);
+   for I := 1 to 5 do
+      if Produtos[I] = Produto then
+         P := I;
+   Quant := Estoque[1,P]; 
+   L := 1;
+   for J := 2 to 3 do
+      if Estoque[J,P] &lt; Quant then
+         begin
+            Quant := Estoque[J,P];
+            L := J;
+         end;
+   writeln('Loja ', Lojas[L], ' tem o menor estoque (', Quant,
+           ') do produto ', Produto);
+
+   { Item E - produto com menor estoque em uma dada loja }
+   write('Digite a loja:'); readln(Loja);
+   for J := 1 to 3 do
+      if Lojas[J] = Loja then
+         L := J;
+   Quant := Estoque[L,1];
+   P := 1;
+   for I := 2 to 5 do
+      if Estoque[L,I] &lt; Quant then
+         begin
+            Quant := Estoque[L,I];
+            P := I;
+         end;
+   writeln('O produto ', Produtos[P], ' tem o menor estoque na loja ', Loja);
+end.</pre>
+<hr>
+<h2><span style="font-family: Times New Roman">Exercícios</span></h2>
+<p>49) Implementar um programa para ordenar números.</p>
+
+<p>50) Implementar programa para ler nome e média dos alunos de uma turma e 
+escrever a relação de estudantes com média superior ou igual à media da turma.</p>
+
+<p>51) Implementar programa para criar as seguintes estruturas:</p>
+
+<table border="1" style="border-width: 0">
+  <tr>
+    <td style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: solid; border-bottom-width: 1">&nbsp;</td>
+    <td style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-style: solid; border-width: 1">Prova</td>
+    <td style="border-style: solid; border-width: 1">Seminário</td>
+    <td style="border-style: solid; border-width: 1">Exercícios</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1">
+    Projeto</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+    <b>Vetor Avaliação</b></td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1">Filosofia</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-top-style: solid; border-top-width: 1">
+    10</td>
+    <td style="border-top-style: solid; border-top-width: 1">9</td>
+    <td style="border-top-style: solid; border-top-width: 1">9</td>
+    <td style="border-top-style: solid; border-top-width: 1">8</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1">Psicologia</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">8</td>
+    <td>8</td>
+    <td>7</td>
+    <td>9</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1">Economia</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">10</td>
+    <td>10</td>
+    <td>5</td>
+    <td>2</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1">Administração</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">2</td>
+    <td>1</td>
+    <td>10</td>
+    <td>8</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-right-style: solid; border-right-width: 1">História</td>
+    <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+    <td style="border-left-style: solid; border-left-width: 1">6</td>
+    <td>6</td>
+    <td>9</td>
+    <td>4</td>
+    <td style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1; border-bottom-style: none; border-bottom-width: medium">
+    <b>Vetor<br>
+    Disciplinas</b></td>
+    <td style="border-style: none; border-width: medium">&nbsp;</td>
+    <td style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1; border-bottom-style: none; border-bottom-width: medium" colspan="4">
+    <p align="center"><b>Matriz<br>
+    Notas</b></td>
+    <td style="border-style: none; border-width: medium">&nbsp;</td>
+  </tr>
+</table>
+<p>E determinar:<br>
+a) a média em uma dada disciplina<br>
+b) a média em uma dada modalidade de avaliação<br>
+c) a média do aluno<br>
+d) a disciplina em que o aluno obteve maior nota em uma dada modalidade de 
+avaliação</p>
+
+</body>
+
+</html>

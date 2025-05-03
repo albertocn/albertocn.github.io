@@ -1,0 +1,173 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Funções em C</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h1><font face="Times New Roman">Funções em C</font></h1>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Introdução</span></b></h2>
+<ul>
+  <li>Um programa em C pode (e deve) ser escrito como um conjunto de funções que 
+  são executadas a partir da execução de uma função denominada main(). </li>
+  <li>Cada função pode conter declarações de variáveis, instruções, ativações de 
+  funções do sistema e de outras funções definidas pelo programador.</li>
+  <li>O objetivo de uma função deve ser a realização de alguma &quot;sub-tarefa&quot; 
+  específica da tarefa que o programa pretende realizar.</li>
+  <li>Podemos escrever funções para a leitura dos dados de entrada, para a saída 
+  do programa, para a determinação da média de vários elementos, etc.</li>
+  <li>Normalmente, a realização da &quot;sub-tarefa&quot; para a qual a função foi escrita 
+  é chamada de retorno da função. Este retorno pode ser a realização de uma ação 
+  genérica, como a leitura dos dados de entrada, ou um valor específico, como o 
+  cálculo do máximo divisor comum de dois números dados.</li>
+</ul>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Funções</span></b></h2>
+<ul>
+  <li><span style="font-family: Times New Roman">Estrutura</span></li>
+</ul>
+<pre>&lt;Tipo&gt; &lt;Ident&gt; ( &lt;lista-de-parâmetros&gt; )
+{
+   &lt;comandos&gt;
+}</pre>
+<ul>
+  <li><span style="font-family: Times New Roman">Onde:</span><ul>
+  <li><font face="Courier New" size="2">&lt;Tipo&gt;</font><span style="font-family: Times New Roman"> 
+  tipo do dado de retorno.</span></li>
+  <li><font face="Courier New" size="2">&lt;Ident&gt;</font><span style="font-family: Times New Roman">&nbsp; 
+  nome que identifica a função.</span></li>
+  <li><font face="Courier New" size="2">&lt;declarações&gt;</font><span style="font-family: Times New Roman">&nbsp; 
+  .</span></li>
+  <li><font face="Courier New" size="2">&lt;comandos-e-decl&gt;</font><span style="font-family: Times New Roman">&nbsp; 
+  comandos e declarações de tipos, constantes e variáveis locais.</span></li>
+</ul>
+  </li>
+</ul>
+<span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o: 
+função que retorna o número de dias de um mês.</font></b></span><pre>int NumDiasMes(int mes, int ehAnoBisexto) {
+   int dias = 0;
+   switch (mes) {
+      case 4:
+      case 6:
+      case 9:
+      case 11: dias = 30; break;
+      case 2: dias = ehAnoBisexto ? 29 : 28; break;
+      default: dias = 31;
+   }
+   return (dias);
+}
+
+int LeiaMes() {
+   int numMes;
+   printf(&quot;Digite o numero do mes:&quot;);
+   scanf(&quot;%d&quot;, &amp;numMes);
+   return (numMes);
+}
+
+int LeiaBisexto() {
+   printf(&quot;Eh ano bisexto (digite 0 ou 1):&quot;);
+   int bisexto;
+   scanf(&quot;%d&quot;, &amp;bisexto);
+   return (bisexto);
+}
+
+main() {
+   int mes = LeiaMes();
+   printf(&quot;Num de dias do mes: %d&quot;, NumDiasMes(mes, mes==2 ? LeiaBisexto() : 0));
+}</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Passagem de Parâmetros</span></b></h2>
+<p>A passagem de parâmetros padrão de C é <i>por valor</i>. Sendo assim, 
+qualquer alteração no valor dos parâmetros dentro da função não provoca qualquer 
+alteração nas variáveis que porventura forem passadas como parâmetro na chamada 
+de uma função.</p>
+<p><span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o: 
+função que tenta trocar valores de variáveis, mas não consegue.</font></b></span></p>
+<pre>void troca(int a, int b) {
+   int t = a;
+   a = b;
+   b = t; 
+}
+
+main() {
+   int a = 1, b = 2;
+   printf(&quot;antes: a = %d e b = %d\n&quot;, a, b); // mostra 1 e 2
+   troca(a, b);
+   printf(&quot;depois: a = %d e b = %d&quot;, a, b);  // mostra 1 e 2
+}</pre>
+<p>A função acima não consegue trocar o valor dos parâmetros passados porque os 
+parâmetros são passados por valor. Sendo assim, seus valores são cópias dos 
+valores das variáveis passadas. Daí as alterações não terem efeito nas variáveis 
+de origem.</p>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Ponteiros</span></b></h2>
+<p>Para cada posição de memória é associado um número inteiro chamado <i>
+endereço da posição de memória</i>. Como uma variável é alocada em uma posição 
+de memória, a cada variável é associado um endereço. Um <i>ponteiro</i> é uma 
+variável capaz de armazenar um endereço de outra variável, sendo declarado com a 
+seguinte sintaxe:</p>
+<pre>&lt;tipo-do-dado&gt; *&lt;identificador&gt;;</pre>
+<p>Essa declaração indica que o <i>identificador</i> é o nome da variável do 
+tipo apontador. Nesta variável é armazenado um endereço de uma variável do tipo
+<i>tipo-do-dado</i>. Por exemplo, uma declaração do tipo <i>int *p</i>; indica 
+que p é uma variável capaz de armazenar o endereço de uma variável do tipo int. 
+Na prática dizemos que p aponta para um inteiro. Assim, ponteiros também são 
+chamados <i>apontadores</i>. Como ponteiros são variáveis, pode-se atribuir um 
+ponteiro a outro do mesmo tipo. Por exemplo, são válidas as seguintes 
+instruções:</p>
+<pre>int *p, *t, i;
+p = &amp;i;
+t = p;</pre>
+<p>O operador de endereço <i>&amp;</i> fornece o endereço da variável ao qual é 
+associado. Deste modo, <i>p</i> receberá o endereço de <i>i</i> o que também 
+acontecerá com <i>t</i> quando da execução do comando <i>t = p</i>. Se <i>p</i> 
+é um ponteiro, a indicação <i>*p</i> num programa acessa o conteúdo da variável 
+para a qual <i>p</i> aponta.</p>
+<p><span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o: 
+função que troca valores de variáveis.</font></b></span></p>
+<pre>void troca(int *a, int *b) {
+   int t = *a;
+   *a = *b;
+   *b = t; 
+}
+
+main() {
+   int a = 1, b = 2;
+   printf(&quot;antes: a = %d e b = %d\n&quot;, a, b); // mostra 1 e 2
+   troca(&amp;a, &amp;b);
+   printf(&quot;depois: a = %d e b = %d&quot;, a, b); // mostra 1 e 2
+}</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Recursividade</span></b></h2>
+<p>A linguagem C suporta funções recursivas. Um exemplo é o fatorial de um 
+número.</p>
+<p><span style="font-family: Times New Roman"><font size="4"><b>Exempl</b></font><b><font size="4">o: 
+fatorial implementado de forma recursiva.</font></b></span></p>
+<pre>long Fatorial(int n) {
+   if ((n == 0) || (n == 1))
+      return (1);
+   else
+      return (n * Fatorial(n - 1));
+}</pre>
+
+</body>
+
+</html>

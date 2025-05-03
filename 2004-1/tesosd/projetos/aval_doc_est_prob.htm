@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0064)http://www.dcce.ufs.br/docentes/alberto/2003-1/telp/projetos.htm -->
+<html>
+
+<head>
+<title>Projetos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta content="Microsoft FrontPage 5.0" name="GENERATOR">
+</head>
+
+<body>
+
+<h2>Avaliação de Docente em Estágio Probatório</h2>
+
+<ul>
+  <li>A avaliação é composta pelas avaliações do chefe do departamento e do 
+  corpo discente, além de uma pontuação baseada na produtividade (horas-aula, 
+  cursos, publicações, etc). A avaliação ocorre a cada 6 meses num período de 3 
+  anos.&nbsp; </li>
+  <li>O objetivo desse sistema é auxiliar o preenchimento dos formulários de 
+  avaliação de docente em estágio probatório, que são feitos pelos alunos.</li>
+  <li>Base de dados no SQL Server 2000</li>
+  <li>A tabela abaixo mostra uma descrição das funcionalidades do sistema:</li>
+</ul>
+<table border="1">
+  <tr>
+    <td>
+    <p align="center">1</td>
+    <td>Login Professor</td>
+    <td>O professor informa matrícula e senha. Após efetuar o login, será 
+    apresentado um menu com as opções disponíveis.</td>
+  </tr>
+  <tr>
+    <td align="middle">2</td>
+    <td>Login Aluno</td>
+    <td>O aluno informa matrícula e senha. Após efetuar o login, será 
+    apresentado um menu com as opções disponíveis.</td>
+  </tr>
+  <tr>
+    <td align="middle">3</td>
+    <td>Logout</td>
+    <td>Todos os usuários (professor ou aluno) devem executar 
+    essa operação quando desejarem sair do sistema.</td>
+  </tr>
+  <tr>
+    <td align="middle">4</td>
+    <td>Iniciar avaliação</td>
+    <td>Deve ser iniciada pelo professor a ser avaliado. O primeiro passo é 
+    selecionar o Professor Orientador (que não pode ser ele mesmo e deve ser um 
+    professor efetivo). O próximo passo é informar o período (2003.1, 2003.2, 
+    etc.) da avaliação. Em seguida, devem ser mostradas as disciplinas 
+    lecionadas no período juntamente com a lista dos alunos matriculados na 
+    disciplina (nome, matrícula e e-mail). Quando a avaliação é iniciada, os 
+    alunos aprovados recebem um aviso por e-mail notificando o início da 
+    avaliação.</td>
+  </tr>
+  <tr>
+    <td align="middle">5</td>
+    <td>Consultar estado da avaliação</td>
+    <td>Apresenta um resumo sobre os formulários preenchidos (quantidade, média, 
+    menor e maior nota). Mostra também uma tabela com a data de preenchimento e 
+    o nº de cada formulário. Deve ser possível visualizar qualquer um dos 
+    formulários (sem informações de quem o preencheu). Funcionalidade restrita 
+    ao Professor orientador e ao Professor sendo avaliado.</td>
+  </tr>
+  <tr>
+    <td align="middle">6</td>
+    <td>Concluir avaliação</td>
+    <td>Quando o nº de avaliações for suficiente (10), é possível concluir a 
+    avaliação. Depois da conclusão, nenhum outro aluno pode avaliar o professor. 
+    Funcionalidade restrita ao Professor orientador e ao Professor sendo 
+    avaliado.</td>
+  </tr>
+  <tr>
+    <td align="middle">7</td>
+    <td>Cancelar avaliação</td>
+    <td>Enquanto a avaliação estiver sendo feita, ela pode ser cancelada. Também 
+    impede que sejam preenchidos novos formulários. Funcionalidade restrita ao 
+    Professor orientador e ao Professor sendo avaliado.</td>
+  </tr>
+  <tr>
+    <td align="middle">8</td>
+    <td>Enviar e-mail para alunos</td>
+    <td>Permite que professor envie um e-mail para todos alunos das disciplinas 
+    em que esteja sendo avaliado.</td>
+  </tr>
+  <tr>
+    <td align="middle">9</td>
+    <td>Reenviar senhas</td>
+    <td>Permite que o professor reenvie as senhas para os alunos. As senhas são 
+    geradas automaticamente pelo sistema e devem conter 8 caracteres 
+    alfanuméricos. </td>
+  </tr>
+  <tr>
+    <td align="middle">10</td>
+    <td>Preencher formulário de avaliação</td>
+    <td>O aluno (que deve ter sido aprovado em todas as disciplinas lecionadas 
+    pelo professor no período) preenche os campos com todas as notas. Toda nota tem uma faixa 
+    válida de valores (números inteiros de 0 a um valor máximo). Após o 
+    preenchimento, as notas devem ser validadas e caso ocorra algum erro, o 
+    aluno deve ser informado. Quando todas as notas informadas forem válidas, 
+    será apresentado o formulário todo preenchido, inclusive com subtotais e 
+    totais, para que o aluno possa concluir o preenchimento. Quando o formulário 
+    for preenchido, o professor recebe um e-mail de notificação.</td>
+  </tr>
+  <tr>
+    <td align="middle">11</td>
+    <td>Imprimir formulários de avaliação</td>
+    <td>Deve ser apresentada uma lista com as avaliações já concluídas ao 
+    Professor Orientador. Ele seleciona apenas uma e recebe uma lista de 
+    formulários preenchidos. Em seguida, deve solicitar a impressão de cada uma 
+    delas. Esta funcionalidade só deve estar disponível após a conclusão da 
+    avaliação.</td>
+  </tr>
+  <tr>
+    <td align="middle">12</td>
+    <td>Gerar gráfico de resultado</td>
+    <td>Mostra ao professor, após a conclusão da avaliação, um gráfico contendo 
+    a menor nota, a maior e a média para cada item avaliado.</td>
+  </tr>
+  </table>
+<ul>
+  <li>O formulário de avaliação a ser preenchido é mostrado abaixo:</li>
+</ul>
+<p><img border="0" src="images/form_doc_est1.jpg" width="900" height="1262"></p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/form_doc_est2.jpg" width="900" height="611"></p>
+</body>
+</html>

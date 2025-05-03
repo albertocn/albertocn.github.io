@@ -1,0 +1,257 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Vetores e Ordenação em C</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+
+<h2><span style="font-family: Times New Roman">Introdução</span></h2>
+<p><span style="font-family: Times New Roman">Um <i>vetor</i> e um conjunto 
+de variáveis 
+de um mesmo tipo de dado as quais são 
+acessadas e referenciadas 
+através 
+da posição 
+(<i>índices</i>) e do identificador do vetor. </span>
+<font FACE="TimesNewRomanPSMT" LANG="JA" SIZE="3"><span lang="en-us"> 
+Um vetor pode ser multidimensional, ou seja, pode armazenar valores em 2 ou mais 
+dimensões.</span></p>
+</font>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Vetor Unidimensional</span></b></h2>
+<p><span style="font-family: Times New Roman">A declaração de um vetor 
+unidimensional segue a sintaxe abaixo:</span></p>
+<pre>&lt;tipo-do-dado&gt; &lt;identificador&gt;[&lt;tamanho&gt;];</pre>
+<p><span style="font-family: Times New Roman; font-weight: 700">Onde:</span></p>
+<p>&lt;tipo-do-dado&gt;: <span style="font-family: Times New Roman">tipo do dado 
+armazenado em cada elemento do vetor.<br>
+</span>&lt;identificador&gt;: identificador usado para referenciar a variável vetor.<br>
+&lt;tamanho&gt;: número de elementos do vetor.</p>
+<h2><b><span style="font-family: Times New Roman"><font size="4">Exemplos:</font></span></b></h2>
+<pre>long inteiros[10]; // vetor com 10 números inteiros longos
+char texto[1000];  // vetor com 1000 caracteres</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Manipulando Vetores</span></b></h2>
+<p><font face="Times New Roman">O identificador de um vetor em C é, na verdade, 
+um ponteiro que aponta para o primeiro elemento do vetor. Quando declaramos <i>
+long inteiros[10]; </i>estamos reservando um conjunto de dez posições de memória 
+contíguas, cada uma delas com 4 bytes (um long tem 4 bytes). Logo, o vetor 
+completo tem 40 bytes.</font></p>
+<p><font face="Times New Roman">Para saber o número de bytes ocupado por uma 
+variável, podemos usar a função <i>sizeof</i>, que recebe como parâmetro uma 
+variável e retorna o número de bytes ocupados pela mesma.</font></p>
+<h2><b><span style="font-family: Times New Roman"><font size="4">Exemplo: 
+Descobrindo o número de bytes ocupados por uma variável</font></span></b></h2>
+<pre>main() {
+   char c;
+   int i;
+   long l;
+   long vl[10];
+   float f;
+   double d;
+
+   printf(&quot;bytes de cada tipo:\n&quot;);
+   printf(&quot;char %d\n&quot;, sizeof(c));
+   printf(&quot;int %d\n&quot;, sizeof(i));
+   printf(&quot;long %d\n&quot;, sizeof(l));
+   printf(&quot;long[10] %d\n&quot;, sizeof(vl)); 
+   printf(&quot;float %d\n&quot;, sizeof(f));
+   printf(&quot;double %d\n&quot;, sizeof(d));
+}</pre>
+<p><font face="Times New Roman">É importante notar que vetores em C começam pelo 
+índice 0. Por exemplo, para referenciar o primeiro elemento usamos o índice 0 e 
+décimo elemento, usamos o índice 9.</font></p>
+<h2><b><span style="font-family: Times New Roman"><font size="4">Exemplo: 
+Ordenando um vetor de números inteiros (long).</font></span></b></h2>
+<pre>main() {
+   long Vetor[100];
+   long I, N, Menor, Ordenadas, Temp;
+
+   printf(&quot;N:&quot;); scanf(&quot;%d&quot;, &amp;N);
+
+   for (I = 0; I &lt; N; I++)
+      scanf(&quot;%d&quot;, &amp;Vetor[I]);
+
+   Ordenadas = -1;
+
+   do {
+      Ordenadas++;
+
+      Menor = Ordenadas;
+
+      for (I = Ordenadas + 1; I &lt; N; I++)
+         if (Vetor[I] &lt; Vetor[Menor])
+            Menor = I;
+
+      Temp = Vetor[Ordenadas];
+      Vetor[Ordenadas] = Vetor[Menor];
+      Vetor[Menor] = Temp;
+   }
+   while (Ordenadas &lt; N);
+
+   for (I = 0; I &lt; N; I++)
+      printf(&quot;%d\n&quot;, Vetor[I]);
+}</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Vetores e Ponteiros</span></b></h2>
+<p><font face="Times New Roman">Conforme mencionado anteriormente, uma variável 
+do tipo vetor é equivalente a um apontador para o primeiro elemento do vetor, 
+com a facilidade de usar um índice para acessar o elemento desejado. Além desta 
+forma, podemos usar apontadores puramente para acessar e manipular o vetor como 
+um todo e seus elementos e vice-versa.</font></p>
+<h2><b><font size="4"><span style="font-family: Times New Roman">Exemplo: Função 
+que retorna o maior valor encontrado em vetor da posição 0 até um certo ponto. O 
+último parâmetro recebe a posição do valor no vetor.</span></font></b></h2>
+<pre>float BuscaMaior(float *v, int t, int *p) {
+   float Maior = v[0];
+   *p = 0;
+
+   int i;
+   for (i = 1; i &lt;= t; i++)
+      if (v[i] &gt; Maior) {
+         Maior = v[i];
+         *p = i;
+      }
+
+   return(Maior);
+}
+
+main() {
+   float valores[4];
+   valores[0] = 19.0;
+   valores[1] = 11.0;
+   valores[2] = 5.0;
+   valores[3] = 32.0;
+
+   int pos;
+   float m = BuscaMaior(valores, 3, &amp;pos);
+
+   printf(&quot;valor: %f na posicao %d\n&quot;, m, pos);
+
+   m = BuscaMaior(valores, 2, &amp;pos);
+   printf(&quot;valor: %f na posicao %d&quot;, m, pos);
+}</pre>
+<hr>
+<h2><b><span style="font-family: Times New Roman">Vetor Multidimensional</span></b></h2>
+<p><span style="font-family: Times New Roman">A declaração de um vetor 
+multidimensional segue a sintaxe abaixo:</span></p>
+<pre>&lt;tipo-do-dado&gt; &lt;identificador&gt; &lt;tamanhos&gt;;</pre>
+<p><span style="font-family: Times New Roman; font-weight: 700">Onde:</span></p>
+<p>&lt;tipo-do-dado&gt;: <span style="font-family: Times New Roman">tipo do dado 
+armazenado em cada elemento do vetor.<br>
+</span>&lt;identificador&gt;: identificador usado para referenciar a variável vetor.<br>
+&lt;tamanhos&gt;: seqüência dos tamanhos de cada dimensão.</p>
+<h2><b><span style="font-family: Times New Roman"><font size="4">Exemplos:</font></span></b></h2>
+<pre>long MatrizInteiros[3][3]; // matriz 3x3
+char texto[1000][80];      // matriz que representa um texto com 1000 linhas de 80 colunas</pre>
+<h2><b><font size="4"><span style="font-family: Times New Roman">Exemplo: Função 
+que retorna o maior valor encontrado em uma matriz até um certo ponto. Os 
+últimos parâmetros recebem a linha e a coluna do valor na matriz.</span></font></b></h2>
+<pre>float BuscaMaiorMatriz(float v[3][3], int maxLin, int maxCol, int *lin, int *col) {
+   float Maior = v[0][0];
+   *lin = *col = 0;
+
+   int i, j;
+   for (i = 0; i &lt; maxLin; i++)
+      for ( (j = (i == 0 ? 1 : 0)); j &lt; maxCol; j++)
+         if (v[i][j] &gt; Maior) {
+            Maior = v[i][j];
+            *lin = i;
+            *col = j;
+         }
+
+   return(Maior);
+}
+
+main() {
+   float valores[3][3];
+
+   valores[0][0] = 19.0; valores[0][1] = 11.0; valores[0][2] = 5.0;
+   valores[1][0] = 32.0; valores[1][1] = 2.0; valores[1][2] = 12.0;
+   valores[2][0] = 5.5; valores[2][1] = 4.3; valores[2][2] = 41.0;
+
+   int lin, col;
+   float m = BuscaMaiorMatriz(valores, 3, 3, &amp;lin, &amp;col);
+
+   printf(&quot;valor: %f na posicao [%d,%d]\n&quot;, m, lin, col);
+
+   m = BuscaMaiorMatriz(valores, 2, 3, &amp;lin, &amp;col);
+   printf(&quot;valor: %f na posicao [%d,%d]&quot;, m, lin,col);
+}</pre>
+<hr>
+<h2><span style="font-family: Times New Roman">Ordenação de Vetores</span></h2>
+<p>Existem vários métodos de ordenação. Um método bastante simples e conhecido é 
+o método da bolha. Nele, a ordenação tem como princípio &quot;borbulhar&quot; o menor 
+valor para o início do vetor ou o maior para o final. Na implementação abaixo, o 
+menor valor é &quot;borbulhado&quot; para o início. Logo em seguida, o segundo menor valor 
+é &quot;borbulhado&quot; para a segunda posição do vetor. Este processo se repete até que 
+não haja troca alguma durante uma iteração ou quando o último elemento a ser 
+ordenado é alcançado. </p>
+<h2><b><font size="4"><span style="font-family: Times New Roman">Exemplo: 
+Ordenando um vetor através do método da bolha.</span></font></b></h2>
+<pre>void troca(int* a, int* b) {
+   int aux = *a;
+   *a = *b;
+   *b = aux;
+}
+
+void bolha (int *primeiro, int *ultimo) {
+   int naoTrocou;
+   int *posAtual;
+   for (; ultimo &gt; primeiro; --ultimo) {
+      naoTrocou = 1;
+      for (posAtual = primeiro; posAtual &lt; ultimo; ++posAtual) {
+         if (*posAtual &gt; *(posAtual+1)) {
+            troca (posAtual, posAtual+1);
+            naoTrocou = 0;
+         }
+      }
+      if (naoTrocou) return;
+   }
+}
+
+void exibir(int *primeiro, int n) {
+   int i = 0;
+   for (; i &lt; n; i++) {
+      printf(&quot;%d &quot;, primeiro[i]);
+   } 
+}
+
+main() {
+   int v[10];
+   v[0] = 6;
+   v[1] = 9;
+   v[2] = 3;
+   v[3] = 5;
+   v[4] = 4;
+   v[5] = 8;
+
+   printf(&quot;antes: &quot;);
+   exibir(v, 6);
+
+   bolha(v, &amp;v[5]);
+
+   printf(&quot;\ndepois: &quot;);
+   exibir(v, 6);
+}</pre>
+
+</body>
+
+</html>
