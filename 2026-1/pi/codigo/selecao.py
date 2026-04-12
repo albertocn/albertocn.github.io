@@ -1,9 +1,9 @@
 def ordenarSelecao(l):
    for i in range(len(l)-1):
-       j = indiceDoMenorDesde(i, l)
-       if i != j:
-          print(f'Trocando {l[j]} por {l[i]} na posição {i}')
-          l[i], l[j] = l[j], l[i]
+       pos_menor = indiceDoMenorDesde(i, l)
+       if i != pos_menor:  # não troca de posição se for igual
+          print(f'Trocando {l[i]} por {l[pos_menor]} na posição {i}')
+          l[i], l[pos_menor] = l[pos_menor], l[i]
           print(l)
 
 def indiceDoMenorDesde(i, l):
